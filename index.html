@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Pizzashop</title>
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header class="header">
+      <div class="container">
+        <div class="header__inner">
+          <a href="/" class="header__logo">Pizzashop</a>
+
+          <!-------------------------------------------------- NAV ------------------------------------------>
+
+          <nav class="header__nav">
+            <button class="header__nav-close">
+              <svg width="24" height="24">
+                <use href="./images/icons.svg#icon-close" />
+              </svg>
+            </button>
+            <ul class="header__nav-list">
+              <li class="header__nav-item">
+                <a class="header__nav-link" href="">Home</a>
+              </li>
+              <li class="header__nav-item">
+                <a class="header__nav-link" href="#menu">Menu</a>
+              </li>
+              <li class="header__nav-item">
+                <a class="header__nav-link" href="#events">Events</a>
+              </li>
+              <li class="header__nav-item">
+                <a class="header__nav-link" href="#about">About us</a>
+              </li>
+            </ul>
+          </nav>
+
+          <div class="header__group">
+            <button class="header__login-btn">Log In</button>
+            <button class="header__cart-btn">
+              <img src="./images/cart.png" alt="cart-btn" />
+            </button>
+            <button class="header__menu-btn">
+              <svg width="40" height="40">
+                <use href="./images/icons.svg#menu_icon" />
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <!-- HERO -->
+      <section class="hero">
+        <div class="container">
+          <div class="hero_inner">
+            <div class="hero__image-wrap">
+              <picture class="image-with-decors">
+                <source
+                  srcset="./images/hero-desktop.png"
+                  media="(min-width: 768px)"
+                />
+                <img
+                  src="./images/hero-img.png"
+                  alt="pizza image"
+                  class="image-with-decors__img"
+                />
+              </picture>
+            </div>
+            <div class="hero__content-wrap">
+              <h1 class="hero__title">
+                The Fastest <br />Pizza
+
+                <svg width="34" height="60" fill="red">
+                  <use href="./images/icons.svg#icon-Lightning-2"></use>
+                </svg>
+                Delivery
+              </h1>
+
+              <p class="hero__text">
+                We will deliver juicy pizza for your family in 30 minutes, if
+                the courier is late - <span>pizza is free!</span>
+              </p>
+
+              <div class="hero__actions">
+                <div class="hero__buttons">
+                  <button class="hero__btn hero__btn--active">To order</button>
+                  <button class="hero__btn hero__btn--menu">Pizza-Menu</button>
+                </div>
+                <div class="hero__video">
+                  <p class="hero__video-text">Cooking process:</p>
+                  <div class="hero__video-wrap">
+                    <div class="hero__play">
+                      <button class="hero__play-btn">
+                        <svg width="25" height="27">
+                          <use href="./images/play.svg"></use>
+                        </svg>
+                      </button>
+                    </div>
+                    <video
+                      src=""
+                      poster="./images/poster.png"
+                      width="272"
+                      height="194"
+                    ></video>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="./js/index.js" type="module"></script>
+  </body>
+</html>

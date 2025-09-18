@@ -1,0 +1,14 @@
+{
+  "name": "pizzashop",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "Zeross19940303@gmail.com",
+  "type": "commonjs",
+  "scripts": {
+    "sass": "sass --watch scss/index.scss style.css"
+  },
+  "devDependencies": {
+    "sass": "^1.92.0"
+  }
+}

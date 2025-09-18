@@ -1,0 +1,29 @@
+
+<svg aria-hidden="true" style="position: absolute; width: 0; height: 0; overflow: hidden;" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<defs>
+<symbol id="menu_icon" viewBox="0 0 47 32">
+<path stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3.0345" d="M1.962 1.851h43.65"></path>
+<path stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3.0345" d="M1.962 15.857h43.65"></path>
+<path stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" stroke-width="3.0345" d="M1.962 29.862h43.65"></path>
+</symbol>
+<symbol id="icon-close" viewBox="0 0 32 32">
+<path stroke-linejoin="miter" stroke-linecap="round" stroke-miterlimit="4" stroke-width="2.6667" d="M24 8l-16 16M24 24l-16-16"></path>
+</symbol>
+<symbol id="icon-Lightning-2" viewBox="0 0 25 32">
+<path d="M23.313 11.132c1.811-0.731 1.959-3.237 0.247-4.176l-11.476-6.296c-0.999-0.548-2.248-0.288-2.945 0.613l-8.035 10.388c-0.855 1.105-0.544 2.709 0.662 3.415l1.618 0.947c0.93 0.544 1.362 1.658 1.041 2.687l-3.188 10.224c-0.703 2.254 2.023 3.99 3.769 2.401l12.357-11.252c0.959-0.873 0.796-2.425-0.324-3.080-1.378-0.806-1.229-2.843 0.251-3.441l6.021-2.43z"></path>
+</symbol>
+<linearGradient id="paint0_linear_202_31" x1="24.1343" y1="2" x2="22.7724" y2="7.51564" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FF612E"/>
+<stop offset="1" stop-color="#FFA32B"/>
+</linearGradient>
+<linearGradient id="paint1_linear_202_31" x1="24.1343" y1="10.3157" x2="22.7724" y2="15.8313" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FF612E"/>
+<stop offset="1" stop-color="#FFA32B"/>
+</linearGradient>
+<linearGradient id="paint2_linear_202_31" x1="24.1343" y1="18.6314" x2="22.7724" y2="24.1471" gradientUnits="userSpaceOnUse">
+<stop stop-color="#FF612E"/>
+<stop offset="1" stop-color="#FFA32B"/>
+</linearGradient>
+
+</defs>
+</svg>

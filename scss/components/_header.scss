@@ -1,0 +1,171 @@
+@use "../utils/variables" as *;
+
+.header {
+  margin-bottom: 53px;
+}
+
+.header__inner {
+  overflow: hidden;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 12px 0;
+}
+
+.header__logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  background-image: $main-gradient;
+  background-clip: text;
+  color: transparent;
+}
+// NAV
+.header__nav {
+  position: fixed;
+  top: 0;
+  right: 0;
+
+  width: 320px;
+  height: 100vh;
+
+  padding: 40px 20px;
+
+  background-color: #ffffff;
+  text-align: center;
+  pointer-events: none;
+
+  transform: translateX(100%);
+  opacity: 0;
+  transition: transform 150ms linear, opacity 50ms linear;
+  z-index: 10;
+
+  &.open {
+    transform: translateX(0);
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  &.open .header__nav-close {
+    display: block;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: block;
+    width: 3px;
+    height: 100dvh;
+
+    background: $main-gradient;
+  }
+  @media (min-width: 1024px) {
+    position: static;
+
+    width: auto;
+    height: 100%;
+
+    padding: 10px;
+
+    background-color: transparent;
+    pointer-events: auto;
+
+    transform: translateX(0);
+    opacity: 1;
+
+    &::before {
+      display: none;
+    }
+  }
+}
+
+.header__nav-close {
+  display: none;
+  position: absolute;
+  top: 12px;
+  right: 12px;
+
+  background-color: transparent;
+  border: none;
+
+  color: $text-color;
+  font-size: 1.5rem;
+  font-weight: 700;
+  svg {
+    stroke: $text-color;
+  }
+}
+.header__nav-list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 4px;
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    gap: 40px;
+  }
+}
+.header__nav-link {
+  display: inline-block;
+  width: 100%;
+  padding: 8px 0;
+
+  color: #a3a3a3;
+
+  &:hover,
+  &:focus {
+    background-image: $main-gradient;
+    background-clip: text;
+    color: transparent;
+  }
+}
+.header__group {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+.header__cart-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+
+  width: 40px;
+  height: 40px;
+
+  background: $main-gradient;
+  border: none;
+  border-radius: 50%;
+}
+.header__login-btn {
+  display: none;
+
+  @media (min-width: 768px) {
+    display: inline-block;
+
+    height: 40px;
+    padding: 8px 56px;
+
+    background: $main-gradient;
+    border: none;
+    border-radius: 28px;
+
+    color: $main-text-color;
+    font-size: 18px;
+    font-weight: 500;
+  }
+}
+.header__menu-btn {
+  background-color: transparent;
+
+  border: none;
+  & > svg {
+    stroke: url("../../images/icons.svg#paint0_linear_202_31");
+  }
+  @media (min-width: 1024px) {
+    display: none;
+  }
+}

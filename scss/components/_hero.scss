@@ -1,0 +1,153 @@
+@use "../utils/variables" as *;
+@use "./imageWithDecors";
+
+.hero {
+  &_inner {
+    display: flex;
+    flex-direction: column;
+    row-gap: 76px;
+
+    @media (min-width: 1024px) {
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      max-height: 470px;
+    }
+  }
+
+  &__title {
+    color: $main-text-color;
+
+    svg {
+      display: inline;
+      vertical-align: middle;
+      fill: url("../../images/icons.svg#paint1_linear_202_31");
+    }
+  }
+
+  &__text {
+    color: $text-color;
+    margin-bottom: 32px;
+
+    span {
+      color: $main-text-color;
+    }
+  }
+
+  &__image-wrap {
+    text-align: center;
+
+    & img {
+      border-radius: 20px;
+      object-fit: cover;
+      object-position: left;
+    }
+
+    @media (min-width: 768px) {
+      & picture {
+        height: 470px;
+      }
+    }
+    @media (min-width: 1024px) {
+      flex: 1;
+      text-align: right;
+    }
+  }
+
+  &__content-wrap {
+    @media (min-width: 1024px) {
+      flex: 1.5;
+    }
+  }
+}
+
+.hero__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @media (min-width: 1024px) {
+    flex-direction: column-reverse;
+  }
+}
+
+// HERO VIDEO
+.hero__video-text {
+  margin-bottom: 12px;
+
+  color: $text-color;
+}
+.hero__video-wrap {
+  position: relative;
+  width: max-content;
+}
+
+.hero__play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 82px;
+  height: 82px;
+
+  border: none;
+  border-radius: 50%;
+  background: $main-gradient;
+
+  transform: translate(-50%, -50%);
+
+  z-index: 1;
+}
+
+.hero__play-btn {
+  position: relative;
+
+  width: calc(100% - 6px);
+  height: calc(100% - 6px);
+
+  border: none;
+  border-radius: 50%;
+  background-color: #1d0800;
+  & > svg {
+    margin: 0 auto;
+  }
+}
+
+// HERO BUTTONS
+.hero__buttons {
+  display: flex;
+  align-items: center;
+  width: 280px;
+}
+
+.hero__btn {
+  font-weight: 500;
+  flex: 1;
+  padding: 10px 0;
+}
+
+.hero__btn--active {
+  border: none;
+  border-radius: 71px;
+  background: $main-gradient;
+
+  color: $main-text-color;
+  z-index: 1;
+}
+
+.hero__btn--menu {
+  border: 2px solid transparent;
+  margin-left: -30px;
+  padding: 8px 0;
+  padding-left: 20px;
+
+  border-radius: 0 71px 71px 0;
+
+  background: $main-gradient text, linear-gradient(#1c0a00) padding-box,
+    $main-gradient border-box;
+
+  color: transparent;
+}
