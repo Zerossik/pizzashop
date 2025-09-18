@@ -10,17 +10,26 @@
     @media (min-width: 1024px) {
       flex-direction: row-reverse;
       justify-content: space-between;
-      max-height: 470px;
+      max-height: 510px;
     }
   }
 
   &__title {
     color: $main-text-color;
+    font-weight: bold;
+    font-size: 3rem;
+  }
 
-    svg {
-      display: inline;
-      vertical-align: middle;
-      fill: url("./images/icons.svg#paint2_linear_202_31");
+  &__title-icon {
+    display: inline;
+    width: 34px;
+    height: 60px;
+
+    vertical-align: middle;
+
+    @media (min-width: 1024px) {
+      width: 48px;
+      height: 84px;
     }
   }
 
@@ -44,7 +53,7 @@
 
     @media (min-width: 768px) {
       & picture {
-        height: 470px;
+        height: 510px;
       }
     }
     @media (min-width: 1024px) {
