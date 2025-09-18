@@ -200,7 +200,7 @@ ol {
   border: none;
 }
 .header__menu-btn > svg {
-  stroke: url("../../images/icons.svg#paint0_linear_202_31");
+  stroke: url("./images/icons.svg#paint0_linear_202_31");
 }
 @media (min-width: 1024px) {
   .header__menu-btn {
@@ -220,7 +220,7 @@ ol {
   display: block;
   width: 94px;
   height: 62px;
-  background-image: url("../../images/pizza-3.png");
+  background-image: url("./images/pizza-3.png");
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
@@ -234,7 +234,7 @@ ol {
   display: block;
   width: 94px;
   height: 97px;
-  background-image: url("../../images/fries-3.png");
+  background-image: url("./images/fries-3.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
@@ -259,7 +259,7 @@ ol {
 .hero__title svg {
   display: inline;
   vertical-align: middle;
-  fill: url(../../images/icons.svg#paint2_linear_202_31);
+  fill: url("./images/icons.svg#paint2_linear_202_31");
 }
 .hero__text {
   color: #a3a3a3;
