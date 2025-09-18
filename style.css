@@ -200,7 +200,7 @@ ol {
   border: none;
 }
 .header__menu-btn > svg {
-  stroke: url("../../images/icons.svg#paint0_linear_202_31");
+  stroke: url("./images/icons.svg#paint0_linear_202_31");
 }
 @media (min-width: 1024px) {
   .header__menu-btn {
