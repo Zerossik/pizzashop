@@ -1,6 +1,6 @@
+// Color vars:
 $text-color: #a3a3a3;
 $main-text-color: #ffffff;
-
 $main-gradient: linear-gradient(to bottom left, #ff612e, #ffa32b);
 $background-gradient: linear-gradient(
   to bottom left,
@@ -9,4 +9,20 @@ $background-gradient: linear-gradient(
   #140900 69%,
   #1c0c00 100%
 );
+
+// Responsive breakpoints:
+$tablet-bp: 768px;
 $desktop-bp: 1024px;
+
+// border-radius vars:
+$small-border-radius: 8px;
+$medium-border-radius: 16px;
+$large-border-radius: 24px;
+
+// spacing vars
+$spacing-section: 64px; // отступы между секциями
+$spacing-block: 32px; // отступы между блоками
+$spacing-element: 16px; // отступы между элементами внутри блока
+
+// hero
+$hero-max-height: 510px;

@@ -21,13 +21,15 @@ select {
 }
 
 body {
-  height: 100dvh;
+  height: 100vh;
+
+  background: $background-gradient no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 
   font-family: "Montserrat", sans-serif;
   font-size: 1rem;
   color: antiquewhite;
-
-  background: $background-gradient;
 }
 
 button,

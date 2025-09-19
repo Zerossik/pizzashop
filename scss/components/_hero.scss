@@ -1,16 +1,47 @@
 @use "../utils/variables" as *;
+@use "../utils/mixins.scss" as *;
 @use "./imageWithDecors";
 
 .hero {
   &_inner {
     display: flex;
     flex-direction: column;
-    row-gap: 76px;
+    gap: $spacing-block;
 
-    @media (min-width: 1024px) {
+    @include media-desktop {
       flex-direction: row-reverse;
       justify-content: space-between;
-      max-height: 510px;
+      max-height: $hero-max-height;
+    }
+  }
+
+  &__image-wrap {
+    text-align: center;
+
+    @include media-tablet {
+      height: $hero-max-height;
+      & picture {
+        height: 100%;
+      }
+    }
+
+    @include media-desktop {
+      flex: 1;
+      text-align: right;
+    }
+    & img {
+      border-radius: $large-border-radius;
+      object-fit: cover;
+      object-position: left;
+    }
+  }
+
+  &__content-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-element;
+    @include media-desktop {
+      flex: 1.5;
     }
   }
 
@@ -22,49 +53,22 @@
 
   &__title-icon {
     display: inline;
-    width: 34px;
-    height: 60px;
+    width: 34px; // icon's width size beetween text. Mobile version
+    height: 60px; // icon's heigth size beetween text. Mobile version
 
     vertical-align: middle;
 
-    @media (min-width: 1024px) {
-      width: 48px;
-      height: 84px;
+    @include media-desktop {
+      width: 48px; // icon's width size beetween text
+      height: 84px; // icon's heigth size beetween text
     }
   }
 
   &__text {
     color: $text-color;
-    margin-bottom: 32px;
 
     span {
       color: $main-text-color;
-    }
-  }
-
-  &__image-wrap {
-    text-align: center;
-
-    & img {
-      border-radius: 20px;
-      object-fit: cover;
-      object-position: left;
-    }
-
-    @media (min-width: 768px) {
-      & picture {
-        height: 510px;
-      }
-    }
-    @media (min-width: 1024px) {
-      flex: 1;
-      text-align: right;
-    }
-  }
-
-  &__content-wrap {
-    @media (min-width: 1024px) {
-      flex: 1.5;
     }
   }
 }
@@ -74,20 +78,22 @@
   flex-direction: column;
   gap: 32px;
 
-  @media (min-width: 1024px) {
+  @include media-desktop {
     flex-direction: column-reverse;
   }
 }
 
 // HERO VIDEO
-.hero__video-text {
-  margin-bottom: 12px;
+.video {
+  &__text {
+    margin-bottom: 12px;
+    color: $text-color;
+  }
 
-  color: $text-color;
-}
-.hero__video-wrap {
-  position: relative;
-  width: max-content;
+  &__wrap {
+    position: relative;
+    display: inline-block;
+  }
 }
 
 .hero__play {
