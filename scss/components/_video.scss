@@ -1,0 +1,33 @@
+@use "../utils/variables" as *;
+
+.video {
+  width: fit-content;
+  &__text {
+    margin-bottom: $spacing-element;
+    color: $text-color;
+  }
+
+  &__wrap {
+    position: relative;
+    display: inline-block;
+  }
+
+  &__play-btn {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+
+    width: 80px;
+    height: 80px;
+
+    transform: translate(-50%, -50%);
+
+    border: 2px solid transparent;
+    border-radius: 50%;
+    background: linear-gradient(#1d0800) padding-box, $main-gradient border-box;
+
+    & > img {
+      margin: 0 auto;
+    }
+  }
+}

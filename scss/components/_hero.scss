@@ -83,54 +83,6 @@
   }
 }
 
-// HERO VIDEO
-.video {
-  &__text {
-    margin-bottom: 12px;
-    color: $text-color;
-  }
-
-  &__wrap {
-    position: relative;
-    display: inline-block;
-  }
-}
-
-.hero__play {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  width: 82px;
-  height: 82px;
-
-  border: none;
-  border-radius: 50%;
-  background: $main-gradient;
-
-  transform: translate(-50%, -50%);
-
-  z-index: 1;
-}
-
-.hero__play-btn {
-  position: relative;
-
-  width: calc(100% - 6px);
-  height: calc(100% - 6px);
-
-  border: none;
-  border-radius: 50%;
-  background-color: #1d0800;
-  & > svg {
-    margin: 0 auto;
-  }
-}
-
 // HERO BUTTONS
 .hero__buttons {
   display: flex;
