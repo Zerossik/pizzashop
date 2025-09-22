@@ -310,30 +310,26 @@ ol {
 .hero__text span {
   color: #ffffff;
 }
-
 .hero__actions {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+  gap: 16px;
 }
 @media (min-width: 1024px) {
   .hero__actions {
     flex-direction: column-reverse;
   }
 }
-
 .hero__buttons {
   display: flex;
   align-items: center;
   width: 280px;
 }
-
 .hero__btn {
   font-weight: 500;
   flex: 1;
   padding: 10px 0;
 }
-
 .hero__btn--active {
   border: none;
   border-radius: 71px;
@@ -341,7 +337,6 @@ ol {
   color: #ffffff;
   z-index: 1;
 }
-
 .hero__btn--menu {
   border: 2px solid transparent;
   margin-left: -30px;
@@ -356,7 +351,7 @@ ol {
   width: fit-content;
 }
 .video__text {
-  margin-bottom: 16px;
+  margin-bottom: 8px;
   color: #a3a3a3;
 }
 .video__wrap {
