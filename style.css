@@ -57,7 +57,6 @@ ol {
 .header {
   margin-bottom: 53px;
 }
-
 .header__inner {
   overflow: hidden;
   display: flex;
@@ -65,7 +64,6 @@ ol {
   align-items: center;
   padding: 12px 0;
 }
-
 .header__logo {
   font-size: 1.5rem;
   font-weight: 800;
@@ -73,7 +71,6 @@ ol {
   background-clip: text;
   color: transparent;
 }
-
 .header__nav {
   position: fixed;
   top: 0;
@@ -122,7 +119,6 @@ ol {
     display: none;
   }
 }
-
 .header__nav-close {
   display: none;
   position: absolute;
@@ -137,7 +133,6 @@ ol {
 .header__nav-close svg {
   stroke: #a3a3a3;
 }
-
 .header__nav-list {
   display: flex;
   flex-direction: column;
@@ -149,7 +144,6 @@ ol {
     gap: 40px;
   }
 }
-
 .header__nav-link {
   display: inline-block;
   width: 100%;
@@ -161,13 +155,11 @@ ol {
   background-clip: text;
   color: transparent;
 }
-
 .header__group {
   display: flex;
   gap: 20px;
   align-items: center;
 }
-
 .header__cart-btn {
   display: flex;
   justify-content: center;
@@ -179,7 +171,6 @@ ol {
   border: none;
   border-radius: 50%;
 }
-
 .header__login-btn {
   display: none;
 }
@@ -196,7 +187,6 @@ ol {
     font-weight: 500;
   }
 }
-
 .header__menu-btn {
   background-color: transparent;
   border: none;
