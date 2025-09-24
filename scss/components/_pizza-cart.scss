@@ -1,0 +1,153 @@
+@use "../utils/variables" as *;
+
+$spacing-card: 20px;
+
+.pizza-card {
+  position: relative;
+
+  width: 100%;
+  max-width: 240px;
+  min-width: 180px;
+  padding: 0 $spacing-card $spacing-card;
+
+  border-radius: $medium-border-radius;
+  background-color: $pizza-card-bg;
+
+  &__image-wrap {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 50%;
+    aspect-ratio: 1 / 1;
+    transform: translate(-50%, -50%);
+  }
+
+  &__image {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    object-position: center;
+  }
+
+  &__title {
+    text-align: center;
+    padding-top: calc(((50% + $spacing-card) / 2) + $spacing-card);
+    /* Отступ сверху зависит от размера изображения.
+     Картинка занимает 50% ширины карточки, но при этом сдвинута вверх на половину своей высоты.
+     Из-за этого видимая часть картинки внутри карточки равна примерно 25% ширины родителя.
+     Чтобы контент не залезал под картинку, я рассчитываю padding:
+    (((ширина картинки + padding-left(родителя) / 2) + место для отствупа между картинкой и контентом) 
+      Таким образом заголовок всегда располагается ниже изображения с учётом его динамического размера. */
+    margin-bottom: $spacing-element;
+  }
+
+  &__desc {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+    line-clamp: 2;
+    overflow: hidden;
+    font-size: 0.5rem;
+    margin-bottom: $spacing-card;
+  }
+
+  &__actions {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 200px;
+  }
+
+  &__options {
+    display: grid;
+    grid-template-columns: repeat(3, max-content);
+    grid-template-rows: repeat(2, max-content);
+    justify-content: space-between;
+
+    margin-bottom: $spacing-card;
+    row-gap: $spacing-element;
+  }
+
+  .ingridients-btn-item {
+    grid-column: span 3 / span 3;
+  }
+
+  &__option-btn {
+    display: inline-block;
+    padding: 4px;
+
+    border: 1px solid $text-color;
+    border-radius: 50%;
+    background-color: transparent;
+
+    font-size: 12px;
+    color: $text-color;
+
+    &--active {
+      border: 1px solid transparent;
+      background: $main-gradient border-box;
+      color: $main-text-color;
+    }
+  }
+
+  &__ingridients-btn {
+    width: 100%;
+    padding: 6px 0;
+
+    border: 2px solid transparent;
+    border-radius: 71px;
+    background: $main-gradient text, linear-gradient($pizza-card-bg) padding-box,
+      $main-gradient border-box;
+    -webkit-background-clip: text, padding-box, border-box;
+    background-clip: text, padding-box, border-box;
+
+    color: transparent;
+    font-size: 12px;
+  }
+
+  &__price-wrap {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $spacing-card;
+    & p {
+      color: $main-text-color;
+    }
+  }
+
+  &__counter {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__counter-btn {
+    width: 20px;
+    height: 20px;
+
+    border: 1px solid $text-color;
+    border-radius: 50%;
+    background-color: transparent;
+
+    font-size: 12px;
+    color: $text-color;
+
+    &:active {
+      border: 1px solid transparent;
+      background: $main-gradient border-box;
+      color: $main-text-color;
+    }
+  }
+
+  &__order-btn {
+    width: 100%;
+    padding: 12px 0;
+
+    border: none;
+    border-radius: 71px;
+    background: $main-gradient;
+
+    color: $main-text-color;
+    font-size: 12px;
+    font-weight: 500;
+  }
+}

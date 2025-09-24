@@ -3,6 +3,7 @@
 @use "./imageWithDecors";
 
 .hero {
+  margin-bottom: $spacing-section;
   &_inner {
     display: flex;
     flex-direction: column;
