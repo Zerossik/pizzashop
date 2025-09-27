@@ -3,15 +3,18 @@
 $spacing-card: 20px;
 
 .pizza-card {
-  position: relative;
-
   width: 100%;
-  max-width: 240px;
-  min-width: 180px;
+  max-width: 400px;
   padding: 0 $spacing-card $spacing-card;
 
-  border-radius: $medium-border-radius;
+  border-radius: $small-border-radius;
   background-color: $pizza-card-bg;
+
+  &__inner {
+    position: relative;
+    max-width: 240px;
+    margin: 0 auto;
+  }
 
   &__image-wrap {
     position: absolute;
@@ -31,14 +34,14 @@ $spacing-card: 20px;
 
   &__title {
     text-align: center;
-    padding-top: calc(((50% + $spacing-card) / 2) + $spacing-card);
+    margin-bottom: $spacing-element;
+    padding-top: calc((50% / 2) + $spacing-card);
     /* Отступ сверху зависит от размера изображения.
      Картинка занимает 50% ширины карточки, но при этом сдвинута вверх на половину своей высоты.
      Из-за этого видимая часть картинки внутри карточки равна примерно 25% ширины родителя.
      Чтобы контент не залезал под картинку, я рассчитываю padding:
     (((ширина картинки + padding-left(родителя) / 2) + место для отствупа между картинкой и контентом) 
       Таким образом заголовок всегда располагается ниже изображения с учётом его динамического размера. */
-    margin-bottom: $spacing-element;
   }
 
   &__desc {
@@ -67,7 +70,7 @@ $spacing-card: 20px;
     row-gap: $spacing-element;
   }
 
-  .ingridients-btn-item {
+  .ingredients-btn-item {
     grid-column: span 3 / span 3;
   }
 
@@ -89,7 +92,7 @@ $spacing-card: 20px;
     }
   }
 
-  &__ingridients-btn {
+  &__ingredients-btn {
     width: 100%;
     padding: 6px 0;
 

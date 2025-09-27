@@ -385,13 +385,16 @@ p {
 }
 
 .pizza-card {
-  position: relative;
   width: 100%;
-  max-width: 240px;
-  min-width: 180px;
+  max-width: 400px;
   padding: 0 20px 20px;
-  border-radius: 16px;
+  border-radius: 8px;
   background-color: #210a01;
+}
+.pizza-card__inner {
+  position: relative;
+  max-width: 240px;
+  margin: 0 auto;
 }
 .pizza-card__image-wrap {
   position: absolute;
@@ -409,14 +412,14 @@ p {
 }
 .pizza-card__title {
   text-align: center;
-  padding-top: calc((50% + 20px) / 2 + 20px);
+  margin-bottom: 16px;
+  padding-top: calc(25% + 20px);
   /* Отступ сверху зависит от размера изображения.
    Картинка занимает 50% ширины карточки, но при этом сдвинута вверх на половину своей высоты.
    Из-за этого видимая часть картинки внутри карточки равна примерно 25% ширины родителя.
    Чтобы контент не залезал под картинку, я рассчитываю padding:
   (((ширина картинки + padding-left(родителя) / 2) + место для отствупа между картинкой и контентом) 
     Таким образом заголовок всегда располагается ниже изображения с учётом его динамического размера. */
-  margin-bottom: 16px;
 }
 .pizza-card__desc {
   display: -webkit-box;
@@ -440,7 +443,7 @@ p {
   margin-bottom: 20px;
   row-gap: 16px;
 }
-.pizza-card .ingridients-btn-item {
+.pizza-card .ingredients-btn-item {
   grid-column: span 3/span 3;
 }
 .pizza-card__option-btn {
@@ -457,7 +460,7 @@ p {
   background: linear-gradient(to bottom left, #ff612e, #ffa32b) border-box;
   color: #ffffff;
 }
-.pizza-card__ingridients-btn {
+.pizza-card__ingredients-btn {
   width: 100%;
   padding: 6px 0;
   border: 2px solid transparent;
@@ -505,6 +508,48 @@ p {
   color: #ffffff;
   font-size: 12px;
   font-weight: 500;
+}
+
+.menu {
+  padding-bottom: 200px;
+}
+.menu__title {
+  margin-bottom: 32px;
+}
+
+.products {
+  overflow: hidden;
+}
+.products__list {
+  display: flex;
+  gap: 8px;
+  padding-top: 60px;
+  background-color: #fff;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+.products__list-item {
+  flex: 0 0 calc((100% - 8px) / 2);
+  scroll-snap-align: start;
+}
+@media (min-width: 768px) {
+  .products__list-item {
+    flex: 0 0 calc((100% - 16px) / 3);
+  }
+}
+@media (min-width: 1024px) {
+  .products__list-item {
+    flex: 0 0 calc((100% - 24px) / 4);
+  }
+}
+.products__list::-webkit-scrollbar {
+  display: none;
+}
+.products__control {
+  display: none;
+  padding: 16px 0;
+  text-align: center;
 }
 
 /*# sourceMappingURL=style.css.map */
