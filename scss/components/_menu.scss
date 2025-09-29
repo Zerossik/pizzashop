@@ -6,39 +6,3 @@
     margin-bottom: $spacing-block;
   }
 }
-
-.products {
-  overflow: hidden;
-  &__list {
-    display: flex;
-    gap: $spacing-small;
-
-    padding-top: 60px;
-
-    background-color: #fff;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    scroll-behavior: smooth;
-
-    &-item {
-      flex: 0 0 calc((100% - $spacing-small) / 2);
-      scroll-snap-align: start;
-
-      @include media-768 {
-        flex: 0 0 calc((100% - ($spacing-small * 2)) / 3);
-      }
-      @include media-1024 {
-        flex: 0 0 calc((100% - ($spacing-small * 3)) / 4);
-      }
-    }
-    &::-webkit-scrollbar {
-      display: none;
-    }
-  }
-
-  &__control {
-    display: none;
-    padding: $spacing-element 0;
-    text-align: center;
-  }
-}

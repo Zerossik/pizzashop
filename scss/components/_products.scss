@@ -1,0 +1,50 @@
+@use "../utils/utils.scss" as *;
+.products {
+  overflow: hidden;
+  &__list {
+    display: flex;
+    gap: $spacing-small;
+
+    padding-top: 60px;
+
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+
+    &-item {
+      flex: 0 0 calc((100% - $spacing-small) / 2);
+      scroll-snap-align: start;
+
+      @include media-768 {
+        flex: 0 0 calc((100% - ($spacing-small * 2)) / 3);
+      }
+      @include media-1024 {
+        flex: 0 0 calc((100% - ($spacing-small * 3)) / 4);
+      }
+    }
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+
+  &__control {
+    display: none;
+
+    padding: $spacing-small 0;
+    text-align: center;
+  }
+
+  &__control-btn {
+    border: none;
+    border-radius: 50%;
+
+    background: $main-gradient;
+    fill: $main-text-color;
+
+    &:disabled {
+      cursor: not-allowed;
+
+      background: $disabled-color;
+    }
+  }
+}

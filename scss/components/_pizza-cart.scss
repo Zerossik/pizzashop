@@ -60,21 +60,15 @@ $spacing-card: 20px;
     max-width: 200px;
   }
 
-  &__options {
-    display: grid;
-    grid-template-columns: repeat(3, max-content);
-    grid-template-rows: repeat(2, max-content);
+  &__options-list {
+    display: flex;
+    align-items: center;
     justify-content: space-between;
 
     margin-bottom: $spacing-card;
-    row-gap: $spacing-element;
   }
 
-  .ingredients-btn-item {
-    grid-column: span 3 / span 3;
-  }
-
-  &__option-btn {
+  &__options-btn {
     display: inline-block;
     padding: 4px;
 
@@ -95,6 +89,7 @@ $spacing-card: 20px;
   &__ingredients-btn {
     width: 100%;
     padding: 6px 0;
+    margin-bottom: $spacing-card;
 
     border: 2px solid transparent;
     border-radius: 71px;

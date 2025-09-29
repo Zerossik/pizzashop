@@ -435,18 +435,13 @@ p {
   width: 100%;
   max-width: 200px;
 }
-.pizza-card__options {
-  display: grid;
-  grid-template-columns: repeat(3, max-content);
-  grid-template-rows: repeat(2, max-content);
+.pizza-card__options-list {
+  display: flex;
+  align-items: center;
   justify-content: space-between;
   margin-bottom: 20px;
-  row-gap: 16px;
 }
-.pizza-card .ingredients-btn-item {
-  grid-column: span 3/span 3;
-}
-.pizza-card__option-btn {
+.pizza-card__options-btn {
   display: inline-block;
   padding: 4px;
   border: 1px solid #a3a3a3;
@@ -455,7 +450,7 @@ p {
   font-size: 12px;
   color: #a3a3a3;
 }
-.pizza-card__option-btn--active {
+.pizza-card__options-btn--active {
   border: 1px solid transparent;
   background: linear-gradient(to bottom left, #ff612e, #ffa32b) border-box;
   color: #ffffff;
@@ -463,6 +458,7 @@ p {
 .pizza-card__ingredients-btn {
   width: 100%;
   padding: 6px 0;
+  margin-bottom: 20px;
   border: 2px solid transparent;
   border-radius: 71px;
   background: linear-gradient(to bottom left, #ff612e, #ffa32b) text, linear-gradient(#210a01) padding-box, linear-gradient(to bottom left, #ff612e, #ffa32b) border-box;
@@ -524,7 +520,6 @@ p {
   display: flex;
   gap: 8px;
   padding-top: 60px;
-  background-color: #fff;
   overflow-x: auto;
   scroll-snap-type: x mandatory;
   scroll-behavior: smooth;
@@ -548,8 +543,18 @@ p {
 }
 .products__control {
   display: none;
-  padding: 16px 0;
+  padding: 8px 0;
   text-align: center;
+}
+.products__control-btn {
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(to bottom left, #ff612e, #ffa32b);
+  fill: #ffffff;
+}
+.products__control-btn:disabled {
+  cursor: not-allowed;
+  background: #a19e9e;
 }
 
 /*# sourceMappingURL=style.css.map */
