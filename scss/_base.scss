@@ -20,6 +20,11 @@ select {
   font: inherit;
 }
 
+html {
+  scroll-behavior: smooth; // плавный скролл.
+  scroll-padding-top: 40px; // отступ сверху при прокрутке
+}
+
 body {
   height: 100vh;
 

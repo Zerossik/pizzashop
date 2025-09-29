@@ -22,6 +22,11 @@ select {
   font: inherit;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 40px;
+}
+
 body {
   height: 100vh;
   background: linear-gradient(to bottom left, #1c0c00 0%, #1c0700 31%, #140900 69%, #1c0c00 100%) no-repeat;
