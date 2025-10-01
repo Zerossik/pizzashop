@@ -474,12 +474,19 @@ p {
 }
 .pizza-card__price-wrap {
   display: flex;
+  flex-direction: column-reverse;
   justify-content: space-between;
   align-items: center;
+  gap: 8px;
   margin-bottom: 20px;
 }
 .pizza-card__price-wrap p {
   color: #ffffff;
+}
+@media (min-width: 768px) {
+  .pizza-card__price-wrap {
+    flex-direction: row;
+  }
 }
 .pizza-card__counter {
   display: flex;
@@ -499,6 +506,10 @@ p {
   border: 1px solid transparent;
   background: linear-gradient(to bottom left, #ff612e, #ffa32b) border-box;
   color: #ffffff;
+}
+.pizza-card__counter-value {
+  min-width: 30px;
+  text-align: center;
 }
 .pizza-card__order-btn {
   width: 100%;

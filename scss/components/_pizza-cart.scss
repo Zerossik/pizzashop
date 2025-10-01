@@ -1,4 +1,4 @@
-@use "../utils/variables" as *;
+@use "../utils/utils" as *;
 
 $spacing-card: 20px;
 
@@ -104,11 +104,18 @@ $spacing-card: 20px;
 
   &__price-wrap {
     display: flex;
+    flex-direction: column-reverse;
     justify-content: space-between;
     align-items: center;
+    gap: $spacing-small;
     margin-bottom: $spacing-card;
+
     & p {
       color: $main-text-color;
+    }
+
+    @include media-768 {
+      flex-direction: row;
     }
   }
 
@@ -134,6 +141,12 @@ $spacing-card: 20px;
       background: $main-gradient border-box;
       color: $main-text-color;
     }
+  }
+
+  &__counter-value {
+    min-width: 30px;
+
+    text-align: center;
   }
 
   &__order-btn {

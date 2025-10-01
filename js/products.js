@@ -1,13 +1,32 @@
+import { pizzaData } from "../data/pizza.js";
+import { PizzaCard } from "./pizza-card.js";
+
+const productBox = document.getElementById("products-box-1");
+
 const controllers = {
   resize: [],
 };
+
+// Додаю картки товару в контейнер, де вони повинні відображатися.
+const cardList = `<ul class="products__list">${pizzaData
+  .map(
+    (pizza) => `<li class="products__list-item">${PizzaCard.render(pizza)}</li>`
+  )
+  .join(" ")}</ul>`;
+
+productBox.insertAdjacentHTML("afterbegin", cardList);
+
+// Активую логіку для всіх карток на сайті.
+document.querySelectorAll(".pizza-card").forEach((card) => {
+  new PizzaCard(card);
+});
 
 document.querySelectorAll(".products").forEach((product) => {
   const resizeController = productControllers(product);
   controllers.resize.push(resizeController);
 });
 
-// Слушатели
+// Слухач подій
 window.addEventListener("resize", () =>
   controllers.resize.forEach((controller) => controller())
 );
@@ -30,7 +49,7 @@ function productControllers(el) {
 
   let cardWidth; // ширина карточки. Пересчитывю при resize и при загрузке страниц
 
-  // Наблюдатель.
+  // Наблюдатель. Відслідковує перший та останній слайд в слайдері. Якщо один з них видимий в контейнері, то блокуємо відповідну кнопку.
   const observerOptions = {
     root: list,
     threshold: 0.5,
@@ -54,10 +73,10 @@ function productControllers(el) {
   observer.observe(lastCard);
 
   const changeScreenSize = () => {
-    if (list.scrollWidth > list.clientWidth) {
+    const gap = parseInt(getComputedStyle(list).gap) || 0;
+    cardWidth = firstCard.clientWidth + gap;
+    if (list.scrollWidth > list.clientWidth + cardWidth) {
       controls.style.display = "block";
-      const gap = parseInt(getComputedStyle(list).gap) || 0;
-      cardWidth = firstCard.clientWidth + gap;
     } else {
       controls.style.display = "none";
     }
