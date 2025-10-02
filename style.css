@@ -416,7 +416,11 @@ p {
   object-position: center;
 }
 .pizza-card__title {
-  text-align: center;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
   margin-bottom: 16px;
   padding-top: calc(25% + 20px);
   /* Отступ сверху зависит от размера изображения.
@@ -425,6 +429,7 @@ p {
    Чтобы контент не залезал под картинку, я рассчитываю padding:
   (((ширина картинки + padding-left(родителя) / 2) + место для отствупа между картинкой и контентом) 
     Таким образом заголовок всегда располагается ниже изображения с учётом его динамического размера. */
+  text-align: center;
 }
 .pizza-card__desc {
   display: -webkit-box;
