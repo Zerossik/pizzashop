@@ -398,6 +398,9 @@ p {
 }
 .pizza-card__inner {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   max-width: 240px;
   margin: 0 auto;
 }
@@ -421,6 +424,7 @@ p {
   -webkit-line-clamp: 2;
   line-clamp: 2;
   overflow: hidden;
+  flex: 1;
   margin-bottom: 16px;
   padding-top: calc(25% + 20px);
   /* Отступ сверху зависит от размера изображения.
@@ -546,6 +550,7 @@ p {
   scroll-behavior: smooth;
 }
 .products__list-item {
+  display: flex;
   flex: 0 0 calc((100% - 8px) / 2);
   scroll-snap-align: start;
 }

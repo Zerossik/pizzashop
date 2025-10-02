@@ -1,5 +1,4 @@
 @use "../utils/utils" as *;
-
 $spacing-card: 20px;
 
 .pizza-card {
@@ -12,6 +11,11 @@ $spacing-card: 20px;
 
   &__inner {
     position: relative;
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+
     max-width: 240px;
     margin: 0 auto;
   }
@@ -38,6 +42,8 @@ $spacing-card: 20px;
     -webkit-line-clamp: 2;
     line-clamp: 2;
     overflow: hidden;
+
+    flex: 1;
     margin-bottom: $spacing-element;
     padding-top: calc((50% / 2) + $spacing-card);
     /* Отступ сверху зависит от размера изображения.
