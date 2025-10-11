@@ -16,7 +16,7 @@ const cardList = `<ul class="products__list">${pizzaData
 
 productBox.insertAdjacentHTML("afterbegin", cardList);
 
-// Активую логіку для всіх карток на сайті.
+//  Активую логіку для всіх карток на сайті.
 document.querySelectorAll(".pizza-card").forEach((card) => {
   new PizzaCard(card);
 });

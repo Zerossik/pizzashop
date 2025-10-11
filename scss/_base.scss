@@ -5,6 +5,29 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  scrollbar-width: thin;
+  scrollbar-color: $disabled-color #f0f0f0; /* ползунок / трек */
+}
+
+/* Chrome, Edge, Safari */
+*::-webkit-scrollbar {
+  width: 12px; /* ширина вертикального скролла */
+  height: 12px; /* высота горизонтального скролла */
+}
+
+*::-webkit-scrollbar-track {
+  background: #f0f0f0; /* трек */
+  border-radius: 6px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: $disabled-color; /* ползунок */
+  border-radius: 6px; /* закругление */
+  border: 3px solid #f0f0f0; /* отступ вокруг ползунка */
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  cursor: pointer;
 }
 img,
 picture,
@@ -22,7 +45,7 @@ select {
 
 html {
   scroll-behavior: smooth; // плавный скролл.
-  scroll-padding-top: 40px; // отступ сверху при прокрутке
+  scroll-padding-top: 20px; // отступ сверху при прокрутке
 }
 
 body {

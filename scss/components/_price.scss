@@ -1,0 +1,10 @@
+@use "../utils/utils" as *;
+
+.price {
+  display: inline-block;
+  color: $main-text-color;
+
+  &__value {
+    font-variant-numeric: tabular-nums;
+  }
+}
