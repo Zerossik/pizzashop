@@ -616,7 +616,7 @@ p {
   transform: rotateY(-180deg);
 }
 .pizza-card--fliped .pizza-card__back {
-  transform: rotateY(360deg);
+  transform: rotateY(359deg);
 }
 .pizza-card--fliped .pizza-card__front {
   transform: rotateY(180deg);

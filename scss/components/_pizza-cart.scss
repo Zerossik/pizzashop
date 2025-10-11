@@ -99,6 +99,7 @@ $card-transition: transform 250ms linear;
     background-clip: text, padding-box, border-box;
 
     color: transparent;
+
     font-size: 12px;
   }
   &__back-btn-submit {
@@ -250,7 +251,7 @@ $card-transition: transform 250ms linear;
       transform: rotateY(-180deg);
     }
     .pizza-card__back {
-      transform: rotateY(360deg);
+      transform: rotateY(359deg);
     }
     .pizza-card__front {
       transform: rotateY(180deg);
