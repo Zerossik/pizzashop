@@ -14,21 +14,6 @@ $card-transition: transform 250ms linear;
     transition: $card-transition;
     border-radius: $small-border-radius;
     background-color: $pizza-card-bg;
-
-    // &:hover {
-    //   transform: rotateY(180deg);
-
-    //   .pizza-card__inner {
-    //     transform: rotateY(-180deg);
-    //   }
-
-    //   .pizza-card__back {
-    //     transform: rotateY(360deg);
-    //   }
-    //   .pizza-card__front {
-    //     transform: rotateY(180deg);
-    //   }
-    // }
   }
 
   &__inner {

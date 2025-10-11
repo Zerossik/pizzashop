@@ -6,17 +6,16 @@
   margin: 0;
   padding: 0;
   scrollbar-width: thin;
-  scrollbar-color: #a19e9e #f0f0f0; /* ползунок / трек */
+  scrollbar-color: #a19e9e transparent;
 }
 
-/* Chrome, Edge, Safari */
 *::-webkit-scrollbar {
   width: 12px; /* ширина вертикального скролла */
   height: 12px; /* высота горизонтального скролла */
 }
 
 *::-webkit-scrollbar-track {
-  background: #f0f0f0; /* трек */
+  background: #ffffff; /* трек */
   border-radius: 6px;
 }
 
