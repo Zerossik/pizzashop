@@ -3,12 +3,13 @@
 @use "./imageWithDecors";
 
 .hero {
+  margin-bottom: $spacing-section;
   &_inner {
     display: flex;
     flex-direction: column;
     gap: $spacing-block;
 
-    @include media-desktop {
+    @include media-1024 {
       flex-direction: row-reverse;
       justify-content: space-between;
       max-height: $hero-max-height;
@@ -18,14 +19,14 @@
   &__image-wrap {
     text-align: center;
 
-    @include media-tablet {
+    @include media-768 {
       height: $hero-max-height;
       & picture {
         height: 100%;
       }
     }
 
-    @include media-desktop {
+    @include media-1024 {
       flex: 1;
       text-align: right;
     }
@@ -40,7 +41,7 @@
     display: flex;
     flex-direction: column;
     gap: $spacing-element;
-    @include media-desktop {
+    @include media-1024 {
       flex: 1.5;
     }
   }
@@ -58,7 +59,7 @@
 
     vertical-align: middle;
 
-    @include media-desktop {
+    @include media-1024 {
       width: 48px; // icon's width size beetween text
       height: 84px; // icon's heigth size beetween text
     }
@@ -77,7 +78,7 @@
     flex-direction: column;
     gap: $spacing-element;
 
-    @include media-desktop {
+    @include media-1024 {
       flex-direction: column-reverse;
     }
   }

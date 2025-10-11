@@ -1,9 +1,33 @@
+@charset "UTF-8";
 *,
 *::before,
 *::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  scrollbar-width: thin;
+  scrollbar-color: #a19e9e #f0f0f0; /* ползунок / трек */
+}
+
+/* Chrome, Edge, Safari */
+*::-webkit-scrollbar {
+  width: 12px; /* ширина вертикального скролла */
+  height: 12px; /* высота горизонтального скролла */
+}
+
+*::-webkit-scrollbar-track {
+  background: #f0f0f0; /* трек */
+  border-radius: 6px;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: #a19e9e; /* ползунок */
+  border-radius: 6px; /* закругление */
+  border: 3px solid #f0f0f0; /* отступ вокруг ползунка */
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  cursor: pointer;
 }
 
 img,
@@ -21,6 +45,11 @@ select {
   font: inherit;
 }
 
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 20px;
+}
+
 body {
   height: 100vh;
   background: linear-gradient(to bottom left, #1c0c00 0%, #1c0700 31%, #140900 69%, #1c0c00 100%) no-repeat;
@@ -31,7 +60,11 @@ body {
   color: antiquewhite;
 }
 
-button,
+button {
+  font: inherit;
+  cursor: pointer;
+}
+
 a {
   font: inherit;
   cursor: pointer;
@@ -43,9 +76,22 @@ ol {
   list-style: none;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #ffffff;
+}
+
+p {
+  color: #a3a3a3;
+}
+
 .container {
   max-width: 1512px;
-  padding: 0 24px;
+  padding: 0 20px;
   margin: 0 auto;
 }
 @media (min-width: 1024px) {
@@ -233,6 +279,9 @@ ol {
   transform: translate(-33%, 15%);
 }
 
+.hero {
+  margin-bottom: 64px;
+}
 .hero_inner {
   display: flex;
   flex-direction: column;
@@ -361,6 +410,280 @@ ol {
 }
 .video__play-btn > img {
   margin: 0 auto;
+}
+
+.pizza-card {
+  display: inline-block;
+  width: 100%;
+  max-width: 400px;
+  perspective: 2000px;
+}
+.pizza-card__wrap {
+  padding: 0 20px 20px;
+  transition: transform 250ms linear;
+  border-radius: 8px;
+  background-color: #210a01;
+}
+.pizza-card__inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  max-width: 240px;
+  margin: 0 auto;
+  transition: transform 250ms linear;
+}
+.pizza-card__image-wrap {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  aspect-ratio: 1/1;
+  transform: translate(-50%, -50%);
+}
+.pizza-card__image {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+  object-position: center;
+}
+.pizza-card__title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  flex: 1;
+  margin-bottom: 16px;
+  /* Отступ сверху зависит от размера изображения.
+   Картинка занимает 50% ширины карточки, но при этом сдвинута вверх на половину своей высоты.
+   Из-за этого видимая часть картинки внутри карточки равна примерно 25% ширины родителя.
+   Чтобы контент не залезал под картинку, я рассчитываю padding:
+  (((ширина картинки + padding-left(родителя) / 2) + место для отствупа между картинкой и контентом) 
+    Таким образом заголовок всегда располагается ниже изображения с учётом его динамического размера. */
+  text-align: center;
+}
+.pizza-card__desc {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  font-size: 0.5rem;
+  margin-bottom: 20px;
+}
+.pizza-card__actions {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 200px;
+}
+.pizza-card__options {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+.pizza-card__ingredients-btn, .pizza-card__back-btn-submit {
+  width: 100%;
+  padding: 6px 0;
+  margin-bottom: 20px;
+  border: 2px solid transparent;
+  border-radius: 71px;
+  background: linear-gradient(to bottom left, #ff612e, #ffa32b) text, linear-gradient(#210a01) padding-box, linear-gradient(to bottom left, #ff612e, #ffa32b) border-box;
+  -webkit-background-clip: text, padding-box, border-box;
+  background-clip: text, padding-box, border-box;
+  color: transparent;
+  font-size: 12px;
+}
+.pizza-card__back-btn-submit {
+  margin-bottom: 0;
+}
+.pizza-card__price-wrap {
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 20px;
+}
+@media (min-width: 768px) {
+  .pizza-card__price-wrap {
+    flex-direction: row;
+  }
+}
+.pizza-card__counter {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.pizza-card__counter-btn {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #a3a3a3;
+  border-radius: 50%;
+  background-color: transparent;
+  font-size: 12px;
+  color: #a3a3a3;
+}
+.pizza-card__counter-btn:active {
+  border: 1px solid transparent;
+  background: linear-gradient(to bottom left, #ff612e, #ffa32b) border-box;
+  color: #ffffff;
+}
+.pizza-card__counter-value {
+  min-width: 30px;
+  text-align: center;
+}
+.pizza-card__order-btn {
+  width: 100%;
+  padding: 12px 0;
+  border: none;
+  border-radius: 71px;
+  background: linear-gradient(to bottom left, #ff612e, #ffa32b);
+  color: #ffffff;
+  font-size: 12px;
+  font-weight: 500;
+}
+.pizza-card__options-radio {
+  display: none;
+}
+.pizza-card__options label {
+  padding: 4px;
+  border: 1px solid #a3a3a3;
+  border-radius: 50%;
+  background-color: transparent;
+  font-size: 12px;
+  color: #a3a3a3;
+  cursor: pointer;
+}
+.pizza-card__options label:has(input:checked) {
+  border: 1px solid transparent;
+  background: linear-gradient(to bottom left, #ff612e, #ffa32b) border-box;
+  color: #ffffff;
+}
+.pizza-card__front, .pizza-card__back {
+  backface-visibility: hidden;
+  transition: transform 250ms linear;
+  padding-top: calc(25% + 20px);
+  /* Отступ сверху зависит от размера изображения.
+   Картинка занимает 50% ширины карточки, но при этом сдвинута вверх на половину своей высоты.
+   Из-за этого видимая часть картинки внутри карточки равна примерно 25% ширины родителя.
+   Чтобы контент не залезал под картинку, я рассчитываю padding:
+  (((ширина картинки + padding-left(родителя) / 2) + место для отствупа между картинкой и контентом) 
+    Таким образом заголовок всегда располагается ниже изображения с учётом его динамического размера. */
+  overflow: hidden;
+}
+.pizza-card__back {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+  transform: rotateY(180deg);
+  color: #ffffff;
+}
+.pizza-card__title-back {
+  color: #ffffff;
+  font-weight: 700;
+  margin-bottom: 16px;
+}
+.pizza-card__form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 16px;
+  height: inherit;
+  overflow: hidden;
+}
+.pizza-card__form-items-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: inherit;
+  overflow-y: auto;
+}
+.pizza-card__form-item-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 8px;
+}
+.pizza-card--fliped .pizza-card__wrap {
+  transform: rotateY(180deg);
+}
+.pizza-card--fliped .pizza-card__inner {
+  transform: rotateY(-180deg);
+}
+.pizza-card--fliped .pizza-card__back {
+  transform: rotateY(360deg);
+}
+.pizza-card--fliped .pizza-card__front {
+  transform: rotateY(180deg);
+}
+
+.menu {
+  padding-bottom: 200px;
+}
+.menu__title {
+  margin-bottom: 32px;
+}
+
+.products {
+  overflow: hidden;
+}
+.products__list {
+  display: flex;
+  gap: 8px;
+  padding-top: 60px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+}
+.products__list-item {
+  display: flex;
+  flex: 0 0 calc((100% - 8px) / 2);
+  scroll-snap-align: start;
+}
+@media (min-width: 768px) {
+  .products__list-item {
+    flex: 0 0 calc((100% - 16px) / 3);
+  }
+}
+@media (min-width: 1024px) {
+  .products__list-item {
+    flex: 0 0 calc((100% - 24px) / 4);
+  }
+}
+.products__list::-webkit-scrollbar {
+  display: none;
+}
+.products__list {
+  scrollbar-width: none;
+}
+.products__control {
+  display: none;
+  padding: 8px 0;
+  text-align: center;
+}
+.products__control-btn {
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(to bottom left, #ff612e, #ffa32b);
+  fill: #ffffff;
+}
+.products__control-btn:disabled {
+  cursor: not-allowed;
+  background: #a19e9e;
+}
+
+.price {
+  display: inline-block;
+  color: #ffffff;
+}
+.price__value {
+  font-variant-numeric: tabular-nums;
 }
 
 /*# sourceMappingURL=style.css.map */

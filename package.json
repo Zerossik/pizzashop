@@ -10,5 +10,8 @@
   },
   "devDependencies": {
     "sass": "^1.92.0"
+  },
+  "dependencies": {
+    "lodash.debounce": "^4.0.8"
   }
 }

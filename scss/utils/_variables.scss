@@ -1,4 +1,5 @@
 // Color vars:
+$disabled-color: #a19e9e;
 $text-color: #a3a3a3;
 $main-text-color: #ffffff;
 $main-gradient: linear-gradient(to bottom left, #ff612e, #ffa32b);
@@ -9,6 +10,7 @@ $background-gradient: linear-gradient(
   #140900 69%,
   #1c0c00 100%
 );
+$pizza-card-bg: #210a01;
 
 // Responsive breakpoints:
 $tablet-bp: 768px;

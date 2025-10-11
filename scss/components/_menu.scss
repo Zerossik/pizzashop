@@ -1,0 +1,8 @@
+@use "../utils/utils.scss" as *;
+
+.menu {
+  padding-bottom: 200px;
+  &__title {
+    margin-bottom: $spacing-block;
+  }
+}
