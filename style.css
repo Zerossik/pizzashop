@@ -418,6 +418,7 @@ p {
   perspective: 2000px;
 }
 .pizza-card__wrap {
+  height: 100%;
   padding: 0 20px 20px;
   transition: transform 250ms linear;
   border-radius: 8px;
@@ -468,7 +469,7 @@ p {
   -webkit-line-clamp: 2;
   line-clamp: 2;
   overflow: hidden;
-  font-size: 0.5rem;
+  font-size: 0.5em;
   margin-bottom: 20px;
 }
 .pizza-card__actions {
@@ -476,23 +477,43 @@ p {
   width: 100%;
   max-width: 200px;
 }
+.pizza-card__actions:has(.pizza-card__ingredients-btn-wrap) .pizza-card__ingredients-btn-wrap {
+  margin-bottom: 16px;
+}
 .pizza-card__options {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 20px;
 }
-.pizza-card__ingredients-btn, .pizza-card__back-btn-submit {
+.pizza-card__ingredients-btn-wrap {
+  position: relative;
+  display: block;
+  border: none;
+  border-radius: 20px;
+  background: linear-gradient(to bottom left, #ff612e, #ffa32b) border-box;
+}
+.pizza-card__ingredients-btn-wrap:after {
+  content: "";
+  display: block;
+  position: absolute;
+  inset: 2px;
+  background: linear-gradient(to bottom left, #1c0c00 0%, #1c0700 31%, #140900 69%, #1c0c00 100%) padding-box;
+  border: inherit;
+  border-radius: inherit;
+  z-index: 50;
+}
+.pizza-card__ingredients-btn-wrap button {
+  position: relative;
   width: 100%;
   padding: 6px 0;
-  margin-bottom: 20px;
-  border: 2px solid transparent;
-  border-radius: 71px;
-  background: linear-gradient(to bottom left, #ff612e, #ffa32b) text, linear-gradient(#210a01) padding-box, linear-gradient(to bottom left, #ff612e, #ffa32b) border-box;
-  -webkit-background-clip: text, padding-box, border-box;
-  background-clip: text, padding-box, border-box;
+  margin: 0 auto;
+  border: none;
+  border-radius: inherit;
+  background: linear-gradient(to bottom left, #ff612e, #ffa32b) text;
   color: transparent;
   font-size: 12px;
+  z-index: 100;
 }
 .pizza-card__back-btn-submit {
   margin-bottom: 0;
@@ -502,8 +523,7 @@ p {
   flex-direction: column-reverse;
   justify-content: space-between;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 20px;
+  margin-bottom: 8px;
 }
 @media (min-width: 768px) {
   .pizza-card__price-wrap {
@@ -561,6 +581,9 @@ p {
   color: #ffffff;
 }
 .pizza-card__front, .pizza-card__back {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
   backface-visibility: hidden;
   transition: transform 250ms linear;
   padding-top: calc(25% + 20px);
@@ -588,7 +611,7 @@ p {
   font-weight: 700;
   margin-bottom: 16px;
 }
-.pizza-card__form {
+.pizza-card__ingredients-form {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -596,18 +619,31 @@ p {
   height: inherit;
   overflow: hidden;
 }
+.pizza-card__ingredients-form .pizza-card__ingredients-btn-wrap {
+  margin-bottom: 6px;
+}
 .pizza-card__form-items-wrap {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 8px;
   height: inherit;
   overflow-y: auto;
 }
 .pizza-card__form-item-wrap {
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-right: 8px;
+}
+.pizza-card__form-item-wrap label {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+  flex: 1;
+  margin-left: 4px;
+  font-size: 0.75em;
+  overflow: hidden;
 }
 .pizza-card--fliped .pizza-card__wrap {
   transform: rotateY(180deg);
@@ -616,7 +652,7 @@ p {
   transform: rotateY(-180deg);
 }
 .pizza-card--fliped .pizza-card__back {
-  transform: rotateY(360deg);
+  transform: rotateY(359deg);
 }
 .pizza-card--fliped .pizza-card__front {
   transform: rotateY(180deg);
