@@ -20,7 +20,7 @@ export const pizzaData = [
       },
     ],
     toppings: [
-      { id: 1, name: "Mozzarella cheese", price: 3 },
+      { id: 1, name: "Cheese", price: 3 },
       { id: 2, name: "Pepperoni", price: 3 },
       { id: 3, name: "Mushrooms", price: 2 },
       { id: 4, name: "Bacon", price: 5 },

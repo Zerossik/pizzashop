@@ -195,9 +195,10 @@ export class PizzaCard {
                       />33</label
                     >
                   </form>
+                  <div class="pizza-card__ingredients-btn-wrap">
                   <button class="pizza-card__ingredients-btn">
                     + ingredients
-                  </button>
+                  </button></div>
                   <div class="pizza-card__price-wrap">
                     <div class="price"><span class="price__value">0</span><sup>$</sup></div>
                     <div class="pizza-card__counter">
@@ -221,15 +222,18 @@ export class PizzaCard {
               </div>
                 <div class="pizza-card__back">
                   <p class="pizza-card__title-back">Choose ingredients:</p>
-                <form class="pizza-card__form">
+                <form class="pizza-card__ingredients-form">
                   <div class="pizza-card__form-items-wrap">
                     ${data.toppings
                       .map(
                         ({ id, name, price }) => `
-                        <div class="pizza-card__form-item-wrap">
-                        <label>
-                      <input type="checkbox" name="ingredient" data-price=${price} value=${name} id=${id} />
-                      ${name}</label> <span>${price}<sup>$</sup></span></div>
+                      <div class="pizza-card__form-item-wrap">
+                         
+                            <input type="checkbox" name="ingredient" data-price=${price} value=${name} id=ingredient-${data.id}-${id}  />
+                            <label for=ingredient-${data.id}-${id} >${name}</label>
+                       <span>${price}<sup>$</sup></span>
+                        
+                      </div>
                     `
                       )
                       .join(" ")}
@@ -239,7 +243,9 @@ export class PizzaCard {
                   <div class="pizza-card__price-wrap">
             <div class="price"><span class="price__value">0</span><sup>$</sup></div>
                       </div>
+                      <div class="pizza-card__ingredients-btn-wrap">
                   <button class="pizza-card__back-btn-submit">OK</button>
+                  </div
                   </div>
                 </form>
               </div>
