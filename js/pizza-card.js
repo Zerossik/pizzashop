@@ -153,7 +153,7 @@ export class PizzaCard {
                   class="pizza-card__image"
               /></picture>
               <div class="pizza-card__front">
-                <h3 class="pizza-card__title">Italian</h3>
+                <h3 class="pizza-card__title">${data.title}</h3>
                 <p class="pizza-card__desc">
                   Filling: onion, potato, tomato, mushrooms, cheese, olives,
                   meat
