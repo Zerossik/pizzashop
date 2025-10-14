@@ -721,4 +721,41 @@ p {
   font-variant-numeric: tabular-nums;
 }
 
+.counter {
+  display: inline-flex;
+  gap: 8px;
+  color: #ffffff;
+}
+.counter__value {
+  background-color: transparent;
+  width: 40px;
+  border: none;
+  border-left: 1px solid #ffffff;
+  border-right: 1px solid #ffffff;
+  outline: none;
+  color: #ffffff;
+  text-align: center;
+}
+.counter__decrement, .counter__increment {
+  width: 20px;
+  height: 20px;
+  border: 1px solid #a3a3a3;
+  border-radius: 50%;
+  background-color: transparent;
+  font-size: 12px;
+  color: #a3a3a3;
+}
+.counter__decrement:active, .counter__increment:active {
+  border: 1px solid transparent;
+  background: linear-gradient(to bottom left, #ff612e, #ffa32b) border-box;
+  color: #ffffff;
+}
+.counter input[type=number]::-webkit-inner-spin-button,
+.counter input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+
 /*# sourceMappingURL=style.css.map */
