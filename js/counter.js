@@ -4,6 +4,8 @@ export class Counter {
   /**
    *
    * @param {HTMLElement} counter
+   * @param {(value: number)=> void} onChange
+   * @param {string} baseSelector
    */
 
   #minValue;
@@ -11,7 +13,7 @@ export class Counter {
   #initValue;
   #currentValue;
 
-  constructor(counter, baseSelector = "counter") {
+  constructor(counter, onChange, baseSelector = "counter") {
     if (!counter) return;
     this.counter = counter;
     this.BASE_SELECTOR = baseSelector;
@@ -34,7 +36,10 @@ export class Counter {
     this.#maxValue = max || 99;
     this.#initValue = init || this.#minValue;
 
-    this.#currentValue = useState(this.#initValue, this.render);
+    this.#currentValue = useState(this.#initValue, () => {
+      this.render();
+      onChange?.(this.value);
+    });
 
     this.attachEvents();
     this.render();
@@ -77,7 +82,9 @@ export class Counter {
     if (this.#currentValue.value <= this.#minValue) return;
     this.#currentValue.value--;
   }
-
+  get value() {
+    return this.#currentValue.value;
+  }
   render = () => {
     const counterValueElement =
       this.counter.children.namedItem("counter-value");
@@ -85,7 +92,3 @@ export class Counter {
     counterValueElement.value = this.#currentValue.value;
   };
 }
-
-document
-  .querySelectorAll(".counter")
-  .forEach((counter) => new Counter(counter));

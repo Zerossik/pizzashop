@@ -1,5 +1,6 @@
 import { pizzaData } from "../data/pizza.js";
 import { PizzaCard } from "./pizza-card.js";
+import { Counter } from "./counter.js";
 
 const productBox = document.getElementById("products-box-1");
 
@@ -18,7 +19,7 @@ productBox.insertAdjacentHTML("afterbegin", cardList);
 
 //  Активую логіку для всіх карток на сайті.
 document.querySelectorAll(".pizza-card").forEach((card) => {
-  new PizzaCard(card);
+  new PizzaCard(card, Counter);
 });
 
 document.querySelectorAll(".products").forEach((product) => {
