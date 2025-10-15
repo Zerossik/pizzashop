@@ -1,14 +1,22 @@
 import { useState } from "./hooks/useState.js";
 
 export class PizzaCard {
+  /**
+   * @param {HTMLElement} card
+   * @param {typeof Counter} Counter
+   * @param {string} [baseSelector]
+   * */
+
   #state;
+  // card is HTMLElement, Counter is Counter class. baseSelector is card's selector
   constructor(card, Counter, baseSelector = "pizza-card") {
-    if (!card) return;
+    if (!card) throw new Error("card is required");
+    if (!Counter) throw new Error("Counter is required");
+
     this.card = card;
-
     this.BASE_SELECTOR = baseSelector;
+    this.initPrice = Number(this.card.dataset.price ?? 0);
 
-    this.initPrice = Number(this.card.dataset.price);
     const initialState = {
       basePrice: this.initPrice,
       isFliped: false,
@@ -21,19 +29,16 @@ export class PizzaCard {
 
     // ELEMENTS:
     this.priceElements = this.card.querySelectorAll(".price");
-
     this.counter = this.card.querySelector(".counter");
-    this.count = new Counter(
-      this.counter,
-      (value) => (this.#state.quantity = value)
-    );
 
+    //init new counter for this pizza card
+    new Counter(this.counter, (value) => (this.#state.quantity = value));
     this.attachEvents();
     this.stateHandler();
   }
   // HANDLERS
   stateHandler = (target, prop, value) => {
-    this.priceElements.forEach((element) => {
+    this.priceElements?.forEach((element) => {
       const value = element.querySelector(".price__value");
       value.textContent = this.totalPrice;
     });
@@ -86,7 +91,6 @@ export class PizzaCard {
 
       if (changedElement.checked) {
         this.#state.ingredients.push({ id, ingredientName, ingredientPrice });
-
         return;
       }
 
@@ -235,15 +239,4 @@ export class PizzaCard {
           </div>
         </div>`;
   };
-}
-{
-  /* <div class="pizza-card__counter">
-  <button class="pizza-card__counter-btn" data-action="decrement">
-    -
-  </button>
-  <span class="pizza-card__counter-value">1</span>
-  <button class="pizza-card__counter-btn" data-action="increment">
-    +
-  </button>
-</div>; */
 }
