@@ -1,13 +1,14 @@
 import { useState } from "./hooks/useState.js";
 
 export class PizzaCard {
-  constructor(card, baseSelector = "pizza-card") {
+  #state;
+  constructor(card, Counter, baseSelector = "pizza-card") {
+    if (!card) return;
     this.card = card;
 
     this.BASE_SELECTOR = baseSelector;
 
     this.initPrice = Number(this.card.dataset.price);
-
     const initialState = {
       basePrice: this.initPrice,
       isFliped: false,
@@ -16,13 +17,15 @@ export class PizzaCard {
       ingredients: [],
     };
 
-    this._state = useState(initialState, this.stateHandler);
+    this.#state = useState(initialState, this.stateHandler);
 
     // ELEMENTS:
     this.priceElements = this.card.querySelectorAll(".price");
 
-    this.quantityValue = this.card.querySelector(
-      `.${this.BASE_SELECTOR}__counter-value`
+    this.counter = this.card.querySelector(".counter");
+    this.count = new Counter(
+      this.counter,
+      (value) => (this.#state.quantity = value)
     );
 
     this.attachEvents();
@@ -30,7 +33,6 @@ export class PizzaCard {
   }
   // HANDLERS
   stateHandler = (target, prop, value) => {
-    this.quantityValue.textContent = this._state.quantity;
     this.priceElements.forEach((element) => {
       const value = element.querySelector(".price__value");
       value.textContent = this.totalPrice;
@@ -52,20 +54,15 @@ export class PizzaCard {
   handleClick = (event) => {
     const clickedElement = event.target;
 
-    if (clickedElement.matches("." + this.BASE_SELECTOR + "__counter-btn")) {
-      // метод matches проверяет, соответствует ли елемент указаному селектору. Вернет boolean
-      this.setQuantity(clickedElement);
-    }
-
     if (clickedElement.matches(`.${this.BASE_SELECTOR}__ingredients-btn`)) {
-      this._state.isFliped = true;
+      this.#state.isFliped = true;
     }
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
 
-    this._state.isFliped = false;
+    this.#state.isFliped = false;
   };
 
   handlerChange = (event) => {
@@ -80,7 +77,7 @@ export class PizzaCard {
         "input[type=checkbox][name=ingredient][data-price]"
       )
     ) {
-      const { ingredients } = this._state;
+      const { ingredients } = this.#state;
       const id = changedElement.id;
       const ingredientPrice = Number(changedElement.dataset.price);
       const ingredientName = changedElement.value;
@@ -88,44 +85,29 @@ export class PizzaCard {
       if (!id || !ingredientPrice || !ingredientName) return;
 
       if (changedElement.checked) {
-        this._state.ingredients.push({ id, ingredientName, ingredientPrice });
+        this.#state.ingredients.push({ id, ingredientName, ingredientPrice });
 
         return;
       }
 
       const index = ingredients.findIndex((el) => el.id === id);
-      this._state.ingredients.splice(index, 1);
+      this.#state.ingredients.splice(index, 1);
     }
   };
 
   setPizzaSize(clickedElement) {
-    this._state.pizzaSize = clickedElement.value;
-    this._state.basePrice = clickedElement.dataset.price;
-  }
-
-  setQuantity(clickedElement) {
-    const action = clickedElement.dataset.action;
-
-    switch (action) {
-      case "increment":
-        this._state.quantity++;
-        break;
-      case "decrement":
-        if (this._state.quantity > 1) this._state.quantity--;
-        break;
-      default:
-        new TypeError("action is wrong");
-    }
+    this.#state.pizzaSize = clickedElement.value;
+    this.#state.basePrice = clickedElement.dataset.price;
   }
 
   get totalPrice() {
-    const { ingredients } = this._state;
+    const { ingredients } = this.#state;
     const ingredientsPrice = ingredients.reduce((acc, { ingredientPrice }) => {
       return acc + ingredientPrice;
     }, 0);
 
     const totalPrice =
-      (Number(this._state.basePrice) + ingredientsPrice) * this._state.quantity;
+      (Number(this.#state.basePrice) + ingredientsPrice) * this.#state.quantity;
     return parseFloat(totalPrice).toFixed(1);
   }
 
@@ -201,21 +183,21 @@ export class PizzaCard {
                   </button></div>
                   <div class="pizza-card__price-wrap">
                     <div class="price"><span class="price__value">0</span><sup>$</sup></div>
-                    <div class="pizza-card__counter">
-                      <button
-                        class="pizza-card__counter-btn"
-                        data-action="decrement"
-                      >
-                        -
-                      </button>
-                      <span class="pizza-card__counter-value">1</span>
-                      <button
-                        class="pizza-card__counter-btn"
-                        data-action="increment"
-                      >
-                        +
-                      </button>
-                    </div>
+                   <div
+          class="counter"
+          data-min_value="1"
+          data-max_value="99"
+          data-init_value="1"
+        >
+          <button class="counter__decrement">-</button>
+          <input
+            type="number"
+            class="counter__value"
+            value="1"
+            name="counter-value"
+          />
+          <button class="counter__increment">+</button>
+        </div>
                   </div>
                   <button class="pizza-card__order-btn">Order Now</button>
                 </div>
@@ -253,4 +235,15 @@ export class PizzaCard {
           </div>
         </div>`;
   };
+}
+{
+  /* <div class="pizza-card__counter">
+  <button class="pizza-card__counter-btn" data-action="decrement">
+    -
+  </button>
+  <span class="pizza-card__counter-value">1</span>
+  <button class="pizza-card__counter-btn" data-action="increment">
+    +
+  </button>
+</div>; */
 }
