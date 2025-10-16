@@ -1,0 +1,35 @@
+@use "../utils/utils" as *;
+.swiper-container {
+  &::part(container) {
+    padding-top: 60px;
+    position: relative;
+  }
+
+  &__controllers {
+    display: none;
+    padding: $spacing-small 0;
+
+    & > button {
+      border: none;
+
+      background: transparent;
+      fill: $main-text-color;
+
+      &:disabled {
+        cursor: not-allowed;
+        fill: $disabled-color;
+      }
+    }
+  }
+
+  &__controllers--visible {
+    display: flex;
+    justify-content: center;
+    gap: $spacing-element;
+  }
+}
+
+.swiper-slide {
+  display: flex;
+  height: inherit;
+}

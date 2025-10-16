@@ -658,11 +658,36 @@ p {
   transform: rotateY(180deg);
 }
 
-.menu {
-  padding-bottom: 200px;
-}
 .menu__title {
   margin-bottom: 32px;
+}
+
+.swiper-container::part(container) {
+  padding-top: 60px;
+  position: relative;
+}
+.swiper-container__controllers {
+  display: none;
+  padding: 8px 0;
+}
+.swiper-container__controllers > button {
+  border: none;
+  background: transparent;
+  fill: #ffffff;
+}
+.swiper-container__controllers > button:disabled {
+  cursor: not-allowed;
+  fill: #a19e9e;
+}
+.swiper-container__controllers--visible {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+}
+
+.swiper-slide {
+  display: flex;
+  height: inherit;
 }
 
 .products {
