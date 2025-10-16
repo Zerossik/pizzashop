@@ -1,4 +1,4 @@
 import "./menu.js";
-import "./products.js";
+import "./slider.js";
 import "./pizza-card.js";
 import "./counter.js";
