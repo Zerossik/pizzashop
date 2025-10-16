@@ -26,7 +26,6 @@ pizzaData.forEach((pizza) => {
   fragment2.appendChild(slide2);
 });
 swiperEl.appendChild(fragment);
-console.dir(fragment2);
 swiper2.appendChild(fragment2);
 
 // Якщо HTML прийшов з сервера, потрібно найти всі картки + додати логіку.
