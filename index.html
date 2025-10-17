@@ -171,6 +171,30 @@
               </div>
             </swiper-container>
 
+            <div class="menu__most-popular-wrap">
+              <p class="menu__most-popular-text">MOST POPULAR PIZZA</p>
+              <picture>
+                <source
+                  srcset="
+                    ./images/most_popular_pc.png    1x,
+                    ./images/most_popular_pc@2x.png 2x
+                  "
+                  media="(width >= 768px)"
+                />
+                <source
+                  srcset="
+                    ./images/most_popular_mobile.png    1x,
+                    ./images/most_popular_mobile@2x.png 2x
+                  "
+                />
+
+                <img
+                  src="./images/most_popular_mobile.png"
+                  alt="MOST POPULAR PIZZA"
+                />
+              </picture>
+            </div>
+
             <swiper-container
               class="swiper-container"
               id="swiper-container-2"

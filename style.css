@@ -660,6 +660,39 @@ p {
 
 .menu__title {
   margin-bottom: 32px;
+  font-size: 3rem;
+  text-align: center;
+}
+.menu__most-popular-wrap {
+  position: relative;
+  margin-top: 16px;
+  margin-bottom: 16px;
+}
+@media (min-width: 768px) {
+  .menu__most-popular-wrap {
+    margin-top: 32px;
+    margin-bottom: 32px;
+  }
+}
+.menu__most-popular-text {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  color: #ffffff;
+  font-size: 1.5rem;
+  text-align: center;
+}
+@media (min-width: 768px) {
+  .menu__most-popular-text {
+    font-size: 2rem;
+  }
+}
+@media (min-width: 1024px) {
+  .menu__most-popular-text {
+    font-size: 2.5rem;
+  }
 }
 
 .swiper-container::part(container) {
