@@ -775,6 +775,10 @@ p {
   background: linear-gradient(to bottom left, #ff612e, #ffa32b) border-box;
   color: #ffffff;
 }
+.counter input[type=number] {
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
 .counter input[type=number]::-webkit-inner-spin-button,
 .counter input[type=number]::-webkit-outer-spin-button {
   -webkit-appearance: none;
