@@ -65,7 +65,8 @@ export class Counter {
 
   handlerChange = (e) => {
     const changedElement = e.target;
-    let value = Number(changedElement.value);
+    let value = parseInt(changedElement.value);
+    if (Number.isNaN(value)) value = this.#currentValue.value;
     if (value > this.#maxValue) value = this.#maxValue;
     if (value < this.#minValue) value = this.#minValue;
 
