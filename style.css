@@ -92,6 +92,7 @@ p {
   max-width: 1512px;
   padding: 0 20px;
   margin: 0 auto;
+  overflow: hidden;
 }
 @media (min-width: 1024px) {
   .container {
@@ -658,6 +659,9 @@ p {
   transform: rotateY(180deg);
 }
 
+.menu {
+  margin-bottom: 64px;
+}
 .menu__title {
   margin-bottom: 32px;
   font-size: 3rem;
@@ -694,14 +698,13 @@ p {
     font-size: 2.5rem;
   }
 }
-
-.swiper-container::part(container) {
+.menu .swiper-container::part(container) {
   padding-top: 60px;
-  position: relative;
 }
+
 .swiper-container__controllers {
   display: none;
-  padding: 8px 0;
+  padding: 16px 0;
 }
 .swiper-container__controllers > button {
   border: none;
@@ -717,9 +720,9 @@ p {
   justify-content: center;
   gap: 16px;
 }
-
-.swiper-slide {
+.swiper-container .swiper-slide {
   display: flex;
+  justify-content: center;
   height: inherit;
 }
 
@@ -818,6 +821,87 @@ p {
   -moz-appearance: none;
   appearance: none;
   margin: 0;
+}
+
+.events__text-wrap {
+  grid-column: 5/span 2;
+  margin: auto 0;
+}
+.events__title {
+  margin-bottom: 16px;
+  font-size: 2.5rem;
+  text-align: center;
+}
+.events__desc {
+  margin-bottom: 32px;
+}
+@media (min-width: 768px) {
+  .events__inner {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+  }
+  .events__title {
+    text-align: left;
+  }
+  .events__desc {
+    margin-bottom: 8px;
+  }
+  .events .swiper-container,
+  .events .swiper-container::part(container),
+  .events .swiper-container::part(wrapper) {
+    display: contents;
+  }
+  .events .swiper-slide {
+    grid-column: span 2;
+    width: auto !important;
+  }
+  .events .swiper-slide--first {
+    grid-row: 1;
+    grid-column: 1/span 2;
+  }
+  .events .swiper-slide--second {
+    grid-row: 1;
+    grid-column: 3/span 2;
+  }
+  .events .swiper-slide--middle {
+    grid-column: span 3;
+  }
+  .events .swiper-container__controllers--visible {
+    display: none;
+  }
+}
+
+.event {
+  position: relative;
+  color: #ffffff;
+}
+.event__text {
+  position: absolute;
+  top: 20%;
+  left: 25px;
+  color: inherit;
+  font-weight: 700;
+}
+.event__link {
+  position: absolute;
+  bottom: 20%;
+  left: 25px;
+  padding: 6px 50px;
+  border-radius: 20px;
+  background: linear-gradient(to bottom left, #ff612e, #ffa32b);
+  color: inherit;
+}
+.event picture {
+  height: 100%;
+  width: 100%;
+}
+.event img {
+  height: 100%;
+  max-height: 100%;
+  object-fit: cover;
+  object-position: left;
+  border-radius: 20px;
 }
 
 /*# sourceMappingURL=style.css.map */

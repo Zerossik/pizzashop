@@ -9,6 +9,10 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
     />
+    <!-- <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.css"
+    /> -->
     <link rel="stylesheet" href="./style.css" />
     <title>Pizzashop</title>
   </head>
@@ -133,25 +137,6 @@
             <h2 class="menu__title">Menu</h2>
             <ul class="menu__buttons-list"></ul>
             <!-- PRODUCTS -->
-            <div class="products" id="products-box-1">
-              <!-- HERE WILL BE PAZZA-CARDS -->
-              <div class="products__control">
-                <button
-                  class="products__control-btn products__control-btn--prev"
-                >
-                  <svg width="24" height="24">
-                    <use href="./images/icons.svg#icon-arrow-left"></use>
-                  </svg>
-                </button>
-                <button
-                  class="products__control-btn products__control-btn--next"
-                >
-                  <svg width="24" height="24">
-                    <use href="./images/icons.svg#icon-arrow-right"></use>
-                  </svg>
-                </button>
-              </div>
-            </div>
             <swiper-container
               class="swiper-container"
               id="swiper-container-1"
@@ -216,7 +201,196 @@
           </div>
         </div>
       </section>
-      <section style="padding: 200px 20px"></section>
+
+      <!-- EVENTS -->
+      <section class="events" id="events">
+        <div class="container">
+          <div class="events__inner">
+            <div class="events__text-wrap">
+              <h2 class="events__title">Events</h2>
+              <p class="events__desc">
+                There are regular events in our pizzeria that will allow you to
+                eat delicious food for a lower price!
+              </p>
+            </div>
+            <swiper-container
+              class="swiper-container"
+              space-between="8"
+              init="false"
+              id="events-swiper-1"
+            >
+              <!-- slide 1 -->
+              <swiper-slide class="swiper-slide swiper-slide--first" lazy="true"
+                ><div class="event">
+                  <picture>
+                    <source
+                      srcset="
+                        ./images/events/event_1.png    1x,
+                        ./images/events/event_1@2x.png 2x
+                      "
+                    />
+                    <img
+                      src="./images/events/event_1.png"
+                      alt="HOW WE COOKING?"
+                      loading="lazy"
+                    />
+                  </picture>
+                  <p class="event__text">HOW WE COOKING</p>
+                  <a href="" class="event__link">More</a>
+                </div>
+              </swiper-slide>
+
+              <!-- slide 2 -->
+              <swiper-slide
+                class="swiper-slide swiper-slide--second"
+                lazy="true"
+                ><div class="event">
+                  <picture>
+                    <source
+                      srcset="
+                        ./images/events/event_2.png    1x,
+                        ./images/events/event_2@2x.png 2x
+                      "
+                    />
+                    <img
+                      src="./images/events/event_2.png"
+                      alt="OUR BLOG"
+                      loading="lazy"
+                    />
+                  </picture>
+                  <p class="event__text">OUR BLOG</p>
+                  <a href="" class="event__link">More</a>
+                </div>
+              </swiper-slide>
+
+              <!-- slide 3 -->
+              <swiper-slide
+                class="swiper-slide swiper-slide--middle"
+                lazy="true"
+                ><div class="event">
+                  <picture>
+                    <source
+                      srcset="
+                        ./images/events/event_4.png    1x,
+                        ./images/events/event_4@2x.png 2x
+                      "
+                    />
+                    <img
+                      src="./images/events/event_4.png"
+                      alt="TWO PIZZA FOR 1 PRICE"
+                      loading="lazy"
+                    />
+                  </picture>
+                  <p class="event__text">TWO PIZZA FOR 1 PRICE</p>
+                  <a href="" class="event__link">More</a>
+                </div>
+              </swiper-slide>
+
+              <!-- slide 4 -->
+              <swiper-slide
+                class="swiper-slide swiper-slide--middle"
+                lazy="true"
+                ><div class="event">
+                  <picture>
+                    <source
+                      srcset="
+                        ./images/events/event_5.png    1x,
+                        ./images/events/event_5@2x.png 2x
+                      "
+                    />
+                    <img
+                      src="./images/events/event_5.png"
+                      alt="KITCHEN TOUR"
+                      loading="lazy"
+                    />
+                  </picture>
+                  <p class="event__text">KITCHEN TOUR</p>
+                  <a href="" class="event__link">More</a>
+                </div>
+              </swiper-slide>
+
+              <!-- slide 5 -->
+              <swiper-slide class="swiper-slide" lazy="true"
+                ><div class="event">
+                  <picture>
+                    <source
+                      srcset="
+                        ./images/events/event_6.png    1x,
+                        ./images/events/event_6@2x.png 2x
+                      "
+                    />
+                    <img
+                      src="./images/events/event_6.png"
+                      alt="FREE COFFEE FOR 3 PIZZA"
+                      loading="lazy"
+                    />
+                  </picture>
+                  <p class="event__text">FREE COFFEE FOR 3 PIZZA</p>
+                  <a href="" class="event__link">More</a>
+                </div>
+              </swiper-slide>
+
+              <!-- slide 6 -->
+              <swiper-slide class="swiper-slide" lazy="true"
+                ><div class="event">
+                  <picture>
+                    <source
+                      srcset="
+                        ./images/events/event_7.png    1x,
+                        ./images/events/event_7@2x.png 2x
+                      "
+                    />
+                    <img
+                      src="./images/events/event_7.png"
+                      alt="OUR INSTAGRAM"
+                      loading="lazy"
+                    />
+                  </picture>
+                  <p class="event__text">OUR INSTAGRAM</p>
+                  <a href="" class="event__link">More</a>
+                </div>
+              </swiper-slide>
+
+              <!-- slide 7 -->
+              <swiper-slide class="swiper-slide" lazy="true"
+                ><div class="event">
+                  <picture>
+                    <source
+                      srcset="
+                        ./images/events/event_8.png    1x,
+                        ./images/events/event_8@2x.png 2x
+                      "
+                    />
+                    <img
+                      src="./images/events/event_8.png"
+                      alt="WHERE ARE YOU CHOOSE US?"
+                      loading="lazy"
+                    />
+                  </picture>
+                  <p class="event__text">WHERE ARE YOU CHOOSE US?</p>
+                  <a href="" class="event__link">More</a>
+                </div>
+              </swiper-slide>
+
+              <div
+                slot="container-end"
+                class="swiper-container__controllers swiper-container__controllers--visible"
+              >
+                <button class="swiper-button-prev">
+                  <svg width="24" height="24">
+                    <use href="./images/icons.svg#icon-arrow-left"></use>
+                  </svg></button
+                ><button class="swiper-button-next">
+                  <svg width="24" height="24">
+                    <use href="./images/icons.svg#icon-arrow-right"></use>
+                  </svg>
+                </button>
+              </div>
+            </swiper-container>
+          </div>
+        </div>
+      </section>
+      <section style="padding: 100px 20px"></section>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-element-bundle.min.js"></script>

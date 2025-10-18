@@ -1,0 +1,108 @@
+@use "../utils/utils" as *;
+
+// events section
+.events {
+  &__text-wrap {
+    grid-column: 5 / span 2;
+    margin: auto 0;
+  }
+
+  &__title {
+    margin-bottom: $spacing-element;
+
+    font-size: 2.5rem;
+    text-align: center;
+  }
+
+  &__desc {
+    margin-bottom: $spacing-block;
+  }
+
+  @include media-768 {
+    &__inner {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: $spacing-small;
+    }
+
+    &__title {
+      text-align: left;
+    }
+
+    &__desc {
+      margin-bottom: $spacing-small;
+    }
+
+    .swiper-container,
+    .swiper-container::part(container),
+    .swiper-container::part(wrapper) {
+      display: contents;
+    }
+
+    .swiper-slide {
+      grid-column: span 2;
+      width: auto !important;
+    }
+
+    .swiper-slide--first {
+      grid-row: 1;
+      grid-column: 1 / span 2;
+    }
+
+    .swiper-slide--second {
+      grid-row: 1;
+      grid-column: 3 / span 2;
+    }
+
+    .swiper-slide--middle {
+      grid-column: span 3;
+    }
+
+    .swiper-container__controllers--visible {
+      display: none;
+    }
+  }
+}
+
+// one event card
+.event {
+  position: relative;
+  color: $main-text-color;
+
+  &__text {
+    position: absolute;
+    top: 20%;
+    left: 25px;
+    color: inherit;
+
+    font-weight: 700;
+  }
+
+  &__link {
+    position: absolute;
+    bottom: 20%;
+    left: 25px;
+
+    padding: 6px 50px;
+
+    border-radius: 20px;
+
+    background: $main-gradient;
+
+    color: inherit;
+  }
+
+  picture {
+    height: 100%;
+    width: 100%;
+  }
+
+  img {
+    height: 100%;
+    max-height: 100%;
+
+    object-fit: cover;
+    object-position: left;
+    border-radius: 20px;
+  }
+}

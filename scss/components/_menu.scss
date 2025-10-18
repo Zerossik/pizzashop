@@ -1,6 +1,8 @@
 @use "../utils/utils.scss" as *;
 
 .menu {
+  margin-bottom: $spacing-section;
+
   &__title {
     margin-bottom: $spacing-block;
 
@@ -42,5 +44,10 @@
     @include media-1024 {
       font-size: 2.5rem;
     }
+  }
+
+  // SWIPER
+  & .swiper-container::part(container) {
+    padding-top: 60px;
   }
 }
