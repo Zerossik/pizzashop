@@ -1,13 +1,8 @@
 @use "../utils/utils" as *;
 .swiper-container {
-  &::part(container) {
-    padding-top: 60px;
-    position: relative;
-  }
-
   &__controllers {
     display: none;
-    padding: $spacing-small 0;
+    padding: $spacing-element 0;
 
     & > button {
       border: none;
@@ -27,9 +22,9 @@
     justify-content: center;
     gap: $spacing-element;
   }
-}
-
-.swiper-slide {
-  display: flex;
-  height: inherit;
+  & .swiper-slide {
+    display: flex;
+    justify-content: center;
+    height: inherit;
+  }
 }

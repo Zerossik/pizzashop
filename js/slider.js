@@ -39,11 +39,11 @@ const handlerResize = (swiper) => {
 
   if (slides.length > slidesPerView) {
     swiper.hostEl
-      .querySelector(".swiper-container__controllers")
+      .querySelector(".menu .swiper-container__controllers")
       .classList.add("swiper-container__controllers--visible");
   } else {
     swiper.hostEl
-      .querySelector(".swiper-container__controllers")
+      .querySelector(".menu .swiper-container__controllers")
       .classList.remove("swiper-container__controllers--visible");
   }
 };
