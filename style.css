@@ -904,4 +904,49 @@ p {
   border-radius: 20px;
 }
 
+.modal {
+  display: none;
+}
+.modal__backdrop {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+.modal__content {
+  position: relative;
+  width: clamp(300px, 400px, 80%);
+  height: clamp(100px, 200px, 100% - 60px);
+  background-color: #ffffff;
+  border-radius: 8px;
+}
+.modal__content::before {
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: radial-gradient(#ff612e, #ffa32b);
+  z-index: -1;
+}
+.modal__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px;
+  border-bottom: 1px solid #a3a3a3;
+}
+.modal__title {
+  font-size: 1.5rem;
+  color: #a3a3a3;
+}
+.modal__inner {
+  padding: 8px;
+}
+.modal[data-is_open=true] {
+  display: block;
+}
+
 /*# sourceMappingURL=style.css.map */

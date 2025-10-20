@@ -1,0 +1,60 @@
+@use "../utils/utils" as *;
+.modal {
+  display: none;
+
+  &__backdrop {
+    position: fixed;
+    inset: 0;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+  }
+
+  &__content {
+    position: relative;
+    width: clamp(300px, 400px, 80%);
+    height: clamp(100px, 200px, calc(100% - 60px));
+
+    background-color: #ffffff;
+    border-radius: $small-border-radius;
+
+    &::before {
+      content: "";
+      position: absolute;
+      inset: -2px;
+
+      border-radius: inherit;
+      background: radial-gradient(#ff612e, #ffa32b);
+
+      z-index: -1;
+    }
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 8px;
+
+    border-bottom: 1px solid $text-color;
+  }
+
+  &__title {
+    font-size: 1.5rem;
+
+    color: $text-color;
+  }
+
+  &__inner {
+    padding: 8px;
+  }
+
+  &[data-is_open="true"] {
+    display: block;
+  }
+}
