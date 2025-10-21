@@ -1,7 +1,5 @@
 @use "../utils/utils" as *;
 .modal {
-  display: none;
-
   &__backdrop {
     position: fixed;
     inset: 0;

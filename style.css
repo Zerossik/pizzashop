@@ -92,7 +92,6 @@ p {
   max-width: 1512px;
   padding: 0 20px;
   margin: 0 auto;
-  overflow: hidden;
 }
 @media (min-width: 1024px) {
   .container {
@@ -904,9 +903,6 @@ p {
   border-radius: 20px;
 }
 
-.modal {
-  display: none;
-}
 .modal__backdrop {
   position: fixed;
   inset: 0;
