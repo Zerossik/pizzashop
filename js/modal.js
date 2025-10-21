@@ -1,24 +1,28 @@
 import { useState } from "./hooks/useState.js";
+
 export class Modal {
   #state;
   #modalInner;
-  constructor(selector = ".modal") {
-    this.modal = document.querySelector(selector);
+  #content;
+
+  constructor(title = "", selector = ".modal") {
     this.BASE_SELECTOR = selector;
-    if (!this.modal) throw new Error("Modal element not found");
 
     const initialState = {
-      isOpen: Boolean(this.modal.dataset.is_open),
+      isOpen: false,
+      title: title,
     };
 
     this.#state = useState(initialState, (target, prop, value) => {
-      this.render();
+      this.#render();
     });
+
+    this.#createModal();
 
     //   ELEMENTS
     this.#modalInner = this.modal.querySelector(`${this.BASE_SELECTOR}__inner`);
-
-    this.attachEvents();
+    this.title = this.modal.querySelector(`${this.BASE_SELECTOR}__title`);
+    this.modalRoot = document.getElementById("modal-root");
   }
 
   attachEvents() {
@@ -28,29 +32,51 @@ export class Modal {
   #handleClick = (e) => {
     const clickedElement = e.target;
 
-    if (clickedElement.matches(".modal .modal__close-btn")) {
+    if (clickedElement.matches(".modal__close-btn")) {
+      console.log(clickedElement);
       this.close();
     }
   };
 
-  open() {
+  show(htmlContent) {
+    if (htmlContent) this.#content = htmlContent;
     this.#state.isOpen = true;
+    return this.#state.isOpen;
   }
 
   close() {
-    this.#state.isOpen = false;
+    this.modal.remove();
+
+    return this.#state.isOpen;
   }
 
-  render(htmlContent) {
-    this.modal.dataset.is_open = this.#state.isOpen;
+  #createModal() {
+    this.modal = document.createElement("div");
+    this.modal.classList.add(this.BASE_SELECTOR);
+    this.attachEvents();
 
-    if (htmlContent instanceof HTMLElement) {
-      this.#modalInner.appendChild(htmlContent);
+    this.modal.innerHTML = `
+      <div class="modal__backdrop">
+        <div class="modal__content">
+          <div class="modal__header">
+            <p class="modal__title">${this.#state.title}</p>
+            <button class="modal__close-btn">X</button>
+          </div>
+          <div class="modal__inner"></div>
+        </div>
+      </div>`;
+  }
+
+  #render() {
+    if (this.#content instanceof HTMLElement) {
+      this.#modalInner.appendChild(this.#content);
     }
 
-    if (htmlContent && typeof htmlContent === "string") {
-      this.#modalInner.innerHTML = htmlContent;
-    }
-    return;
+    this.modalRoot.appendChild(this.modal);
   }
 }
+
+const modal = new Modal();
+const div = document.createElement("div");
+div.innerHTML = "HELLO";
+modal.show(div);
