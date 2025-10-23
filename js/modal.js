@@ -61,7 +61,6 @@ export class Modal {
       clickedElement.matches(`.${this.BASE_SELECTOR}__close`) ||
       clickedElement.matches(`.${this.BASE_SELECTOR}__backdrop`)
     ) {
-      console.log(clickedElement);
       this.#state.isOpen = false;
     }
   };
