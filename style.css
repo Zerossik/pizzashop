@@ -941,8 +941,9 @@ p {
 .modal__inner {
   padding: 8px;
 }
-.modal[data-is_open=true] {
-  display: block;
+
+.no-scroll {
+  overflow: hidden;
 }
 
 /*# sourceMappingURL=style.css.map */

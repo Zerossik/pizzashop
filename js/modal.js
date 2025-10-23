@@ -20,7 +20,6 @@ export class Modal {
     });
 
     this.#createModal();
-    this.attachEvents();
 
     //   ELEMENTS
 
@@ -37,31 +36,61 @@ export class Modal {
     }
   }
 
-  attachEvents() {
+  // Вешаю слушатели событий.
+  #attachEvents() {
+    // Вешаю обработчик кликов на модальное окно.
     this.modal.addEventListener("click", this.#handleClick);
+
+    // Вешаю слушатель нажатия кнопок.
+    document.addEventListener("keydown", this.#handleKeyPress);
   }
 
+  // снимаю все слушатели событий
+  #destroyEvent() {
+    this.modal.removeEventListener("click", this.#handleClick);
+    document.removeEventListener("keydown", this.#handleKeyPress);
+  }
+
+  // обработчик всех кликов.
   #handleClick = (e) => {
     const clickedElement = e.target;
-    if (clickedElement.matches(`.${this.BASE_SELECTOR}__close-btn`)) {
+    // Проверяю клик, если кнопка закрытия или backdrop, то закрываю модальное окно.
+    if (
+      clickedElement.matches(`.${this.BASE_SELECTOR}__close-btn`) ||
+      clickedElement.matches(`.${this.BASE_SELECTOR}__backdrop`)
+    ) {
       this.close();
     }
   };
 
+  // обработчик нажатий клавиш.
+  #handleKeyPress = (e) => {
+    const keyCode = e.code;
+
+    if (keyCode === "Escape") {
+      this.close();
+    }
+  };
+
+  // Метод для отображения модального окна. Принимает HTMLElement. Если не передали, то модалка откроется пустая.
   show(htmlContent) {
     if (htmlContent && !(htmlContent instanceof HTMLElement))
       throw new TypeError("htmlContent must be an HTMLElement");
     this.#content = htmlContent;
+    this.#attachEvents();
     this.#state.isOpen = true;
     return this;
   }
 
+  // Метод закрытия модального окна.
   close() {
     this.#content = null;
     this.#state.isOpen = false;
+    this.#destroyEvent();
     this.modal.remove();
   }
 
+  // Метод для Изменения контента модального окна
   setContent(newContent, isClearMOdal = false) {
     if (!(newContent instanceof HTMLElement))
       throw new TypeError("Content must be HTMLElement");
@@ -70,6 +99,7 @@ export class Modal {
     this.#render();
   }
 
+  // Создает модальное структуру модального окна.
   #createModal() {
     this.modal = document.createElement("div");
     this.modal.classList.add(this.BASE_SELECTOR);
@@ -86,12 +116,14 @@ export class Modal {
       </div>`;
   }
 
+  // Сеттер для изменения заголовка модалки. Например modal.title = new Title
   set title(title) {
     if (!title || typeof title !== "string")
       throw new TypeError("title must be a string");
     this.#state.title = title;
   }
 
+  // Вставляет модальное окно в ДОМ. Так же рендерит все изменения в UI
   #render() {
     this.modalTitle.textContent = this.#state.title;
 
@@ -100,8 +132,12 @@ export class Modal {
     }
 
     if (this.#state.isOpen && !this.modalRoot.contains(this.modal)) {
-      this.#modalInner.innerHTML = "";
+      this.modalRoot.innerHTML = "";
       this.modalRoot.appendChild(this.modal);
     }
+
+    this.#state.isOpen
+      ? (document.body.style.overflow = "hidden")
+      : document.body.style.removeProperty("overflow");
   }
 }
