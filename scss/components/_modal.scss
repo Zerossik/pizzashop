@@ -1,9 +1,8 @@
 @use "../utils/utils" as *;
 .modal {
-  display: none;
-
   &__backdrop {
     position: fixed;
+
     inset: 0;
 
     display: flex;
@@ -52,9 +51,5 @@
 
   &__inner {
     padding: 8px;
-  }
-
-  &[data-is_open="true"] {
-    display: block;
   }
 }
