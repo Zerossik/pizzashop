@@ -1,22 +1,25 @@
 import { useState } from "./hooks/useState.js";
 
 export class Modal {
-  #defaultOptions = { title: "", closeBtn: null, renderTarget: "#modal-root" };
   #state;
   #modalInner;
   #content;
-  constructor(selector = "modal", options) {
+  constructor(selector = "modal", title = "") {
+    if (typeof selector !== "string")
+      throw new TypeError("selector must be a string");
+
+    if (typeof title !== "string")
+      throw new TypeError("title must be a string");
+
     this.BASE_SELECTOR = selector.replace(/[^a-zA-Z0-9_-]/g, "");
-    // ТУТ должна вызваться виладатор настройки
-    this.options = Object.assign(this.#defaultOptions, options);
 
     const initialState = {
       isOpen: false,
-      title: this.options.title,
+      title: title,
     };
 
     this.#state = useState(initialState, (target, prop, value) => {
-      this.#render();
+      this.#render(prop, value);
     });
 
     this.#createModal();
@@ -28,11 +31,9 @@ export class Modal {
     );
     this.modalTitle = this.modal.querySelector(`.${this.BASE_SELECTOR}__title`);
 
-    this.modalRoot = document.querySelector(this.options.renderTarget);
+    this.modalRoot = document.querySelector("#modal-root");
     if (!this.modalRoot) {
-      throw new Error(
-        `Render target ${this.options.renderTarget} not found in DOM`
-      );
+      throw new Error(`Render target not found in DOM`);
     }
   }
 
@@ -54,12 +55,13 @@ export class Modal {
   // обработчик всех кликов.
   #handleClick = (e) => {
     const clickedElement = e.target;
+
     // Проверяю клик, если кнопка закрытия или backdrop, то закрываю модальное окно.
     if (
-      clickedElement.matches(`.${this.BASE_SELECTOR}__close-btn`) ||
+      clickedElement.matches(`.${this.BASE_SELECTOR}__close`) ||
       clickedElement.matches(`.${this.BASE_SELECTOR}__backdrop`)
     ) {
-      this.close();
+      this.#state.isOpen = false;
     }
   };
 
@@ -68,7 +70,7 @@ export class Modal {
     const keyCode = e.code;
 
     if (keyCode === "Escape") {
-      this.close();
+      this.#state.isOpen = false;
     }
   };
 
@@ -86,15 +88,12 @@ export class Modal {
   close() {
     this.#content = null;
     this.#state.isOpen = false;
-    this.#destroyEvent();
-    this.modal.remove();
   }
 
   // Метод для Изменения контента модального окна
   setContent(newContent, isClearMOdal = false) {
     if (!(newContent instanceof HTMLElement))
       throw new TypeError("Content must be HTMLElement");
-
     this.#content = newContent;
     this.#render();
   }
@@ -109,7 +108,11 @@ export class Modal {
         <div class="${this.BASE_SELECTOR}__content">
           <div class="${this.BASE_SELECTOR}__header">
             <p class="${this.BASE_SELECTOR}__title">${this.#state.title}</p>
-              <button class="${this.BASE_SELECTOR}__close-btn">X</button>
+              <button class="${this.BASE_SELECTOR}__close">
+              <svg width="24" height="24">
+                <use href="./images/icons.svg#icon-close" />
+              </svg>
+            </button>
             </div>
           <div class="${this.BASE_SELECTOR}__inner"></div>
         </div>
@@ -124,20 +127,35 @@ export class Modal {
   }
 
   // Вставляет модальное окно в ДОМ. Так же рендерит все изменения в UI
-  #render() {
-    this.modalTitle.textContent = this.#state.title;
+  #render(prop, value) {
+    const { isOpen } = this.#state;
 
-    if (this.#content instanceof HTMLElement) {
-      this.#modalInner.appendChild(this.#content);
+    if (prop === "title") {
+      this.modalTitle.textContent = value;
+      return;
     }
 
-    if (this.#state.isOpen && !this.modalRoot.contains(this.modal)) {
-      this.modalRoot.innerHTML = "";
-      this.modalRoot.appendChild(this.modal);
+    if (isOpen) {
+      if (this.#content instanceof HTMLElement) {
+        this.#modalInner.replaceChild(this.#content);
+      }
+      if (!this.modalRoot.contains(this.modal)) {
+        this.modalRoot.appendChild(this.modal);
+        requestAnimationFrame(() => this.modal.classList.add("modal__show"));
+        document.body.style.overflow = "hidden";
+      }
+    } else {
+      this.modal.classList.remove("modal__show");
+      document.body.style.removeProperty("overflow");
+      this.#destroyEvent();
+      setTimeout(() => this.modal.remove(), 200);
     }
-
-    this.#state.isOpen
-      ? (document.body.style.overflow = "hidden")
-      : document.body.style.removeProperty("overflow");
   }
 }
+
+const modal = new Modal();
+
+const btn = document.querySelector(".header__cart-btn");
+
+btn.onclick = () => modal.show();
+modal.title = "title";
