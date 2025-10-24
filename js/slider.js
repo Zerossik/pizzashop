@@ -1,6 +1,7 @@
 import { pizzaData } from "../data/pizza.js";
 import { PizzaCard } from "./pizza-card.js";
 import { Counter } from "./counter.js";
+import cart from "./cart.js";
 
 const swiperEl = document.querySelector("#swiper-container-1");
 const swiper2 = document.querySelector("#swiper-container-2");
@@ -12,7 +13,7 @@ pizzaData.forEach((pizza) => {
   const slide = document.createElement("swiper-slide");
   const card = document.createElement("div");
   card.innerHTML = PizzaCard.render(pizza);
-  new PizzaCard(card.firstElementChild, Counter);
+  new PizzaCard(card.firstElementChild, Counter, cart);
   slide.appendChild(card.firstElementChild);
   slide.classList.add("swiper-slide");
   fragment.appendChild(slide);
@@ -20,7 +21,7 @@ pizzaData.forEach((pizza) => {
   const slide2 = document.createElement("swiper-slide");
   const card2 = document.createElement("div");
   card2.innerHTML = PizzaCard.render(pizza);
-  new PizzaCard(card2.firstElementChild, Counter);
+  new PizzaCard(card2.firstElementChild, Counter, cart);
   slide2.appendChild(card2.firstElementChild);
   slide2.classList.add("swiper-slide");
   fragment2.appendChild(slide2);
