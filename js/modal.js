@@ -4,14 +4,11 @@ export class Modal {
   #state;
   #modalInner;
   #content;
-  constructor(selector = "modal", title = "") {
-    if (typeof selector !== "string")
-      throw new TypeError("selector must be a string");
-
+  constructor(title = "") {
     if (typeof title !== "string")
       throw new TypeError("title must be a string");
 
-    this.BASE_SELECTOR = selector.replace(/[^a-zA-Z0-9_-]/g, "");
+    this.BASE_SELECTOR = "modal";
 
     const initialState = {
       isOpen: false,
@@ -152,10 +149,3 @@ export class Modal {
     }
   }
 }
-
-const modal = new Modal();
-
-const btn = document.querySelector(".header__cart-btn");
-
-btn.onclick = () => modal.show();
-modal.title = "title";
