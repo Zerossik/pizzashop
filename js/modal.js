@@ -134,7 +134,7 @@ export class Modal {
 
     if (isOpen) {
       if (this.#content instanceof HTMLElement) {
-        this.#modalInner.replaceChild(this.#content);
+        this.#modalInner.appendChild(this.#content);
       }
       if (!this.modalRoot.contains(this.modal)) {
         this.modalRoot.appendChild(this.modal);

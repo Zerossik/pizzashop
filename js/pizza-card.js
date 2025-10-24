@@ -9,13 +9,15 @@ export class PizzaCard {
 
   #state;
   // card is HTMLElement, Counter is Counter class. baseSelector is card's selector
-  constructor(card, Counter, baseSelector = "pizza-card") {
+  constructor(card, Counter, cartInstanse, baseSelector = "pizza-card") {
     if (!card) throw new Error("card is required");
     if (!Counter) throw new Error("Counter is required");
 
-    this.card = card;
     this.BASE_SELECTOR = baseSelector;
+    this.card = card;
+    this.cardID = card.id;
     this.initPrice = Number(this.card.dataset.price ?? 0);
+    this.cart = cartInstanse;
 
     const initialState = {
       basePrice: this.initPrice,
@@ -30,6 +32,9 @@ export class PizzaCard {
     // ELEMENTS:
     this.priceElements = this.card.querySelectorAll(".price");
     this.counter = this.card.querySelector(".counter");
+    this.cardTitle = this.card.querySelector(
+      `.${baseSelector}__title`
+    )?.textContent;
 
     //init new counter for this pizza card
     new Counter(this.counter, (value) => (this.#state.quantity = value));
@@ -58,9 +63,22 @@ export class PizzaCard {
 
   handleClick = (event) => {
     const clickedElement = event.target;
-
     if (clickedElement.matches(`.${this.BASE_SELECTOR}__ingredients-btn`)) {
       this.#state.isFliped = true;
+    }
+
+    if (clickedElement.matches(`.${this.BASE_SELECTOR}__order-btn`)) {
+      const priceWithingredients = this.totalPrice / this.#state.quantity;
+
+      this.cart
+        .addItem({
+          id: this.cardID,
+          title: this.cardTitle,
+          price: priceWithingredients,
+          pizzaSize: this.#state.pizzaSize,
+          quantity: this.#state.quantity,
+        })
+        .openCart();
     }
   };
 
@@ -129,7 +147,7 @@ export class PizzaCard {
       {}
     );
 
-    return `<div class="pizza-card" data-price=${small}>
+    return `<div class="pizza-card" data-price=${small} id=${data.id}>
           <div class="pizza-card__wrap">
             <div class="pizza-card__inner">
               <picture class="pizza-card__image-wrap">

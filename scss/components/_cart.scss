@@ -1,4 +1,72 @@
+@use "../utils/utils" as *;
+
 .cart {
-  &__cart-btn {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+
+  &__empty-title {
+    margin: auto auto;
+
+    font-size: 1.375rem;
+    font-weight: 500;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: calc($spacing-small / 2);
+  }
+
+  &__list-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px;
+
+    background-color: #f2f2f2;
+  }
+  &__price-wrap {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 6px;
+
+    margin-right: 20px;
+  }
+
+  &__title-wrap {
+    flex: 1;
+  }
+
+  &__item-title {
+    color: #000000;
+  }
+  &__pizza-size {
+    font-size: 0.75rem;
+
+    color: #000000;
+  }
+
+  .price {
+    color: #000000;
+  }
+
+  .price__value {
+    display: inline-block;
+
+    text-align: right;
+  }
+
+  .counter {
+    gap: 4px;
+  }
+  .counter__value {
+    color: #000000;
+
+    border: {
+      left: 1px solid #000000;
+      right: 1px solid #000000;
+    }
   }
 }
