@@ -5,10 +5,13 @@ import { Counter } from "./counter.js";
 class Cart {
   #state = null;
   #cartLayout = null;
+  #cartList = null;
+
   constructor(Modal, Counter) {
+    // использовал патерн СИНГЛТОН
     if (Cart.instance) return Cart.instance;
 
-    // Инициализация модального окна для корзины.
+    // Инициализация модального окна для корзины с заголовком - Cart
     this.modal = new Modal("Cart");
     const initialState = { items: [] };
     // инициализация состояния. При его изменении будет перерисовка позиций корзины
@@ -17,15 +20,16 @@ class Cart {
     });
 
     // ELEMENTS
+    const [cartContainer, cartList] = this.#createCartLayout();
+    this.#cartLayout = cartContainer;
+    this.#cartList = cartList;
 
-    this.#cartLayout = this.#createCartLayout();
-
-    this.attachEvents();
+    this.#attachEvents();
 
     Cart.instance = this;
   }
 
-  attachEvents() {
+  #attachEvents() {
     this.#cartLayout.addEventListener("click", this.#handleClick);
   }
 
@@ -45,6 +49,7 @@ class Cart {
   /**
    *
    * @param {{id: string, title: string, pizzaSize: string, price: number, quantity: number }} item
+   * Метод добавления нового item
    */
   addItem(item) {
     if (typeof item !== "object" || item === null || Array.isArray(item))
@@ -69,29 +74,44 @@ class Cart {
     return this;
   }
 
+  /**
+   *
+   * @param {string} itemId
+   * метод для удаления item из корзины
+   */
   removeItem(itemId) {
     const newItems = this.#state.items.filter(({ id }) => id !== itemId);
     this.#state.items = newItems;
   }
 
+  // Метод создаем контейнер корзины.
   #createCartLayout() {
+    // Главный контейнер корзины.
     const cartContainer = document.createElement("div");
     cartContainer.classList.add("cart");
-    cartContainer.innerHTML = `<p class="cart__empty-title">Your Cart is empty</p>`;
-    return cartContainer;
+
+    // Список для items. В этот список будут рендериться items
+    const cartList = document.createElement("ul");
+    cartList.classList.add("cart__list");
+    cartList.innerHTML = `<li class="cart__list-title">Your Cart is empty</li>`;
+
+    cartContainer.append(cartList);
+    // Возращаю елементы
+    return [cartContainer, cartList];
   }
 
+  // Метод выполняется каждый раз при изменении списка items.
   #render() {
     const { items } = this.#state;
+
+    // Если корзина пуста, сообщаем об этом в виде заголовка.
     if (!items.length) {
-      this.#cartLayout.innerHTML = `<p class="cart__empty-title">Your Cart is empty</p>`;
+      this.#cartList.innerHTML = `<li class="cart__list-title">Your Cart is empty</li>`;
       return;
     }
 
-    const cartList = document.createElement("ul");
-    cartList.classList.add("cart__list");
-
-    items.forEach((item) => {
+    // перебираем весь массив и создаем новую разметку + активируем счетчик...
+    const itemsList = items.map((item) => {
       const { title, pizzaSize, price, quantity, id } = item;
 
       const listItem = document.createElement("li");
@@ -126,9 +146,7 @@ class Cart {
   </div>
 </div>
 <button class="cart__item-remove">D</button>
-
 `;
-
       const counterEl = listItem.querySelector(".counter");
       if (counterEl) {
         new Counter(counterEl, (value) => {
@@ -138,11 +156,12 @@ class Cart {
           });
         });
       }
-      cartList.appendChild(listItem);
+      return listItem;
     });
 
-    this.#cartLayout.innerHTML = "";
-    this.#cartLayout.appendChild(cartList);
+    // очищаем предыдущий список и вставляем новый.
+    this.#cartList.innerHTML = "";
+    this.#cartList.append(...itemsList);
   }
 }
 

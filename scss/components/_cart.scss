@@ -5,15 +5,17 @@
   flex-direction: column;
   flex: 1;
 
-  &__empty-title {
+  &__list-title {
     margin: auto auto;
 
     font-size: 1.375rem;
     font-weight: 500;
+    color: $text-color;
   }
 
   &__list {
     display: flex;
+    flex: 1;
     flex-direction: column;
     gap: calc($spacing-small / 2);
   }
