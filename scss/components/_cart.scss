@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-
+  gap: $spacing-small;
   &__list-title {
     margin: auto auto;
 
@@ -34,11 +34,20 @@
     align-items: center;
     gap: 6px;
 
-    margin-right: 20px;
+    margin-right: 12px;
   }
 
   &__title-wrap {
+    display: flex;
+    justify-content: start;
+    align-items: center;
     flex: 1;
+    gap: $spacing-small;
+  }
+
+  &__item-image {
+    width: 50px;
+    aspect-ratio: 1 / 1;
   }
 
   &__item-title {
@@ -69,6 +78,42 @@
     border: {
       left: 1px solid #000000;
       right: 1px solid #000000;
+    }
+  }
+
+  &__action-wrap {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: $spacing-element;
+  }
+  &__to-checkout-link {
+    @include gradientButton($main-gradient, $background-gradient);
+
+    a {
+      padding: 6px 32px;
+    }
+
+    &[data-disabled="true"] {
+      cursor: not-allowed;
+      a {
+        pointer-events: none;
+      }
+    }
+  }
+  &__item-remove {
+    border: none;
+    background-color: transparent;
+
+    svg {
+      pointer-events: none;
+      stroke: #000000;
+    }
+
+    &:hover {
+      svg {
+        transform: scale(1.1);
+      }
     }
   }
 }
