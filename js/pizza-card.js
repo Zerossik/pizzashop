@@ -35,6 +35,9 @@ export class PizzaCard {
     this.cardTitle = this.card.querySelector(
       `.${baseSelector}__title`
     )?.textContent;
+    this.cardImage = this.card
+      .querySelector(`.${this.BASE_SELECTOR}__image-wrap img`)
+      ?.getAttribute("src");
 
     //init new counter for this pizza card
     new Counter(this.counter, (value) => (this.#state.quantity = value));
@@ -73,6 +76,7 @@ export class PizzaCard {
       this.cart
         .addItem({
           id: this.cardID,
+          image: this.cardImage,
           title: this.cardTitle,
           price: priceWithingredients,
           pizzaSize: this.#state.pizzaSize,

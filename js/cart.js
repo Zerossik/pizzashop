@@ -13,11 +13,12 @@ class Cart {
 
     // Инициализация модального окна для корзины с заголовком - Cart
     this.modal = new Modal("Cart");
-    const initialState = { items: [] };
+    const initialState = { items: this.items };
+
     // инициализация состояния. При его изменении будет перерисовка позиций корзины
     this.#state = useState(initialState, (target, prop, value) => {
       this.#render();
-      this.#setItemstoLocalCtorage(target);
+      this.#setItemstoLocalStorage(this.#state.items);
     });
 
     // ELEMENTS
@@ -26,6 +27,7 @@ class Cart {
     this.#cartList = cartList;
 
     this.#attachEvents();
+    this.#render();
 
     Cart.instance = this;
   }
@@ -38,7 +40,7 @@ class Cart {
     const clickedElement = e.target;
 
     if (clickedElement.matches("button.cart__item-remove")) {
-      const itemID = event.target.closest(".cart__list-item").id;
+      const itemID = clickedElement.closest(".cart__list-item").id;
       this.removeItem(itemID);
     }
   };
@@ -55,7 +57,14 @@ class Cart {
   addItem(item) {
     if (typeof item !== "object" || item === null || Array.isArray(item))
       throw new TypeError("item must be an object");
-    const requiredFields = ["id", "title", "pizzaSize", "price", "quantity"];
+    const requiredFields = [
+      "id",
+      "title",
+      "pizzaSize",
+      "price",
+      "quantity",
+      "image",
+    ];
 
     // ищу в корзине item. findIndex вернет -1 если єлемента нет и индекс, если есть.
 
@@ -63,6 +72,7 @@ class Cart {
 
     if (index !== -1) {
       // если есть, обновляем количество
+
       this.#state.items[index] = {
         ...this.#state.items[index],
         quantity: this.#state.items[index].quantity + item.quantity,
@@ -85,6 +95,10 @@ class Cart {
     this.#state.items = newItems;
   }
 
+  removeAllItems() {
+    this.#state.items = [];
+  }
+
   // Метод создаем контейнер корзины.
   #createCartLayout() {
     // Главный контейнер корзины.
@@ -96,19 +110,51 @@ class Cart {
     cartList.classList.add("cart__list");
     cartList.innerHTML = `<li class="cart__list-title">Your Cart is empty</li>`;
 
-    cartContainer.append(cartList);
+    const actionContainer = document.createElement("div");
+
+    actionContainer.classList.add("cart__action-wrap");
+    actionContainer.innerHTML = `<div class="price" data-price="">
+  <span class="price__value price__total-price">0</span><sup>$</sup>
+</div><div class='cart__to-checkout-link'><a href="./checkout.html" >Proceed to checkout</a></div>`;
+
+    cartContainer.append(cartList, actionContainer);
     // Возращаю елементы
     return [cartContainer, cartList];
   }
 
   // Метод, который записывает items в localStorage
-  #setItemstoLocalCtorage(items) {
+  #setItemstoLocalStorage(items) {
     localStorage.setItem("items", JSON.stringify(items));
+  }
+
+  get items() {
+    return JSON.parse(localStorage.getItem("items")) ?? [];
+  }
+
+  get totalPrice() {
+    const { items } = this.#state;
+
+    const result = items.reduce(
+      (acc, el) => (acc += el.price * el.quantity),
+      0
+    );
+
+    return Number(result.toFixed(1));
   }
 
   // Метод выполняется каждый раз при изменении списка items.
   #render() {
     const { items } = this.#state;
+
+    const totalPriceEl = this.#cartLayout.querySelector(".price__total-price");
+    if (!totalPriceEl) throw new Error("totalPriceEl not Found");
+    totalPriceEl.textContent = this.totalPrice;
+
+    const toCheckoutBtn = this.#cartLayout.querySelector(
+      ".cart__to-checkout-link"
+    );
+    // если список пуст, блокируем кнопку оформления заказа.
+    if (toCheckoutBtn) toCheckoutBtn.dataset.disabled = !items.length;
 
     // Если корзина пуста, сообщаем об этом в виде заголовка.
     if (!items.length) {
@@ -125,9 +171,11 @@ class Cart {
       listItem.id = id;
 
       listItem.innerHTML = `<div class="cart__title-wrap">
-  <img src="" alt="" />
+  <img src="${item.image}" alt="pizza-${title}" class="cart__item-image"/>
+  <div>
   <p class="cart__item-title">${title}</p>
   <p class="cart__pizza-size">${pizzaSize}</p>
+  </div>
 </div>
 
 <div class="cart__price-wrap">
@@ -141,7 +189,7 @@ class Cart {
     <input
       type="number"
       class="counter__value"
-      value="1"
+      value="${quantity}"
       name="counter-value"
     />
     <button class="counter__increment">+</button>
@@ -151,7 +199,9 @@ class Cart {
     ><sup>$</sup>
   </div>
 </div>
-<button class="cart__item-remove">D</button>
+<button class="cart__item-remove"><svg width="24" height="24">
+                <use href="./images/icons.svg#icon-trash"></use>
+              </svg></button>
 `;
       const counterEl = listItem.querySelector(".counter");
       if (counterEl) {
@@ -171,7 +221,7 @@ class Cart {
   }
 }
 
-const cart = new Cart(Modal);
+const cart = new Cart(Modal, Counter);
 
 const btn = document.querySelector(".header__cart-btn");
 

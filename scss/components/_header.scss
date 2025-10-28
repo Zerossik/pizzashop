@@ -143,25 +143,6 @@
     border-radius: 50%;
   }
 
-  &__login-btn {
-    display: none;
-
-    @media (min-width: 768px) {
-      display: inline-block;
-
-      height: 40px;
-      padding: 8px 56px;
-
-      background: $main-gradient;
-      border: none;
-      border-radius: 28px;
-
-      color: $main-text-color;
-      font-size: 18px;
-      font-weight: 500;
-    }
-  }
-
   &__menu-btn {
     background-color: transparent;
 

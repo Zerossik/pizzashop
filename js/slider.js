@@ -26,8 +26,8 @@ pizzaData.forEach((pizza) => {
   slide2.classList.add("swiper-slide");
   fragment2.appendChild(slide2);
 });
-swiperEl.appendChild(fragment);
-swiper2.appendChild(fragment2);
+swiperEl?.appendChild(fragment);
+swiper2?.appendChild(fragment2);
 
 // Якщо HTML прийшов з сервера, потрібно найти всі картки + додати логіку.
 
@@ -78,8 +78,10 @@ const swiperConfig = {
   },
 };
 
-Object.assign(swiperEl, swiperConfig); // Передаю об'єкт налаштувань
-Object.assign(swiper2, swiperConfig);
+if (swiperEl && swiper2) {
+  Object.assign(swiperEl, swiperConfig); // Передаю об'єкт налаштувань
+  Object.assign(swiper2, swiperConfig);
 
-swiperEl.initialize(); // ініціалізую swiper
-swiper2.initialize();
+  swiperEl.initialize(); // ініціалізую swiper
+  swiper2.initialize();
+}

@@ -89,6 +89,10 @@ p {
   color: #a3a3a3;
 }
 
+.hidden {
+  display: none;
+}
+
 .container {
   max-width: 1512px;
   padding: 0 20px;
@@ -216,22 +220,6 @@ p {
   background: linear-gradient(to bottom left, #ff612e, #ffa32b);
   border: none;
   border-radius: 50%;
-}
-.header__login-btn {
-  display: none;
-}
-@media (min-width: 768px) {
-  .header__login-btn {
-    display: inline-block;
-    height: 40px;
-    padding: 8px 56px;
-    background: linear-gradient(to bottom left, #ff612e, #ffa32b);
-    border: none;
-    border-radius: 28px;
-    color: #ffffff;
-    font-size: 18px;
-    font-weight: 500;
-  }
 }
 .header__menu-btn {
   background-color: transparent;
@@ -916,6 +904,7 @@ p {
   display: flex;
   flex-direction: column;
   flex: 1;
+  padding: 8px;
 }
 .modal__close {
   background-color: transparent;
@@ -945,6 +934,7 @@ p {
   display: flex;
   flex-direction: column;
   flex: 1;
+  gap: 8px;
 }
 .cart__list-title {
   margin: auto auto;
@@ -970,10 +960,18 @@ p {
   flex-direction: column-reverse;
   align-items: center;
   gap: 6px;
-  margin-right: 20px;
+  margin-right: 12px;
 }
 .cart__title-wrap {
+  display: flex;
+  justify-content: start;
+  align-items: center;
   flex: 1;
+  gap: 8px;
+}
+.cart__item-image {
+  width: 50px;
+  aspect-ratio: 1/1;
 }
 .cart__item-title {
   color: #000000;
@@ -996,6 +994,60 @@ p {
   color: #000000;
   border-left: 1px solid #000000;
   border-right: 1px solid #000000;
+}
+.cart__action-wrap {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 16px;
+}
+.cart__to-checkout-link {
+  position: relative;
+  display: block;
+  border: none;
+  border-radius: 20px;
+  background: linear-gradient(to bottom left, #ff612e, #ffa32b) border-box;
+}
+.cart__to-checkout-link:after {
+  content: "";
+  display: block;
+  position: absolute;
+  inset: 2px;
+  background: linear-gradient(to bottom left, #1c0c00 0%, #1c0700 31%, #140900 69%, #1c0c00 100%) padding-box;
+  border: inherit;
+  border-radius: inherit;
+  z-index: 50;
+}
+.cart__to-checkout-link button, .cart__to-checkout-link a {
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  border: none;
+  border-radius: inherit;
+  background: linear-gradient(to bottom left, #ff612e, #ffa32b) text;
+  color: transparent;
+  font-size: 12px;
+  z-index: 100;
+}
+.cart__to-checkout-link a {
+  padding: 6px 32px;
+}
+.cart__to-checkout-link[data-disabled=true] {
+  cursor: not-allowed;
+}
+.cart__to-checkout-link[data-disabled=true] a {
+  pointer-events: none;
+}
+.cart__item-remove {
+  border: none;
+  background-color: transparent;
+}
+.cart__item-remove svg {
+  pointer-events: none;
+  stroke: #000000;
+}
+.cart__item-remove:hover svg {
+  transform: scale(1.1);
 }
 
 /*# sourceMappingURL=style.css.map */

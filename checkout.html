@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Pizzashop</title>
+  </head>
+  <body>
+    <!--====== Header Section ======-->
+    <header class="header">
+      <div class="container">
+        <div class="header__inner">
+          <a href="./" class="header__logo">Pizzashop</a>
+
+          <!-------------------------------------------------- NAV ------------------------------------------>
+
+          <nav class="header__nav">
+            <button class="header__nav-close">
+              <svg width="24" height="24">
+                <use href="./images/icons.svg#icon-close" />
+              </svg>
+            </button>
+            <ul class="header__nav-list">
+              <li class="header__nav-item">
+                <a class="header__nav-link" href="./">Home</a>
+              </li>
+              <li class="header__nav-item">
+                <a class="header__nav-link" href="./index.html#menu">Menu</a>
+              </li>
+              <li class="header__nav-item">
+                <a class="header__nav-link" href="./index.html#events"
+                  >Events</a
+                >
+              </li>
+              <li class="header__nav-item">
+                <a class="header__nav-link" href="./index.html#about"
+                  >About us</a
+                >
+              </li>
+            </ul>
+          </nav>
+
+          <div class="header__group">
+            <button class="header__cart-btn">
+              <img src="./images/cart.png" alt="cart-btn" />
+            </button>
+            <button class="header__menu-btn">
+              <img
+                src="./images/menu_btn.svg"
+                alt="This is button menu."
+                width="40"
+                height="40"
+              />
+            </button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main>
+      <div class="modal-root" id="modal-root"></div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-element-bundle.min.js"></script>
+    <script src="./js/index.js" type="module"></script>
+  </body>
+</html>

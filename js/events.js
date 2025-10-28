@@ -13,8 +13,10 @@ const swiperEventsConfig = {
   },
 };
 
-Object.assign(swiperEventsEl, swiperEventsConfig);
-swiperEventsEl.initialize();
+if (swiperEventsEl) {
+  Object.assign(swiperEventsEl, swiperEventsConfig);
+  swiperEventsEl.initialize();
+}
 
 // ---------------------------------------------------------------
 
