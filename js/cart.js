@@ -17,6 +17,7 @@ class Cart {
     // инициализация состояния. При его изменении будет перерисовка позиций корзины
     this.#state = useState(initialState, (target, prop, value) => {
       this.#render();
+      this.#setItemstoLocalCtorage(target);
     });
 
     // ELEMENTS
@@ -98,6 +99,11 @@ class Cart {
     cartContainer.append(cartList);
     // Возращаю елементы
     return [cartContainer, cartList];
+  }
+
+  // Метод, который записывает items в localStorage
+  #setItemstoLocalCtorage(items) {
+    localStorage.setItem("items", JSON.stringify(items));
   }
 
   // Метод выполняется каждый раз при изменении списка items.
