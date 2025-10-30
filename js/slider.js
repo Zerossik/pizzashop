@@ -30,7 +30,7 @@ const renderCard = (data) => {
   swiper2?.appendChild(fragment2);
 };
 
-useData("../data/pizza.json").then((data) => {
+useData("./data/pizza.json").then((data) => {
   renderCard(data);
 });
 // Цей код потрібен, якщо HTML не приходить з серверу. Тут ми просто рендеримо картки.
