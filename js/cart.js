@@ -108,7 +108,6 @@ class Cart {
     // Список для items. В этот список будут рендериться items
     const cartList = document.createElement("ul");
     cartList.classList.add("cart__list");
-    cartList.innerHTML = `<li class="cart__list-title">Your Cart is empty</li>`;
 
     const actionContainer = document.createElement("div");
 
