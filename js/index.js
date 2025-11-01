@@ -5,4 +5,4 @@ import "./counter.js";
 import "./events.js";
 import "./modal.js";
 // import "./cart.js";
-import "./newCart.js";
+import "./Cart/CartViewModel.js";
