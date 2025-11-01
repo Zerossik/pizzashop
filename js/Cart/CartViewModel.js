@@ -50,6 +50,15 @@ class CartModel extends Observable {
     // Добавляю в корзину
     this.#state.items.push(item);
   }
+  //
+  updateItem(id, itemData) {
+    console.log(itemData);
+    const index = this.#state.items.findIndex((itemID) => itemID.id === id);
+    if (index === -1) throw new Error(`item with ID - ${id} not found`);
+    const updatedItem = { ...this.#state.items[index], ...itemData };
+    console.log(updatedItem);
+    this.#state.items.splice(index, 1, updatedItem);
+  }
 
   /**
    * @param {string} id
@@ -93,20 +102,34 @@ export class CartViewModel extends Observable {
   }
 
   #onChange = () => {
-    this.#updateData();
     this.notify();
   };
 
+  /**
+   * @param {{id: string, price: number, quantity: number, pizzaSize: string }} item
+   */
   addItem(item) {
     this.#model.addItem(item);
+    return this;
   }
-
+  /**
+   * @param {string} id
+   */
   removeItem(id) {
     this.#model.removeItem(id);
   }
 
+  update(id, data) {
+    this.#model.updateItem(id, data);
+  }
+
+  openCart() {
+    this.notify("open-cart");
+  }
+
   #updateData = async () => {
     this.#data = await useData("./data/pizza.json");
+    this.notify();
   };
 
   get items() {
@@ -114,7 +137,6 @@ export class CartViewModel extends Observable {
       const itemFullInfo = this.#data.find(
         ({ id }) => id.toString() === item.id
       );
-
       if (itemFullInfo) acc.push({ ...itemFullInfo, ...item });
       return acc;
     }, []);
@@ -128,4 +150,5 @@ export class CartViewModel extends Observable {
 }
 
 const Cart = new CartViewModel(new CartModel());
+new CartView(Cart);
 export default Cart;

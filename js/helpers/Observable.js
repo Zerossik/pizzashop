@@ -9,7 +9,7 @@ export class Observable {
     return () => this.#subscribers.delete(fn);
   };
 
-  notify() {
-    this.#subscribers.forEach((fn) => fn());
+  notify(...args) {
+    this.#subscribers.forEach((fn) => fn(...args));
   }
 }
