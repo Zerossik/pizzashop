@@ -1,4 +1,5 @@
 import { Modal } from "../modal.js";
+import { Counter } from "../counter.js";
 
 export class CartView {
   #vievModel = null;
@@ -19,12 +20,22 @@ export class CartView {
     this.#attachEvents();
   }
 
-  #onChange = () => {
+  #onChange = (event) => {
+    if (event === "open-cart") {
+      this.openCart();
+      return;
+    }
     this.#render();
   };
 
   #attachEvents() {
     this.#cartLayout.addEventListener("click", this.#handleClick);
+    this.#openCartButtons.forEach(
+      (button) =>
+        (button.onclick = (e) => {
+          this.openCart();
+        })
+    );
   }
 
   #handleClick = (e) => {
@@ -33,12 +44,9 @@ export class CartView {
       const itemID = clickedElement.closest(".cart__list-item").id;
       this.#vievModel.removeItem(itemID);
     }
-
-    this.#openCartButtons.forEach((button) => (button.onclick = this.openCart));
   };
 
   openCart() {
-    this.#render();
     this.#modal.show(this.#cartLayout);
   }
 
@@ -70,6 +78,7 @@ export class CartView {
   #render = () => {
     console.log("THIS IS RENDER");
     const items = this.#vievModel.items;
+
     const totalPrice = this.#vievModel.totalPrice;
 
     const totalPriceEl = this.#cartLayout.querySelector(
@@ -89,12 +98,13 @@ export class CartView {
     }
 
     const itemsList = items.map((item) => {
-      const { title, pizzaSize, price, quantity, id } = item;
+      const { title, pizzaSize, price, quantity, id, img } = item;
+
       const listItem = document.createElement("li");
       listItem.classList.add("cart__list-item");
       listItem.id = id;
       listItem.innerHTML = `<div class="cart__title-wrap">
-        <img src="" alt="pizza-${title}" class="cart__item-image"/>
+        <img src="${img}" loading="lazy" width="50" height="50" alt="pizza-${title}" class="cart__item-image"/>
         <div>
         <p class="cart__item-title">${title}</p>
         <p class="cart__pizza-size">${pizzaSize}</p>
@@ -126,14 +136,13 @@ export class CartView {
                     </svg></button>
       `;
       const counterEl = listItem.querySelector(".counter");
-      // if (counterEl) {
-      //   new Counter(counterEl, (value) => {
-      //     // обновляем количество через новый массив, чтобы useState отследил изменение
-      //     this.#state.items = this.#state.items.map((it) => {
-      //       return it.id === id ? { ...it, quantity: value } : it;
-      //     });
-      //   });
-      // }
+      if (counterEl) {
+        new Counter(counterEl, (value) => {
+          // обновляем количество через новый массив, чтобы useState отследил изменение
+          console.log(typeof item.id);
+          this.#vievModel.update(item.id, { quantity: value });
+        });
+      }
       return listItem;
     });
 

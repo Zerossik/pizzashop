@@ -221,6 +221,9 @@ p {
   border: none;
   border-radius: 50%;
 }
+.header__cart-btn img {
+  pointer-events: none;
+}
 .header__menu-btn {
   background-color: transparent;
   border: none;

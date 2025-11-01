@@ -1,7 +1,7 @@
 import { PizzaCard } from "./pizza-card.js";
 import { useData } from "./hooks/useData.js";
 import { Counter } from "./counter.js";
-import cart from "./cart.js";
+import CartViewModel from "./Cart/CartViewModel.js";
 
 const swiperEl = document.querySelector("#swiper-container-1");
 const swiper2 = document.querySelector("#swiper-container-2");
@@ -13,7 +13,7 @@ const renderCard = (data) => {
     const slide = document.createElement("swiper-slide");
     const card = document.createElement("div");
     card.innerHTML = PizzaCard.render(pizza);
-    new PizzaCard(card.firstElementChild, Counter, cart);
+    new PizzaCard(card.firstElementChild, Counter, CartViewModel);
     slide.appendChild(card.firstElementChild);
     slide.classList.add("swiper-slide");
     fragment.appendChild(slide);
@@ -21,7 +21,7 @@ const renderCard = (data) => {
     const slide2 = document.createElement("swiper-slide");
     const card2 = document.createElement("div");
     card2.innerHTML = PizzaCard.render(pizza);
-    new PizzaCard(card2.firstElementChild, Counter, cart);
+    new PizzaCard(card2.firstElementChild, Counter, CartViewModel);
     slide2.appendChild(card2.firstElementChild);
     slide2.classList.add("swiper-slide");
     fragment2.appendChild(slide2);

@@ -76,8 +76,6 @@ export class PizzaCard {
       this.cart
         .addItem({
           id: this.cardID,
-          image: this.cardImage,
-          title: this.cardTitle,
           price: priceWithingredients,
           pizzaSize: this.#state.pizzaSize,
           quantity: this.#state.quantity,

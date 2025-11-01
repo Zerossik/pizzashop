@@ -141,6 +141,10 @@
     background: $main-gradient;
     border: none;
     border-radius: 50%;
+
+    img {
+      pointer-events: none;
+    }
   }
 
   &__menu-btn {
