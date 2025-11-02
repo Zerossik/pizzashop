@@ -50,13 +50,39 @@ class CartModel extends Observable {
     // Добавляю в корзину
     this.#state.items.push(item);
   }
-  //
-  updateItem(id, itemData) {
-    console.log(itemData);
+
+  /**
+   * @param {{id: string, price: number, pizzaSize: string, quantity: number}} itemData
+   */
+  updateItem(itemData) {
+    console.log(itemData.quantity);
+    // Указываю тип полей itemData
+    const itemDataInterface = {
+      id: "string",
+      price: "number",
+      pizzaSize: "string",
+      quantity: "number",
+    };
+    // Перебираю поля, и если тип не тот, выбрасываю оишбку.
+    Object.keys(itemDataInterface).forEach((field) => {
+      if (
+        field === "id" &&
+        (!itemData[field] ||
+          typeof itemData[field] !== itemDataInterface[field])
+      )
+        throw new Error("id must be a string");
+
+      if (
+        itemData[field] &&
+        typeof itemData[field] !== itemDataInterface[field]
+      )
+        throw new TypeError(`${field} must be a ${itemDataInterface[field]}`);
+    });
+    // После пройденной валидации обновляю item
+    const { id } = itemData;
     const index = this.#state.items.findIndex((itemID) => itemID.id === id);
     if (index === -1) throw new Error(`item with ID - ${id} not found`);
     const updatedItem = { ...this.#state.items[index], ...itemData };
-    console.log(updatedItem);
     this.#state.items.splice(index, 1, updatedItem);
   }
 
@@ -119,8 +145,11 @@ export class CartViewModel extends Observable {
     this.#model.removeItem(id);
   }
 
-  update(id, data) {
-    this.#model.updateItem(id, data);
+  /**
+   * @param {{id: string, price: number, pizzaSize: string, quantity: number}} itemData
+   */
+  updateItem(itemData) {
+    this.#model.updateItem(itemData);
   }
 
   openCart() {
