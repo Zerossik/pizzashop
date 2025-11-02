@@ -1053,4 +1053,61 @@ p {
   transform: scale(1.1);
 }
 
+.checkout {
+  background: linear-gradient(to bottom left, #1c0c00 0%, #1c0700 31%, #140900 69%, #1c0c00 100%);
+}
+.checkout__title {
+  text-align: center;
+  margin-bottom: 32px;
+  color: #ffffff;
+}
+.checkout__form {
+  max-width: 600px;
+  padding: 32px;
+  background: #210a01;
+  border-radius: 16px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+.checkout__form-group {
+  margin-bottom: 16px;
+}
+.checkout__label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #ffffff;
+}
+.checkout__input {
+  width: 100%;
+  padding: 8px 16px;
+  border: 1px solid #a19e9e;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.05);
+  color: #ffffff;
+}
+.checkout__input:focus {
+  outline: none;
+  border-color: #ff612e;
+}
+.checkout__input::placeholder {
+  color: #a3a3a3;
+}
+.checkout__submit {
+  display: block;
+  width: 100%;
+  padding: 16px;
+  margin-top: 32px;
+  background: linear-gradient(to bottom left, #ff612e, #ffa32b);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+}
+.checkout__submit:hover {
+  opacity: 0.9;
+}
+
 /*# sourceMappingURL=style.css.map */

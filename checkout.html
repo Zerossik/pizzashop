@@ -65,6 +65,54 @@
     </header>
 
     <main>
+      <section class="checkout">
+        <div class="container">
+          <h2 class="checkout__title">Checkout</h2>
+          <form class="checkout__form">
+            <div class="checkout__form-group">
+              <label class="checkout__label" for="firstName">First Name</label>
+              <input
+                type="text"
+                class="checkout__input"
+                id="firstName"
+                name="firstName"
+                required
+              />
+            </div>
+            <div class="checkout__form-group">
+              <label class="checkout__label" for="lastName">Last Name</label>
+              <input
+                type="text"
+                class="checkout__input"
+                id="lastName"
+                name="lastName"
+                required
+              />
+            </div>
+            <div class="checkout__form-group">
+              <label class="checkout__label" for="phone">Phone</label>
+              <input
+                type="tel"
+                class="checkout__input"
+                id="phone"
+                name="phone"
+                required
+              />
+            </div>
+            <div class="checkout__form-group">
+              <label class="checkout__label" for="address">Address</label>
+              <input
+                type="text"
+                class="checkout__input"
+                id="address"
+                name="address"
+                required
+              />
+            </div>
+            <button type="submit" class="checkout__submit">Submit Order</button>
+          </form>
+        </div>
+      </section>
       <div class="modal-root" id="modal-root"></div>
     </main>
 

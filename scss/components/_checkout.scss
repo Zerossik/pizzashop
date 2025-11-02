@@ -1,0 +1,67 @@
+@use "../utils/utils" as *;
+
+.checkout {
+  background: $background-gradient;
+
+  &__title {
+    text-align: center;
+    margin-bottom: $spacing-block;
+    color: $main-text-color;
+  }
+
+  &__form {
+    max-width: 600px;
+    padding: $spacing-block;
+    background: $pizza-card-bg;
+    border-radius: $medium-border-radius;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  &__form-group {
+    margin-bottom: $spacing-element;
+  }
+
+  &__label {
+    display: block;
+    margin-bottom: $spacing-small;
+    font-weight: 500;
+    color: $main-text-color;
+  }
+
+  &__input {
+    width: 100%;
+    padding: $spacing-small $spacing-element;
+    border: 1px solid $disabled-color;
+    border-radius: $small-border-radius;
+    background: rgba(255, 255, 255, 0.05);
+    color: $main-text-color;
+
+    &:focus {
+      outline: none;
+      border-color: #ff612e;
+    }
+
+    &::placeholder {
+      color: $text-color;
+    }
+  }
+
+  &__submit {
+    display: block;
+    width: 100%;
+    padding: $spacing-element;
+    margin-top: $spacing-block;
+    background: $main-gradient;
+    color: $main-text-color;
+    border: none;
+    border-radius: $small-border-radius;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 0.9;
+    }
+  }
+}
