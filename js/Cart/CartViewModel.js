@@ -55,7 +55,6 @@ class CartModel extends Observable {
    * @param {{id: string, price: number, pizzaSize: string, quantity: number}} itemData
    */
   updateItem(itemData) {
-    console.log(itemData.quantity);
     // Указываю тип полей itemData
     const itemDataInterface = {
       id: "string",

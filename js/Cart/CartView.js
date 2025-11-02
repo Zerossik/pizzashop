@@ -75,7 +75,6 @@ export class CartView {
   }
 
   #render = () => {
-    console.log("THIS IS RENDER");
     const items = this.#vievModel.items;
     const totalPrice = Number(this.#vievModel.totalPrice.toFixed(1));
 
