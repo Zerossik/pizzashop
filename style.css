@@ -875,7 +875,7 @@ p {
   width: clamp(300px, 50%, 450px);
   min-height: 200px;
   max-height: calc(100% - 40px);
-  background-color: #ffffff;
+  background: #210a01;
   border-radius: 8px;
 }
 .modal__content::after, .modal__content::before {
@@ -900,7 +900,7 @@ p {
 }
 .modal__title {
   font-size: 1.5rem;
-  color: #000000;
+  color: #ffffff;
   font-weight: 600;
 }
 .modal__inner {
@@ -957,7 +957,7 @@ p {
   align-items: center;
   justify-content: space-between;
   padding: 6px;
-  background-color: #f2f2f2;
+  background-color: rgba(255, 255, 255, 0.05);
 }
 .cart__price-wrap {
   display: flex;
@@ -972,7 +972,7 @@ p {
   align-items: center;
   flex: 1;
   gap: 8px;
-  color: #000000;
+  color: #ffffff;
 }
 .cart__item-image {
   width: 50px;
@@ -985,20 +985,12 @@ p {
   font-size: 0.75rem;
   color: inherit;
 }
-.cart .price {
-  color: #000000;
-}
 .cart .price__value {
   display: inline-block;
   text-align: right;
 }
 .cart .counter {
   gap: 4px;
-}
-.cart .counter__value {
-  color: #000000;
-  border-left: 1px solid #000000;
-  border-right: 1px solid #000000;
 }
 .cart__action-wrap {
   display: flex;
@@ -1049,7 +1041,7 @@ p {
 }
 .cart__item-remove svg {
   pointer-events: none;
-  stroke: #000000;
+  stroke: #ffffff;
 }
 .cart__item-remove:hover svg {
   transform: scale(1.1);
