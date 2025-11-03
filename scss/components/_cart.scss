@@ -43,6 +43,7 @@
     align-items: center;
     flex: 1;
     gap: $spacing-small;
+    color: #000000;
   }
 
   &__item-image {
@@ -51,12 +52,12 @@
   }
 
   &__item-title {
-    color: #000000;
+    color: inherit;
   }
   &__pizza-size {
     font-size: 0.75rem;
 
-    color: #000000;
+    color: inherit;
   }
 
   .price {
@@ -113,6 +114,7 @@
     &:hover {
       svg {
         transform: scale(1.1);
+        stroke: $hover-color;
       }
     }
   }

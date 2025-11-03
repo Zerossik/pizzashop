@@ -9,12 +9,43 @@
     color: $main-text-color;
   }
 
+  &__inner {
+    display: flex;
+    justify-content: center;
+    gap: $spacing-element;
+
+    max-height: 450px;
+    overflow: hidden;
+  }
+  &__product-wrap {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    max-width: 500px;
+    padding: $spacing-block;
+    background: $pizza-card-bg;
+    border-radius: $medium-border-radius;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  }
+
+  &__price-wrap {
+    display: flex;
+    justify-content: space-between;
+    padding: $spacing-element 0;
+
+    p,
+    span {
+      color: #ffffff;
+    }
+  }
+
   &__form {
     max-width: 600px;
     padding: $spacing-block;
     background: $pizza-card-bg;
     border-radius: $medium-border-radius;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    flex: 1;
   }
 
   &__form-group {
@@ -38,7 +69,7 @@
 
     &:focus {
       outline: none;
-      border-color: #ff612e;
+      border-color: $hover-color;
     }
 
     &::placeholder {
@@ -62,6 +93,30 @@
 
     &:hover {
       opacity: 0.9;
+    }
+  }
+}
+.products-list {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-small;
+  flex: 1;
+
+  overflow-y: auto;
+
+  .cart__list-item {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+  .cart__title-wrap {
+    color: #ffffff;
+  }
+  .cart__item-remove {
+    svg {
+      stroke: #ffffff;
+    }
+
+    &:hover svg {
+      stroke: $hover-color;
     }
   }
 }
