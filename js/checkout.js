@@ -1,6 +1,7 @@
 import cartViewModel from "./Cart/CartViewModel.js";
 import { CartItem } from "./components/CartItem.js";
 import { Modal } from "./modal.js";
+import { isFormEmpty } from "./helpers/isFormEmpty.js";
 
 class CheckOutView {
   #cart = null;
@@ -10,6 +11,7 @@ class CheckOutView {
 
     // ELEMENTS
     this.modal = new Modal();
+
     this.itemsContainer = document.querySelector(".products-list");
     if (!this.itemsContainer) throw new Error("itemsContainer not found");
 
@@ -21,6 +23,10 @@ class CheckOutView {
     );
     if (!this.totalPriceElement) throw new Error("totalPriceElement not found");
 
+    this.formInputs = this.userInfoForm.querySelectorAll("input[required]");
+
+    this.submitButtonEl = document.querySelector(".checkout__submit");
+
     this.#attachEvent();
   }
 
@@ -30,6 +36,12 @@ class CheckOutView {
   #attachEvent() {
     this.itemsContainer.addEventListener("click", this.#clickHandler);
     this.userInfoForm.addEventListener("submit", this.#submitHandler);
+    this.userInfoForm.addEventListener("input", (e) => {
+      const items = this.#cart.items;
+
+      this.submitButtonEl.disabled =
+        !items.length || !isFormEmpty(this.userInfoForm);
+    });
   }
 
   #clickHandler = (e) => {
@@ -44,10 +56,12 @@ class CheckOutView {
   #submitHandler = async (e) => {
     e.preventDefault();
     const infoElement = document.createElement("p");
+    infoElement.classList.add("checkout__empty-informer");
     infoElement.textContent =
       "Thank you for your order! Our manager will contact you shortly.";
     this.modal.show(infoElement);
     this.#formReset(e);
+    this.#cart.clearCart();
   };
 
   #formReset(e) {
@@ -62,8 +76,11 @@ class CheckOutView {
 
   render() {
     console.log("This is checkout");
+
     const items = this.#cart.items;
     this.totalPriceElement.textContent = this.#cart.totalPrice;
+
+    if (!items.length) this.submitButtonEl.disabled = true;
 
     if (!items.length) {
       this.itemsContainer.innerHTML = `<li class="cart__list-title">Your Cart is empty</li>`;

@@ -180,7 +180,7 @@ export class CartViewModel extends Observable {
   }
 
   get totalPrice() {
-    return this.#model.totalPrice;
+    return Number(this.#model.totalPrice.toFixed(1));
   }
 }
 

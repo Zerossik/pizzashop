@@ -11,21 +11,30 @@
 
   &__inner {
     display: flex;
+    flex-direction: column;
     justify-content: center;
+    align-items: center;
     gap: $spacing-element;
 
-    max-height: 450px;
-    overflow: hidden;
+    @include media-1024 {
+      flex-direction: row;
+      align-items: stretch;
+    }
   }
   &__product-wrap {
     display: flex;
     flex-direction: column;
+    width: 100%;
     flex: 1;
     max-width: 500px;
-    padding: $spacing-block;
+    padding: $spacing-small;
     background: $pizza-card-bg;
     border-radius: $medium-border-radius;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+    @include media-768 {
+      padding: $spacing-block;
+    }
   }
 
   &__price-wrap {
@@ -40,7 +49,8 @@
   }
 
   &__form {
-    max-width: 600px;
+    width: 100%;
+    max-width: 500px;
     padding: $spacing-block;
     background: $pizza-card-bg;
     border-radius: $medium-border-radius;
@@ -94,6 +104,13 @@
     &:hover {
       opacity: 0.9;
     }
+    &:disabled {
+      background: $disabled-color;
+    }
+  }
+
+  &__empty-informer {
+    margin: auto;
   }
 }
 .products-list {
@@ -101,6 +118,7 @@
   flex-direction: column;
   gap: $spacing-small;
   flex: 1;
+  max-height: 330px;
 
   overflow-y: auto;
 

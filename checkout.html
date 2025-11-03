@@ -48,7 +48,7 @@
           </nav>
 
           <div class="header__group">
-            <button class="header__cart-btn">
+            <button class="header__cart-btn open-cart">
               <img src="./images/cart.png" alt="cart-btn" />
             </button>
             <button class="header__menu-btn">
@@ -89,6 +89,8 @@
                   class="checkout__input"
                   id="firstName"
                   name="firstName"
+                  minlength="3"
+                  maxlength="24"
                   required
                 />
               </div>
@@ -99,6 +101,8 @@
                   class="checkout__input"
                   id="lastName"
                   name="lastName"
+                  minlength="3"
+                  maxlength="24"
                   required
                 />
               </div>
@@ -109,6 +113,8 @@
                   class="checkout__input"
                   id="phone"
                   name="phone"
+                  minlength="9"
+                  maxlength="13"
                   required
                 />
               </div>
@@ -119,10 +125,12 @@
                   class="checkout__input"
                   id="address"
                   name="address"
+                  minlength="4"
+                  maxlength="128"
                   required
                 />
               </div>
-              <button type="submit" class="checkout__submit">
+              <button type="submit" class="checkout__submit" disabled>
                 Submit Order
               </button>
             </form>
