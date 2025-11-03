@@ -48,7 +48,7 @@
           </nav>
 
           <div class="header__group">
-            <button class="header__cart-btn">
+            <button class="header__cart-btn open-cart">
               <img src="./images/cart.png" alt="cart-btn" />
             </button>
             <button class="header__menu-btn">
@@ -65,7 +65,80 @@
     </header>
 
     <main>
+      <section class="checkout">
+        <div class="container">
+          <h2 class="checkout__title">Checkout</h2>
+          <div class="checkout__inner">
+            <div class="checkout__product-wrap">
+              <ul class="products-list"></ul>
+              <div class="checkout__price-wrap">
+                <p>Total Price</p>
+                <div class="price checkout__total-price" data-price="">
+                  <span class="price__value">0</span><sup>$</sup>
+                </div>
+              </div>
+            </div>
+
+            <form class="checkout__form">
+              <div class="checkout__form-group">
+                <label class="checkout__label" for="firstName"
+                  >First Name</label
+                >
+                <input
+                  type="text"
+                  class="checkout__input"
+                  id="firstName"
+                  name="firstName"
+                  minlength="3"
+                  maxlength="24"
+                  required
+                />
+              </div>
+              <div class="checkout__form-group">
+                <label class="checkout__label" for="lastName">Last Name</label>
+                <input
+                  type="text"
+                  class="checkout__input"
+                  id="lastName"
+                  name="lastName"
+                  minlength="3"
+                  maxlength="24"
+                  required
+                />
+              </div>
+              <div class="checkout__form-group">
+                <label class="checkout__label" for="phone">Phone</label>
+                <input
+                  type="tel"
+                  class="checkout__input"
+                  id="phone"
+                  name="phone"
+                  minlength="9"
+                  maxlength="13"
+                  required
+                />
+              </div>
+              <div class="checkout__form-group">
+                <label class="checkout__label" for="address">Address</label>
+                <input
+                  type="text"
+                  class="checkout__input"
+                  id="address"
+                  name="address"
+                  minlength="4"
+                  maxlength="128"
+                  required
+                />
+              </div>
+              <button type="submit" class="checkout__submit" disabled>
+                Submit Order
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
       <div class="modal-root" id="modal-root"></div>
+      <script src="./js/checkout.js" type="module"></script>
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-element-bundle.min.js"></script>

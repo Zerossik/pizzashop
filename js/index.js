@@ -3,6 +3,4 @@ import "./slider.js";
 import "./pizza-card.js";
 import "./counter.js";
 import "./events.js";
-import "./modal.js";
-// import "./cart.js";
 import "./Cart/CartViewModel.js";

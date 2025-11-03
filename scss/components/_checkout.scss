@@ -1,0 +1,140 @@
+@use "../utils/utils" as *;
+
+.checkout {
+  background: $background-gradient;
+
+  &__title {
+    text-align: center;
+    margin-bottom: $spacing-block;
+    color: $main-text-color;
+  }
+
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: $spacing-element;
+
+    @include media-1024 {
+      flex-direction: row;
+      align-items: stretch;
+    }
+  }
+  &__product-wrap {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex: 1;
+    max-width: 500px;
+    padding: $spacing-small;
+    background: $pizza-card-bg;
+    border-radius: $medium-border-radius;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+
+    @include media-768 {
+      padding: $spacing-block;
+    }
+  }
+
+  &__price-wrap {
+    display: flex;
+    justify-content: space-between;
+    padding: $spacing-element 0;
+
+    p,
+    span {
+      color: #ffffff;
+    }
+  }
+
+  &__form {
+    width: 100%;
+    max-width: 500px;
+    padding: $spacing-block;
+    background: $pizza-card-bg;
+    border-radius: $medium-border-radius;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    flex: 1;
+  }
+
+  &__form-group {
+    margin-bottom: $spacing-element;
+  }
+
+  &__label {
+    display: block;
+    margin-bottom: $spacing-small;
+    font-weight: 500;
+    color: $main-text-color;
+  }
+
+  &__input {
+    width: 100%;
+    padding: $spacing-small $spacing-element;
+    border: 1px solid $disabled-color;
+    border-radius: $small-border-radius;
+    background: rgba(255, 255, 255, 0.05);
+    color: $main-text-color;
+
+    &:focus {
+      outline: none;
+      border-color: $hover-color;
+    }
+
+    &::placeholder {
+      color: $text-color;
+    }
+  }
+
+  &__submit {
+    display: block;
+    width: 100%;
+    padding: $spacing-element;
+    margin-top: $spacing-block;
+    background: $main-gradient;
+    color: $main-text-color;
+    border: none;
+    border-radius: $small-border-radius;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      opacity: 0.9;
+    }
+    &:disabled {
+      background: $disabled-color;
+    }
+  }
+
+  &__empty-informer {
+    margin: auto;
+  }
+}
+.products-list {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-small;
+  flex: 1;
+  max-height: 330px;
+
+  overflow-y: auto;
+
+  .cart__list-item {
+    background-color: rgba(255, 255, 255, 0.05);
+  }
+  .cart__title-wrap {
+    color: #ffffff;
+  }
+  .cart__item-remove {
+    svg {
+      stroke: #ffffff;
+    }
+
+    &:hover svg {
+      stroke: $hover-color;
+    }
+  }
+}
