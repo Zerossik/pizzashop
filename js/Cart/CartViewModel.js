@@ -94,6 +94,10 @@ class CartModel extends Observable {
     this.#state.items = this.#state.items.filter((item) => item.id !== id);
   }
 
+  clearCart() {
+    this.#state.items = [];
+  }
+
   #setItemsToLocalStorage(items) {
     localStorage.setItem("items", JSON.stringify(items));
   }
@@ -149,6 +153,9 @@ export class CartViewModel extends Observable {
    */
   updateItem(itemData) {
     this.#model.updateItem(itemData);
+  }
+  clearCart() {
+    this.#model.clearCart();
   }
 
   openCart() {
