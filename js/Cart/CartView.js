@@ -1,12 +1,14 @@
 import { Modal } from "../modal.js";
 import { CartItem } from "../components/CartItem.js";
+import { Counter } from "../counter.js";
 
 export class CartView {
   #vievModel = null;
   #modal = null;
   #cartLayout = null;
   #cartList = null;
-  #openCartButtons = [];
+  #counters = new Map();
+
   constructor(cartVievModel) {
     this.#vievModel = cartVievModel;
     this.#vievModel.subscribe(this.#onChange);
@@ -15,9 +17,17 @@ export class CartView {
     const [cartContainer, cartList] = this.#createCartLayout();
     this.#cartLayout = cartContainer;
     this.#cartList = cartList;
-    this.#openCartButtons = document.querySelectorAll(".open-cart");
+
+    this.elements = {
+      openCartButtons: document.querySelectorAll(".open-cart"),
+      totalPrice: this.#cartLayout.querySelector(
+        ".price.total-price .price__value"
+      ),
+      toCheckoutBtn: this.#cartLayout.querySelector(".cart__to-checkout-link"),
+    };
 
     this.#attachEvents();
+    this.#render();
   }
 
   #onChange = (event) => {
@@ -30,7 +40,7 @@ export class CartView {
 
   #attachEvents() {
     this.#cartLayout.addEventListener("click", this.#handleClick);
-    this.#openCartButtons.forEach(
+    this.elements.openCartButtons.forEach(
       (button) =>
         (button.onclick = (e) => {
           this.openCart();
@@ -41,7 +51,7 @@ export class CartView {
   #handleClick = (e) => {
     const clickedElement = e.target;
     if (clickedElement.matches("button.cart__item-remove")) {
-      const itemID = clickedElement.closest(".cart__list-item").id;
+      const itemID = clickedElement.closest(".cart__list-item")?.id;
       this.#vievModel.removeItem(itemID);
     }
   };
@@ -59,6 +69,10 @@ export class CartView {
     const cartList = document.createElement("ul");
     cartList.classList.add("cart__list");
 
+    const emptyText = document.createElement("p");
+    emptyText.classList.add("cart__empty-text");
+    emptyText.textContent = "Your Cart is empty";
+
     const actionContainer = document.createElement("div");
     actionContainer.classList.add("cart__action-wrap");
     actionContainer.innerHTML = `
@@ -69,42 +83,63 @@ export class CartView {
       <a href="./checkout.html">Proceed to checkout</a>
     </div>`;
 
-    cartContainer.append(cartList, actionContainer);
-    // Возращаю елементы
+    cartContainer.append(emptyText, cartList, actionContainer);
+
     return [cartContainer, cartList];
   }
 
   #render = () => {
     const items = this.#vievModel.items;
     const totalPrice = Number(this.#vievModel.totalPrice.toFixed(1));
+    this.elements.totalPrice.textContent = totalPrice;
 
-    const totalPriceEl = this.#cartLayout.querySelector(
-      ".price.total-price .price__value"
-    );
-    if (!totalPriceEl) throw new Error("totalPriceEl not Found");
-    totalPriceEl.textContent = totalPrice;
+    this.elements.toCheckoutBtn.dataset.disabled = !items.length;
 
-    const toCheckoutBtn = this.#cartLayout.querySelector(
-      ".cart__to-checkout-link"
-    );
-    if (toCheckoutBtn) toCheckoutBtn.dataset.disabled = !items.length;
+    const listItems = Array.from(this.#cartList.children);
 
-    if (!items.length) {
-      this.#cartList.innerHTML = `<li class="cart__list-title">Your Cart is empty</li>`;
-      return;
-    }
-
-    const itemsList = items.map((item) => {
-      const cartItemEl = CartItem(item, (value) => {
-        this.#vievModel.updateItem({
-          id: item.id,
-          quantity: value,
-        });
-      });
-      return cartItemEl;
+    listItems.forEach((item) => {
+      const itemID = item.querySelector(".cart__list-item")?.id;
+      const findedEl = items.find((el) => el.id === itemID);
+      if (!findedEl) {
+        const counter = this.#counters.get(itemID);
+        if (counter) {
+          counter.destroy();
+          this.#counters.delete(itemID);
+        }
+        item.remove();
+        return;
+      }
     });
 
-    this.#cartList.innerHTML = "";
-    this.#cartList.append(...itemsList);
+    items.forEach((item) => {
+      const counterUpdate = (value) => {
+        this.#vievModel.updateItem({ id: item.id, quantity: value });
+      };
+      const { price, quantity } = item;
+      const existingEl = this.#cartList.querySelector(
+        `.cart__list-item[id="${item.id}"]`
+      );
+
+      if (existingEl) {
+        existingEl.querySelector(".price__value").textContent = (
+          price * quantity
+        ).toFixed(1);
+
+        const counter = this.#counters.get(item.id);
+        counter.updateValue(item.quantity);
+        return;
+      }
+
+      const cartItemEl = CartItem(item);
+      const counterEl = cartItemEl.querySelector(".counter");
+      if (counterEl) {
+        const counter = new Counter(counterEl);
+        const unsubscribe = counter.subscribe(counterUpdate);
+        counter.unsubscribe = unsubscribe;
+        this.#counters.set(item.id, counter);
+      }
+
+      this.#cartList.appendChild(cartItemEl);
+    });
   };
 }

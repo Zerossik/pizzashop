@@ -12,4 +12,8 @@ export class Observable {
   notify(...args) {
     this.#subscribers.forEach((fn) => fn(...args));
   }
+
+  get subscribers() {
+    return this.#subscribers;
+  }
 }

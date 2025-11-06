@@ -1,41 +1,9 @@
-import { PizzaCard } from "./pizza-card.js";
 import { useData } from "./hooks/useData.js";
 import { Counter } from "./counter.js";
 import CartViewModel from "./Cart/CartViewModel.js";
 
 const swiperEl = document.querySelector("#swiper-container-1");
 const swiper2 = document.querySelector("#swiper-container-2");
-const fragment = document.createDocumentFragment();
-const fragment2 = document.createDocumentFragment();
-
-const renderCard = (data) => {
-  data.forEach((pizza) => {
-    const slide = document.createElement("swiper-slide");
-    const card = document.createElement("div");
-    card.innerHTML = PizzaCard.render(pizza);
-    new PizzaCard(card.firstElementChild, Counter, CartViewModel);
-    slide.appendChild(card.firstElementChild);
-    slide.classList.add("swiper-slide");
-    fragment.appendChild(slide);
-
-    const slide2 = document.createElement("swiper-slide");
-    const card2 = document.createElement("div");
-    card2.innerHTML = PizzaCard.render(pizza);
-    new PizzaCard(card2.firstElementChild, Counter, CartViewModel);
-    slide2.appendChild(card2.firstElementChild);
-    slide2.classList.add("swiper-slide");
-    fragment2.appendChild(slide2);
-  });
-  swiperEl?.appendChild(fragment);
-  swiper2?.appendChild(fragment2);
-};
-
-useData("./data/pizza.json").then((data) => {
-  renderCard(data);
-});
-// Цей код потрібен, якщо HTML не приходить з серверу. Тут ми просто рендеримо картки.
-
-// Якщо HTML прийшов з сервера, потрібно найти всі картки + додати логіку.
 
 // Функція, яка перевіряє, чи потрібні контроллери.
 const handlerResize = (swiper) => {
@@ -43,7 +11,6 @@ const handlerResize = (swiper) => {
     params: { slidesPerView },
     slides,
   } = swiper;
-
   if (slides.length > slidesPerView) {
     swiper.hostEl
       .querySelector(".menu .swiper-container__controllers")
@@ -58,16 +25,13 @@ const handlerResize = (swiper) => {
 // Конфіг swiper
 const swiperConfig = {
   slidesPerView: 2, // Встановлюємо кількість відображаємих слайдів.
-
   spaceBetween: 8, // Відступи між слайдами.
-
   //   Налаштування навігації
   navigation: {
     addIcons: false,
     nextEl: ".swiper-button-next", // Передаю класс на кастомну кнопку "Наступний слайд"
     prevEl: ".swiper-button-prev", // Передаю класс на кастомну кнопку "Попередній слайд"
   },
-
   //   Налаштування слайдеру в залежності від розміру екрана.
   breakpoints: {
     768: {

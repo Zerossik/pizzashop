@@ -265,6 +265,7 @@ $card-transition: transform 250ms linear;
 
     height: inherit;
     overflow-y: auto;
+    overscroll-behavior: none;
   }
 
   &__form-item-wrap {
