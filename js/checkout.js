@@ -100,8 +100,9 @@ class CheckOutView {
       );
       if (existingEl) {
         // обновляем елемент.
+        console.log(item);
         existingEl.querySelector(".price__value").textContent = (
-          item.optionPrices[item.pizzaSize] * item.quantity
+          item.price * item.quantity
         ).toFixed(1);
         return;
       }
