@@ -61,6 +61,8 @@ class CartModel extends Observable {
       price: "number",
       pizzaSize: "string",
       quantity: "number",
+      title: "string",
+      image: "string",
     };
     // Перебираю поля, и если тип не тот, выбрасываю оишбку.
     Object.keys(itemDataInterface).forEach((field) => {
@@ -107,7 +109,7 @@ class CartModel extends Observable {
   }
 
   get items() {
-    return this.#state.items;
+    return [...this.#state.items];
   }
 
   get totalPrice() {
@@ -120,23 +122,16 @@ class CartModel extends Observable {
 
 export class CartViewModel extends Observable {
   #model = null;
-
-  #data = [];
   constructor(model) {
     super();
     this.#model = model;
-
     this.#model.subscribe(this.#onChange);
-    this.#updateData();
   }
 
   #onChange = () => {
     this.notify();
   };
 
-  /**
-   * @param {{id: string, price: number, quantity: number, pizzaSize: string }} item
-   */
   addItem(item) {
     this.#model.addItem(item);
     return this;
@@ -162,21 +157,8 @@ export class CartViewModel extends Observable {
     this.notify("open-cart");
   }
 
-  #updateData = async () => {
-    this.#data = await useData("./data/pizza.json");
-    this.notify();
-  };
-
   get items() {
-    const result = this.#model.items.reduce((acc, item) => {
-      const itemFullInfo = this.#data.find(
-        ({ id }) => id.toString() === item.id
-      );
-      if (itemFullInfo) acc.push({ ...itemFullInfo, ...item });
-      return acc;
-    }, []);
-
-    return result;
+    return this.#model.items;
   }
 
   get totalPrice() {

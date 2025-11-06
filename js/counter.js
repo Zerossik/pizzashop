@@ -1,6 +1,7 @@
 import { useState } from "./hooks/useState.js";
+import { Observable } from "./helpers/Observable.js";
 
-export class Counter {
+export class Counter extends Observable {
   /**
    *
    * @param {HTMLElement} counter
@@ -13,10 +14,10 @@ export class Counter {
   #initValue;
   #currentValue;
 
-  constructor(counter, onChange, baseSelector = "counter") {
+  constructor(counter) {
     if (!counter) return;
+    super();
     this.counter = counter;
-    this.BASE_SELECTOR = baseSelector;
     const { min_value, max_value, init_value } = this.counter.dataset;
 
     const min = parseInt(min_value);
@@ -38,7 +39,7 @@ export class Counter {
 
     this.#currentValue = useState(this.#initValue, () => {
       this.render();
-      onChange?.(this.value);
+      this.notify(this.#currentValue.value);
     });
 
     this.attachEvents();
@@ -50,15 +51,20 @@ export class Counter {
     this.counter.addEventListener("change", this.handlerChange);
   }
 
+  destroy() {
+    this.counter.removeEventListener("click", this.handlerClick);
+    this.counter.removeEventListener("change", this.handlerChange);
+    this.counter = null;
+  }
+
   handlerClick = (e) => {
     const clickedElement = e.target;
-    const { BASE_SELECTOR } = this;
 
-    if (clickedElement.matches(`.${BASE_SELECTOR}__increment`)) {
+    if (clickedElement.matches(`.counter__increment`)) {
       this.increment();
     }
 
-    if (clickedElement.matches(`.${BASE_SELECTOR}__decrement`)) {
+    if (clickedElement.matches(`.counter__decrement`)) {
       this.decrement();
     }
   };
@@ -86,6 +92,24 @@ export class Counter {
   get value() {
     return this.#currentValue.value;
   }
+
+  /**
+   *
+   * @param {number} value
+   * @returns {number} - new Value
+   */
+  updateValue(value) {
+    if (typeof value !== "number" || isNaN(value))
+      throw new TypeError("counter value must be a number");
+    if (value < this.#minValue)
+      throw new Error(`counter value can not be less than ${this.#minValue}`);
+    if (value > this.#maxValue)
+      throw new Error(`counter value can not be more than ${this.#maxValue}`);
+
+    this.#currentValue.value = value;
+    return value;
+  }
+
   render = () => {
     const counterValueElement =
       this.counter.children.namedItem("counter-value");

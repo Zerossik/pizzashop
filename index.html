@@ -137,6 +137,675 @@
               id="swiper-container-1"
               init="false"
             >
+              <!-- SLIDE-1 -->
+              <swiper-slide class="swiper-slide"
+                ><div
+                  class="pizza-card"
+                  id="1"
+                  data-title="Italian"
+                  data-options='{ "small": 3, "medium": 4.5, "large": 6}'
+                  data-ingredients='{"Cheese": 2, "Pepperoni": 3, "Mushrooms": 2, "Bacon": 3, "Olives": 2}'
+                >
+                  <div class="pizza-card__wrap">
+                    <div class="pizza-card__inner">
+                      <picture class="pizza-card__image-wrap">
+                        <img
+                          src="./images/pizza/Italian.png"
+                          alt="pizza image"
+                          class="pizza-card__image"
+                      /></picture>
+                      <div class="pizza-card__front">
+                        <h3 class="pizza-card__title">Italian</h3>
+                        <p class="pizza-card__desc">
+                          Filling: onion, potato, tomato, mushrooms, cheese,
+                          olives, meat
+                        </p>
+                        <div class="pizza-card__actions">
+                          <form class="pizza-card__options">
+                            <label>
+                              <input
+                                type="radio"
+                                name="pizza-card__option"
+                                class="pizza-card__options-radio"
+                                id="1-small"
+                                value="small"
+                                checked
+                              />22</label
+                            >
+
+                            <!-- pizza-card__options-btn--active -->
+
+                            <label>
+                              <input
+                                type="radio"
+                                name="pizza-card__option"
+                                class="pizza-card__options-radio"
+                                id="1-medium"
+                                value="medium"
+                              />28</label
+                            >
+                            <label>
+                              <input
+                                type="radio"
+                                name="pizza-card__option"
+                                class="pizza-card__options-radio"
+                                id="1-large"
+                                value="large"
+                              />33</label
+                            >
+                          </form>
+                          <div class="pizza-card__ingredients-btn-wrap">
+                            <button class="pizza-card__ingredients-btn">
+                              + ingredients
+                            </button>
+                          </div>
+                          <div class="pizza-card__price-wrap">
+                            <div class="price">
+                              <span class="price__value">7.5</span><sup>$</sup>
+                            </div>
+                            <div
+                              class="counter"
+                              data-min_value="1"
+                              data-max_value="99"
+                              data-init_value="1"
+                            >
+                              <button class="counter__decrement">-</button>
+                              <input
+                                type="number"
+                                class="counter__value"
+                                value="1"
+                                name="counter-value"
+                              />
+                              <button class="counter__increment">+</button>
+                            </div>
+                          </div>
+                          <button class="pizza-card__order-btn">
+                            Order Now
+                          </button>
+                        </div>
+                      </div>
+                      <div class="pizza-card__back">
+                        <p class="pizza-card__title-back">
+                          Choose ingredients:
+                        </p>
+                        <form class="pizza-card__ingredients-form">
+                          <div class="pizza-card__form-items-wrap">
+                            <div class="pizza-card__form-item-wrap">
+                              <input
+                                type="checkbox"
+                                name="Cheese"
+                                value="Cheese"
+                                id="1-Cheese"
+                              />
+                              <label for="1-Cheese">Cheese</label>
+                              <span>2<sup>$</sup></span>
+                            </div>
+
+                            <div class="pizza-card__form-item-wrap">
+                              <input
+                                type="checkbox"
+                                name="Pepperoni"
+                                value="Pepperoni"
+                                id="1-Pepperoni"
+                              />
+                              <label for="1-Pepperoni">Pepperoni</label>
+                              <span>3<sup>$</sup></span>
+                            </div>
+
+                            <div class="pizza-card__form-item-wrap">
+                              <input
+                                type="checkbox"
+                                name="Mushrooms"
+                                value="Mushrooms"
+                                id="1-Mushrooms"
+                              />
+                              <label for="1-Mushrooms">Mushrooms</label>
+                              <span>2<sup>$</sup></span>
+                            </div>
+
+                            <div class="pizza-card__form-item-wrap">
+                              <input
+                                type="checkbox"
+                                name="Bacon"
+                                value="Bacon"
+                                id="1-Bacon"
+                              />
+                              <label for="1-Bacon">Bacon</label>
+                              <span>3<sup>$</sup></span>
+                            </div>
+
+                            <div class="pizza-card__form-item-wrap">
+                              <input
+                                type="checkbox"
+                                name="Olives"
+                                value="Olives"
+                                id="1-Olives"
+                              />
+                              <label for="1-Olives">Olives</label>
+                              <span>2<sup>$</sup></span>
+                            </div>
+                          </div>
+                          <div>
+                            <div class="pizza-card__price-wrap">
+                              <div class="price">
+                                <span class="price__value">3</span><sup>$</sup>
+                              </div>
+                            </div>
+                            <div class="pizza-card__ingredients-btn-wrap">
+                              <button class="pizza-card__back-btn-submit">
+                                OK
+                              </button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </swiper-slide>
+
+              <!-- SLIDE-2 -->
+              <swiper-slide class="swiper-slide"
+                ><div
+                  class="pizza-card"
+                  id="2"
+                  data-title="Venecia"
+                  data-options='{ "small": 3.7, "medium": 5, "large": 7}'
+                  data-ingredients='{"Cheese": 2, "Pepperoni": 3, "Mushrooms": 2, "Bacon": 3, "Olives": 2}'
+                >
+                  <div class="pizza-card__wrap">
+                    <div class="pizza-card__inner">
+                      <picture class="pizza-card__image-wrap">
+                        <img
+                          src="./images/pizza/Venecia.png"
+                          alt="pizza image"
+                          class="pizza-card__image"
+                      /></picture>
+                      <div class="pizza-card__front">
+                        <h3 class="pizza-card__title">Venecia</h3>
+                        <p class="pizza-card__desc">
+                          Filling: onion, potato, tomato, mushrooms, cheese,
+                          olives, meat
+                        </p>
+                        <div class="pizza-card__actions">
+                          <form class="pizza-card__options">
+                            <label>
+                              <input
+                                type="radio"
+                                name="pizza-card__option"
+                                class="pizza-card__options-radio"
+                                id="2-small"
+                                value="small"
+                                checked
+                              />22</label
+                            >
+
+                            <!-- pizza-card__options-btn--active -->
+
+                            <label>
+                              <input
+                                type="radio"
+                                name="pizza-card__option"
+                                class="pizza-card__options-radio"
+                                id="2-medium"
+                                value="medium"
+                              />28</label
+                            >
+                            <label>
+                              <input
+                                type="radio"
+                                name="pizza-card__option"
+                                class="pizza-card__options-radio"
+                                id="2-large"
+                                value="large"
+                              />33</label
+                            >
+                          </form>
+                          <div class="pizza-card__ingredients-btn-wrap">
+                            <button class="pizza-card__ingredients-btn">
+                              + ingredients
+                            </button>
+                          </div>
+                          <div class="pizza-card__price-wrap">
+                            <div class="price">
+                              <span class="price__value">8.9</span><sup>$</sup>
+                            </div>
+                            <div
+                              class="counter"
+                              data-min_value="1"
+                              data-max_value="99"
+                              data-init_value="1"
+                            >
+                              <button class="counter__decrement">-</button>
+                              <input
+                                type="number"
+                                class="counter__value"
+                                value="1"
+                                name="counter-value"
+                              />
+                              <button class="counter__increment">+</button>
+                            </div>
+                          </div>
+                          <button class="pizza-card__order-btn">
+                            Order Now
+                          </button>
+                        </div>
+                      </div>
+                      <div class="pizza-card__back">
+                        <p class="pizza-card__title-back">
+                          Choose ingredients:
+                        </p>
+                        <form class="pizza-card__ingredients-form">
+                          <div class="pizza-card__form-items-wrap">
+                            <div class="pizza-card__form-item-wrap">
+                              <input
+                                type="checkbox"
+                                name="Cheese"
+                                value="Cheese"
+                                id="2-Cheese"
+                              />
+                              <label for="2-Cheese">Cheese</label>
+                              <span>2<sup>$</sup></span>
+                            </div>
+
+                            <div class="pizza-card__form-item-wrap">
+                              <input
+                                type="checkbox"
+                                name="Pepperoni"
+                                value="Pepperoni"
+                                id="2-Pepperoni"
+                              />
+                              <label for="2-Pepperoni">Pepperoni</label>
+                              <span>3<sup>$</sup></span>
+                            </div>
+
+                            <div class="pizza-card__form-item-wrap">
+                              <input
+                                type="checkbox"
+                                name="Mushrooms"
+                                value="Mushrooms"
+                                id="2-Mushrooms"
+                              />
+                              <label for="2-Mushrooms">Mushrooms</label>
+                              <span>2<sup>$</sup></span>
+                            </div>
+
+                            <div class="pizza-card__form-item-wrap">
+                              <input
+                                type="checkbox"
+                                name="Bacon"
+                                value="Bacon"
+                                id="2-Bacon"
+                              />
+                              <label for="2-Bacon">Bacon</label>
+                              <span>3<sup>$</sup></span>
+                            </div>
+
+                            <div class="pizza-card__form-item-wrap">
+                              <input
+                                type="checkbox"
+                                name="Olives"
+                                value="Olives"
+                                id="2-Olives"
+                              />
+                              <label for="2-Olives">Olives</label>
+                              <span>2<sup>$</sup></span>
+                            </div>
+                          </div>
+                          <div>
+                            <div class="pizza-card__price-wrap">
+                              <div class="price">
+                                <span class="price__value">8.9</span
+                                ><sup>$</sup>
+                              </div>
+                            </div>
+                            <div class="pizza-card__ingredients-btn-wrap">
+                              <button class="pizza-card__back-btn-submit">
+                                OK
+                              </button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div></swiper-slide
+              >
+              <!-- SLIDE-3 -->
+              <swiper-slide class="swiper-slide"
+                ><div
+                  class="pizza-card"
+                  id="3"
+                  data-title="Meat"
+                  data-options='{ "small": 3.5, "medium": 4.5, "large": 6}'
+                  data-ingredients='{"Cheese": 2, "Pepperoni": 3, "Mushrooms": 2, "Bacon": 3, "Olives": 2}'
+                >
+                  <div class="pizza-card__wrap">
+                    <div class="pizza-card__inner">
+                      <picture class="pizza-card__image-wrap">
+                        <img
+                          src="./images/pizza/Meat.png"
+                          alt="pizza image"
+                          class="pizza-card__image"
+                      /></picture>
+                      <div class="pizza-card__front">
+                        <h3 class="pizza-card__title">Meat</h3>
+                        <p class="pizza-card__desc">
+                          Filling: onion, potato, tomato, mushrooms, cheese,
+                          olives, meat
+                        </p>
+                        <div class="pizza-card__actions">
+                          <form class="pizza-card__options">
+                            <label>
+                              <input
+                                type="radio"
+                                name="pizza-card__option"
+                                class="pizza-card__options-radio"
+                                id="3-small"
+                                value="small"
+                                checked
+                              />22</label
+                            >
+
+                            <!-- pizza-card__options-btn--active -->
+
+                            <label>
+                              <input
+                                type="radio"
+                                name="pizza-card__option"
+                                class="pizza-card__options-radio"
+                                id="3-medium"
+                                value="medium"
+                              />28</label
+                            >
+                            <label>
+                              <input
+                                type="radio"
+                                name="pizza-card__option"
+                                class="pizza-card__options-radio"
+                                id="3-large"
+                                value="large"
+                              />33</label
+                            >
+                          </form>
+                          <div class="pizza-card__ingredients-btn-wrap">
+                            <button class="pizza-card__ingredients-btn">
+                              + ingredients
+                            </button>
+                          </div>
+                          <div class="pizza-card__price-wrap">
+                            <div class="price">
+                              <span class="price__value">3.5</span><sup>$</sup>
+                            </div>
+                            <div
+                              class="counter"
+                              data-min_value="1"
+                              data-max_value="99"
+                              data-init_value="1"
+                            >
+                              <button class="counter__decrement">-</button>
+                              <input
+                                type="number"
+                                class="counter__value"
+                                value="1"
+                                name="counter-value"
+                              />
+                              <button class="counter__increment">+</button>
+                            </div>
+                          </div>
+                          <button class="pizza-card__order-btn">
+                            Order Now
+                          </button>
+                        </div>
+                      </div>
+                      <div class="pizza-card__back">
+                        <p class="pizza-card__title-back">
+                          Choose ingredients:
+                        </p>
+                        <form class="pizza-card__ingredients-form">
+                          <div class="pizza-card__form-items-wrap">
+                            <div class="pizza-card__form-item-wrap">
+                              <input
+                                type="checkbox"
+                                name="Cheese"
+                                value="Cheese"
+                                id="3-Cheese"
+                              />
+                              <label for="3-Cheese">Cheese</label>
+                              <span>2<sup>$</sup></span>
+                            </div>
+
+                            <div class="pizza-card__form-item-wrap">
+                              <input
+                                type="checkbox"
+                                name="Pepperoni"
+                                value="Pepperoni"
+                                id="3-Pepperoni"
+                              />
+                              <label for="3-Pepperoni">Pepperoni</label>
+                              <span>3<sup>$</sup></span>
+                            </div>
+
+                            <div class="pizza-card__form-item-wrap">
+                              <input
+                                type="checkbox"
+                                name="Mushrooms"
+                                value="Mushrooms"
+                                id="3-Mushrooms"
+                              />
+                              <label for="3-Mushrooms">Mushrooms</label>
+                              <span>2<sup>$</sup></span>
+                            </div>
+
+                            <div class="pizza-card__form-item-wrap">
+                              <input
+                                type="checkbox"
+                                name="Bacon"
+                                value="Bacon"
+                                id="3-Bacon"
+                              />
+                              <label for="3-Bacon">Bacon</label>
+                              <span>3<sup>$</sup></span>
+                            </div>
+
+                            <div class="pizza-card__form-item-wrap">
+                              <input
+                                type="checkbox"
+                                name="Olives"
+                                value="Olives"
+                                id="3-Olives"
+                              />
+                              <label for="3-Olives">Olives</label>
+                              <span>2<sup>$</sup></span>
+                            </div>
+                          </div>
+                          <div>
+                            <div class="pizza-card__price-wrap">
+                              <div class="price">
+                                <span class="price__value">3.5</span
+                                ><sup>$</sup>
+                              </div>
+                            </div>
+                            <div class="pizza-card__ingredients-btn-wrap">
+                              <button class="pizza-card__back-btn-submit">
+                                OK
+                              </button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </swiper-slide>
+              <!-- SLIDE 4 -->
+              <swiper-slide class="swiper-slide"
+                ><div
+                  class="pizza-card"
+                  id="4"
+                  data-title="Cheese"
+                  data-options='{ "small": 3.5, "medium": 5, "large": 6}'
+                  data-ingredients='{"Cheese": 2, "Pepperoni": 3, "Mushrooms": 2, "Bacon": 3, "Olives": 2}'
+                >
+                  <div class="pizza-card__wrap">
+                    <div class="pizza-card__inner">
+                      <picture class="pizza-card__image-wrap">
+                        <img
+                          src="./images/pizza/Cheese.png"
+                          alt="pizza image"
+                          class="pizza-card__image"
+                      /></picture>
+                      <div class="pizza-card__front">
+                        <h3 class="pizza-card__title">Cheese</h3>
+                        <p class="pizza-card__desc">
+                          Filling: onion, potato, tomato, mushrooms, cheese,
+                          olives, meat
+                        </p>
+                        <div class="pizza-card__actions">
+                          <form class="pizza-card__options">
+                            <label>
+                              <input
+                                type="radio"
+                                name="pizza-card__option"
+                                class="pizza-card__options-radio"
+                                id="4-small"
+                                value="small"
+                                checked
+                              />22</label
+                            >
+
+                            <!-- pizza-card__options-btn--active -->
+
+                            <label>
+                              <input
+                                type="radio"
+                                name="pizza-card__option"
+                                class="pizza-card__options-radio"
+                                id="4-medium"
+                                value="medium"
+                              />28</label
+                            >
+                            <label>
+                              <input
+                                type="radio"
+                                name="pizza-card__option"
+                                class="pizza-card__options-radio"
+                                id="1-large"
+                                value="large"
+                              />33</label
+                            >
+                          </form>
+                          <div class="pizza-card__ingredients-btn-wrap">
+                            <button class="pizza-card__ingredients-btn">
+                              + ingredients
+                            </button>
+                          </div>
+                          <div class="pizza-card__price-wrap">
+                            <div class="price">
+                              <span class="price__value">3.5</span><sup>$</sup>
+                            </div>
+                            <div
+                              class="counter"
+                              data-min_value="1"
+                              data-max_value="99"
+                              data-init_value="1"
+                            >
+                              <button class="counter__decrement">-</button>
+                              <input
+                                type="number"
+                                class="counter__value"
+                                value="1"
+                                name="counter-value"
+                              />
+                              <button class="counter__increment">+</button>
+                            </div>
+                          </div>
+                          <button class="pizza-card__order-btn">
+                            Order Now
+                          </button>
+                        </div>
+                      </div>
+                      <div class="pizza-card__back">
+                        <p class="pizza-card__title-back">
+                          Choose ingredients:
+                        </p>
+                        <form class="pizza-card__ingredients-form">
+                          <div class="pizza-card__form-items-wrap">
+                            <div class="pizza-card__form-item-wrap">
+                              <input
+                                type="checkbox"
+                                name="Cheese"
+                                value="Cheese"
+                                id="4-Cheese"
+                              />
+                              <label for="4-Cheese">Cheese</label>
+                              <span>2<sup>$</sup></span>
+                            </div>
+
+                            <div class="pizza-card__form-item-wrap">
+                              <input
+                                type="checkbox"
+                                name="Pepperoni"
+                                value="Pepperoni"
+                                id="4-Pepperoni"
+                              />
+                              <label for="4-Pepperoni">Pepperoni</label>
+                              <span>3<sup>$</sup></span>
+                            </div>
+
+                            <div class="pizza-card__form-item-wrap">
+                              <input
+                                type="checkbox"
+                                name="Mushrooms"
+                                value="Mushrooms"
+                                id="4-Mushrooms"
+                              />
+                              <label for="4-Mushrooms">Mushrooms</label>
+                              <span>2<sup>$</sup></span>
+                            </div>
+
+                            <div class="pizza-card__form-item-wrap">
+                              <input
+                                type="checkbox"
+                                name="Bacon"
+                                value="Bacon"
+                                id="4-Bacon"
+                              />
+                              <label for="4-Bacon">Bacon</label>
+                              <span>3<sup>$</sup></span>
+                            </div>
+
+                            <div class="pizza-card__form-item-wrap">
+                              <input
+                                type="checkbox"
+                                name="Olives"
+                                value="Olives"
+                                id="4-Olives"
+                              />
+                              <label for="4-Olives">Olives</label>
+                              <span>2<sup>$</sup></span>
+                            </div>
+                          </div>
+                          <div>
+                            <div class="pizza-card__price-wrap">
+                              <div class="price">
+                                <span class="price__value">3.5</span
+                                ><sup>$</sup>
+                              </div>
+                            </div>
+                            <div class="pizza-card__ingredients-btn-wrap">
+                              <button class="pizza-card__back-btn-submit">
+                                OK
+                              </button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </swiper-slide>
+
               <!-- swiper-container__controllers--visible -->
               <div slot="container-end" class="swiper-container__controllers">
                 <button class="swiper-button-prev">
@@ -180,6 +849,674 @@
               id="swiper-container-2"
               init="false"
             >
+              <!-- SLIDE 5 -->
+              <swiper-slide class="swiper-slide"
+                ><div
+                  class="pizza-card"
+                  id="5"
+                  data-title="Argentina"
+                  data-options='{ "small": 3.7, "medium": 5.2, "large": 6.5}'
+                  data-ingredients='{"Cheese": 2, "Pepperoni": 3, "Mushrooms": 2, "Bacon": 3, "Olives": 2}'
+                >
+                  <div class="pizza-card__wrap">
+                    <div class="pizza-card__inner">
+                      <picture class="pizza-card__image-wrap">
+                        <img
+                          src="./images/pizza/Argentina.png"
+                          alt="pizza image"
+                          class="pizza-card__image"
+                      /></picture>
+                      <div class="pizza-card__front">
+                        <h3 class="pizza-card__title">Argentina</h3>
+                        <p class="pizza-card__desc">
+                          Filling: onion, potato, tomato, mushrooms, cheese,
+                          olives, meat
+                        </p>
+                        <div class="pizza-card__actions">
+                          <form class="pizza-card__options">
+                            <label>
+                              <input
+                                type="radio"
+                                name="pizza-card__option"
+                                class="pizza-card__options-radio"
+                                id="5-small"
+                                value="small"
+                                checked
+                              />22</label
+                            >
+
+                            <!-- pizza-card__options-btn--active -->
+
+                            <label>
+                              <input
+                                type="radio"
+                                name="pizza-card__option"
+                                class="pizza-card__options-radio"
+                                id="5-medium"
+                                value="medium"
+                              />28</label
+                            >
+                            <label>
+                              <input
+                                type="radio"
+                                name="pizza-card__option"
+                                class="pizza-card__options-radio"
+                                id="5-large"
+                                value="large"
+                              />33</label
+                            >
+                          </form>
+                          <div class="pizza-card__ingredients-btn-wrap">
+                            <button class="pizza-card__ingredients-btn">
+                              + ingredients
+                            </button>
+                          </div>
+                          <div class="pizza-card__price-wrap">
+                            <div class="price">
+                              <span class="price__value">3.7</span><sup>$</sup>
+                            </div>
+                            <div
+                              class="counter"
+                              data-min_value="1"
+                              data-max_value="99"
+                              data-init_value="1"
+                            >
+                              <button class="counter__decrement">-</button>
+                              <input
+                                type="number"
+                                class="counter__value"
+                                value="1"
+                                name="counter-value"
+                              />
+                              <button class="counter__increment">+</button>
+                            </div>
+                          </div>
+                          <button class="pizza-card__order-btn">
+                            Order Now
+                          </button>
+                        </div>
+                      </div>
+                      <div class="pizza-card__back">
+                        <p class="pizza-card__title-back">
+                          Choose ingredients:
+                        </p>
+                        <form class="pizza-card__ingredients-form">
+                          <div class="pizza-card__form-items-wrap">
+                            <div class="pizza-card__form-item-wrap">
+                              <input
+                                type="checkbox"
+                                name="Cheese"
+                                value="Cheese"
+                                id="5-Cheese"
+                              />
+                              <label for="5-Cheese">Cheese</label>
+                              <span>2<sup>$</sup></span>
+                            </div>
+
+                            <div class="pizza-card__form-item-wrap">
+                              <input
+                                type="checkbox"
+                                name="Pepperoni"
+                                value="Pepperoni"
+                                id="5-Pepperoni"
+                              />
+                              <label for="5-Pepperoni">Pepperoni</label>
+                              <span>3<sup>$</sup></span>
+                            </div>
+
+                            <div class="pizza-card__form-item-wrap">
+                              <input
+                                type="checkbox"
+                                name="Mushrooms"
+                                value="Mushrooms"
+                                id="5-Mushrooms"
+                              />
+                              <label for="5-Mushrooms">Mushrooms</label>
+                              <span>2<sup>$</sup></span>
+                            </div>
+
+                            <div class="pizza-card__form-item-wrap">
+                              <input
+                                type="checkbox"
+                                name="Bacon"
+                                value="Bacon"
+                                id="5-Bacon"
+                              />
+                              <label for="5-Bacon">Bacon</label>
+                              <span>3<sup>$</sup></span>
+                            </div>
+
+                            <div class="pizza-card__form-item-wrap">
+                              <input
+                                type="checkbox"
+                                name="Olives"
+                                value="Olives"
+                                id="5-Olives"
+                              />
+                              <label for="5-Olives">Olives</label>
+                              <span>2<sup>$</sup></span>
+                            </div>
+                          </div>
+                          <div>
+                            <div class="pizza-card__price-wrap">
+                              <div class="price">
+                                <span class="price__value">3.7</span
+                                ><sup>$</sup>
+                              </div>
+                            </div>
+                            <div class="pizza-card__ingredients-btn-wrap">
+                              <button class="pizza-card__back-btn-submit">
+                                OK
+                              </button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </swiper-slide>
+              <!-- SLIDE-6 -->
+              <swiper-slide class="swiper-slide"
+                ><div
+                  class="pizza-card"
+                  id="6"
+                  data-title="Mushroom"
+                  data-options='{ "small": 2.7, "medium": 3.9, "large": 5}'
+                  data-ingredients='{"Cheese": 2, "Pepperoni": 3, "Mushrooms": 2, "Bacon": 3, "Olives": 2}'
+                >
+                  <div class="pizza-card__wrap">
+                    <div class="pizza-card__inner">
+                      <picture class="pizza-card__image-wrap">
+                        <img
+                          src="./images/pizza/Mushroom.png"
+                          alt="pizza image"
+                          class="pizza-card__image"
+                      /></picture>
+                      <div class="pizza-card__front">
+                        <h3 class="pizza-card__title">Mushroom</h3>
+                        <p class="pizza-card__desc">
+                          Filling: onion, potato, tomato, mushrooms, cheese,
+                          olives, meat
+                        </p>
+                        <div class="pizza-card__actions">
+                          <form class="pizza-card__options">
+                            <label>
+                              <input
+                                type="radio"
+                                name="pizza-card__option"
+                                class="pizza-card__options-radio"
+                                id="6-small"
+                                value="small"
+                                checked
+                              />22</label
+                            >
+
+                            <!-- pizza-card__options-btn--active -->
+
+                            <label>
+                              <input
+                                type="radio"
+                                name="pizza-card__option"
+                                class="pizza-card__options-radio"
+                                id="6-medium"
+                                value="medium"
+                              />28</label
+                            >
+                            <label>
+                              <input
+                                type="radio"
+                                name="pizza-card__option"
+                                class="pizza-card__options-radio"
+                                id="6-large"
+                                value="large"
+                              />33</label
+                            >
+                          </form>
+                          <div class="pizza-card__ingredients-btn-wrap">
+                            <button class="pizza-card__ingredients-btn">
+                              + ingredients
+                            </button>
+                          </div>
+                          <div class="pizza-card__price-wrap">
+                            <div class="price">
+                              <span class="price__value">2.7</span><sup>$</sup>
+                            </div>
+                            <div
+                              class="counter"
+                              data-min_value="1"
+                              data-max_value="99"
+                              data-init_value="1"
+                            >
+                              <button class="counter__decrement">-</button>
+                              <input
+                                type="number"
+                                class="counter__value"
+                                value="1"
+                                name="counter-value"
+                              />
+                              <button class="counter__increment">+</button>
+                            </div>
+                          </div>
+                          <button class="pizza-card__order-btn">
+                            Order Now
+                          </button>
+                        </div>
+                      </div>
+                      <div class="pizza-card__back">
+                        <p class="pizza-card__title-back">
+                          Choose ingredients:
+                        </p>
+                        <form class="pizza-card__ingredients-form">
+                          <div class="pizza-card__form-items-wrap">
+                            <div class="pizza-card__form-item-wrap">
+                              <input
+                                type="checkbox"
+                                name="Cheese"
+                                value="Cheese"
+                                id="6-Cheese"
+                              />
+                              <label for="6-Cheese">Cheese</label>
+                              <span>2<sup>$</sup></span>
+                            </div>
+
+                            <div class="pizza-card__form-item-wrap">
+                              <input
+                                type="checkbox"
+                                name="Pepperoni"
+                                value="Pepperoni"
+                                id="6-Pepperoni"
+                              />
+                              <label for="6-Pepperoni">Pepperoni</label>
+                              <span>3<sup>$</sup></span>
+                            </div>
+
+                            <div class="pizza-card__form-item-wrap">
+                              <input
+                                type="checkbox"
+                                name="Mushrooms"
+                                value="Mushrooms"
+                                id="6-Mushrooms"
+                              />
+                              <label for="6-Mushrooms">Mushrooms</label>
+                              <span>2<sup>$</sup></span>
+                            </div>
+
+                            <div class="pizza-card__form-item-wrap">
+                              <input
+                                type="checkbox"
+                                name="Bacon"
+                                value="Bacon"
+                                id="6-Bacon"
+                              />
+                              <label for="6-Bacon">Bacon</label>
+                              <span>3<sup>$</sup></span>
+                            </div>
+
+                            <div class="pizza-card__form-item-wrap">
+                              <input
+                                type="checkbox"
+                                name="Olives"
+                                value="Olives"
+                                id="6-Olives"
+                              />
+                              <label for="ingredient-6-5">Olives</label>
+                              <span>2<sup>$</sup></span>
+                            </div>
+                          </div>
+                          <div>
+                            <div class="pizza-card__price-wrap">
+                              <div class="price">
+                                <span class="price__value">2.7</span
+                                ><sup>$</sup>
+                              </div>
+                            </div>
+                            <div class="pizza-card__ingredients-btn-wrap">
+                              <button class="pizza-card__back-btn-submit">
+                                OK
+                              </button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </swiper-slide>
+              <!-- SLIDE-7 -->
+              <swiper-slide class="swiper-slide"
+                ><div
+                  class="pizza-card"
+                  id="7"
+                  data-title="Tomato"
+                  data-options='{ "small": 3.2, "medium": 4.3, "large": 5.1}'
+                  data-ingredients='{"Cheese": 2, "Pepperoni": 3, "Mushrooms": 2, "Bacon": 3, "Olives": 2}'
+                >
+                  <div class="pizza-card__wrap">
+                    <div class="pizza-card__inner">
+                      <picture class="pizza-card__image-wrap">
+                        <img
+                          src="./images/pizza/Tomato.png"
+                          alt="pizza image"
+                          class="pizza-card__image"
+                      /></picture>
+                      <div class="pizza-card__front">
+                        <h3 class="pizza-card__title">Tomato</h3>
+                        <p class="pizza-card__desc">
+                          Filling: onion, potato, tomato, mushrooms, cheese,
+                          olives, meat
+                        </p>
+                        <div class="pizza-card__actions">
+                          <form class="pizza-card__options">
+                            <label>
+                              <input
+                                type="radio"
+                                name="pizza-card__option"
+                                class="pizza-card__options-radio"
+                                id="7-small"
+                                value="small"
+                                checked
+                              />22</label
+                            >
+
+                            <!-- pizza-card__options-btn--active -->
+
+                            <label>
+                              <input
+                                type="radio"
+                                name="pizza-card__option"
+                                class="pizza-card__options-radio"
+                                id="7-medium"
+                                value="medium"
+                              />28</label
+                            >
+                            <label>
+                              <input
+                                type="radio"
+                                name="pizza-card__option"
+                                class="pizza-card__options-radio"
+                                id="7-large"
+                                value="large"
+                              />33</label
+                            >
+                          </form>
+                          <div class="pizza-card__ingredients-btn-wrap">
+                            <button class="pizza-card__ingredients-btn">
+                              + ingredients
+                            </button>
+                          </div>
+                          <div class="pizza-card__price-wrap">
+                            <div class="price">
+                              <span class="price__value">3.2</span><sup>$</sup>
+                            </div>
+                            <div
+                              class="counter"
+                              data-min_value="1"
+                              data-max_value="99"
+                              data-init_value="1"
+                            >
+                              <button class="counter__decrement">-</button>
+                              <input
+                                type="number"
+                                class="counter__value"
+                                value="1"
+                                name="counter-value"
+                              />
+                              <button class="counter__increment">+</button>
+                            </div>
+                          </div>
+                          <button class="pizza-card__order-btn">
+                            Order Now
+                          </button>
+                        </div>
+                      </div>
+                      <div class="pizza-card__back">
+                        <p class="pizza-card__title-back">
+                          Choose ingredients:
+                        </p>
+                        <form class="pizza-card__ingredients-form">
+                          <div class="pizza-card__form-items-wrap">
+                            <div class="pizza-card__form-item-wrap">
+                              <input
+                                type="checkbox"
+                                name="Cheese"
+                                value="Cheese"
+                                id="7-Cheese"
+                              />
+                              <label for="7-Cheese">Cheese</label>
+                              <span>2<sup>$</sup></span>
+                            </div>
+
+                            <div class="pizza-card__form-item-wrap">
+                              <input
+                                type="checkbox"
+                                name="Pepperoni"
+                                value="Pepperoni"
+                                id="7-Pepperoni"
+                              />
+                              <label for="7-Pepperoni">Pepperoni</label>
+                              <span>3<sup>$</sup></span>
+                            </div>
+
+                            <div class="pizza-card__form-item-wrap">
+                              <input
+                                type="checkbox"
+                                name="Mushrooms"
+                                value="Mushrooms"
+                                id="7-Mushrooms"
+                              />
+                              <label for="7-Mushrooms">Mushrooms</label>
+                              <span>2<sup>$</sup></span>
+                            </div>
+
+                            <div class="pizza-card__form-item-wrap">
+                              <input
+                                type="checkbox"
+                                name="Bacon"
+                                value="Bacon"
+                                id="7-Bacon"
+                              />
+                              <label for="7-Bacon">Bacon</label>
+                              <span>3<sup>$</sup></span>
+                            </div>
+
+                            <div class="pizza-card__form-item-wrap">
+                              <input
+                                type="checkbox"
+                                name="Olives"
+                                value="Olives"
+                                id="7-Olives"
+                              />
+                              <label for="7-Olives">Olives</label>
+                              <span>2<sup>$</sup></span>
+                            </div>
+                          </div>
+                          <div>
+                            <div class="pizza-card__price-wrap">
+                              <div class="price">
+                                <span class="price__value">3.2</span
+                                ><sup>$</sup>
+                              </div>
+                            </div>
+                            <div class="pizza-card__ingredients-btn-wrap">
+                              <button class="pizza-card__back-btn-submit">
+                                OK
+                              </button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </swiper-slide>
+              <!-- Slide-8 -->
+              <swiper-slide class="swiper-slide"
+                ><div
+                  class="pizza-card"
+                  id="8"
+                  data-title="Italian x2"
+                  data-options='{ "small": 6, "medium": 9, "large": 12}'
+                  data-ingredients='{"Cheese": 4, "Pepperoni": 6, "Mushrooms": 4, "Bacon": 6, "Olives": 4}'
+                >
+                  <div class="pizza-card__wrap">
+                    <div class="pizza-card__inner">
+                      <picture class="pizza-card__image-wrap">
+                        <img
+                          src="./images/pizza/Italian_x2.png"
+                          alt="pizza image"
+                          class="pizza-card__image"
+                      /></picture>
+                      <div class="pizza-card__front">
+                        <h3 class="pizza-card__title">Italian x2</h3>
+                        <p class="pizza-card__desc">
+                          Filling: onion, potato, tomato, mushrooms, cheese,
+                          olives, meat
+                        </p>
+                        <div class="pizza-card__actions">
+                          <form class="pizza-card__options">
+                            <label>
+                              <input
+                                type="radio"
+                                name="pizza-card__option"
+                                class="pizza-card__options-radio"
+                                id="8-small"
+                                value="small"
+                                checked
+                              />44</label
+                            >
+
+                            <!-- pizza-card__options-btn--active -->
+
+                            <label>
+                              <input
+                                type="radio"
+                                name="pizza-card__option"
+                                class="pizza-card__options-radio"
+                                id="8-medium"
+                                value="medium"
+                              />56</label
+                            >
+                            <label>
+                              <input
+                                type="radio"
+                                name="pizza-card__option"
+                                class="pizza-card__options-radio"
+                                id="8-large"
+                                value="large"
+                              />66</label
+                            >
+                          </form>
+                          <div class="pizza-card__ingredients-btn-wrap">
+                            <button class="pizza-card__ingredients-btn">
+                              + ingredients
+                            </button>
+                          </div>
+                          <div class="pizza-card__price-wrap">
+                            <div class="price">
+                              <span class="price__value">6</span><sup>$</sup>
+                            </div>
+                            <div
+                              class="counter"
+                              data-min_value="1"
+                              data-max_value="99"
+                              data-init_value="1"
+                            >
+                              <button class="counter__decrement">-</button>
+                              <input
+                                type="number"
+                                class="counter__value"
+                                value="1"
+                                name="counter-value"
+                              />
+                              <button class="counter__increment">+</button>
+                            </div>
+                          </div>
+                          <button class="pizza-card__order-btn">
+                            Order Now
+                          </button>
+                        </div>
+                      </div>
+                      <div class="pizza-card__back">
+                        <p class="pizza-card__title-back">
+                          Choose ingredients:
+                        </p>
+                        <form class="pizza-card__ingredients-form">
+                          <div class="pizza-card__form-items-wrap">
+                            <div class="pizza-card__form-item-wrap">
+                              <input
+                                type="checkbox"
+                                name="Cheese"
+                                value="Cheese"
+                                id="8-Cheese"
+                              />
+                              <label for="8-Cheese">Cheese</label>
+                              <span>4<sup>$</sup></span>
+                            </div>
+
+                            <div class="pizza-card__form-item-wrap">
+                              <input
+                                type="checkbox"
+                                name="Pepperoni"
+                                value="Pepperoni"
+                                id="8-Pepperoni"
+                              />
+                              <label for="8-Pepperoni">Pepperoni</label>
+                              <span>6<sup>$</sup></span>
+                            </div>
+
+                            <div class="pizza-card__form-item-wrap">
+                              <input
+                                type="checkbox"
+                                name="Mushrooms"
+                                value="Mushrooms"
+                                id="8-Mushrooms"
+                              />
+                              <label for="8-Mushrooms">Mushrooms</label>
+                              <span>4<sup>$</sup></span>
+                            </div>
+
+                            <div class="pizza-card__form-item-wrap">
+                              <input
+                                type="checkbox"
+                                name="Bacon"
+                                value="Bacon"
+                                id="8-Bacon"
+                              />
+                              <label for="8-Bacon">Bacon</label>
+                              <span>6<sup>$</sup></span>
+                            </div>
+
+                            <div class="pizza-card__form-item-wrap">
+                              <input
+                                type="checkbox"
+                                name="Olives"
+                                value="Olives"
+                                id="8-Olives"
+                              />
+                              <label for="8-Olives">Olives</label>
+                              <span>4<sup>$</sup></span>
+                            </div>
+                          </div>
+                          <div>
+                            <div class="pizza-card__price-wrap">
+                              <div class="price">
+                                <span class="price__value">6</span><sup>$</sup>
+                              </div>
+                            </div>
+                            <div class="pizza-card__ingredients-btn-wrap">
+                              <button class="pizza-card__back-btn-submit">
+                                OK
+                              </button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </swiper-slide>
+
               <!-- swiper-container__controllers--visible -->
               <div slot="container-end" class="swiper-container__controllers">
                 <button class="swiper-button-prev">

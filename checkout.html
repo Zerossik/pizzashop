@@ -10,6 +10,7 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./style.css" />
+
     <title>Pizzashop</title>
   </head>
   <body>
@@ -70,6 +71,7 @@
           <h2 class="checkout__title">Checkout</h2>
           <div class="checkout__inner">
             <div class="checkout__product-wrap">
+              <p class="checkout__empty-text">Your Cart is empty</p>
               <ul class="products-list"></ul>
               <div class="checkout__price-wrap">
                 <p>Total Price</p>
@@ -138,10 +140,8 @@
         </div>
       </section>
       <div class="modal-root" id="modal-root"></div>
-      <script src="./js/checkout.js" type="module"></script>
     </main>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@12/swiper-element-bundle.min.js"></script>
     <script src="./js/index.js" type="module"></script>
   </body>
 </html>

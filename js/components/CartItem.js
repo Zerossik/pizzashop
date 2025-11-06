@@ -1,14 +1,12 @@
-import { Counter } from "../counter.js";
-
-export const CartItem = (data, handler) => {
-  const { title, pizzaSize, price, quantity, id, img } = data;
+export const CartItem = (data) => {
+  const { title, pizzaSize, price, quantity, id, image } = data;
   const listItem = document.createElement("li");
 
   listItem.innerHTML = `
   <div class="cart__list-item" id="${id}">
     <div class="cart__title-wrap">
         <img
-        src="${img}"
+        src="${image}"
         loading="lazy"
         width="50"
         height="50"
@@ -48,9 +46,6 @@ export const CartItem = (data, handler) => {
     </button>
 </div>
 `;
-  const counterEl = listItem.querySelector(".counter");
-  if (counterEl) {
-    new Counter(counterEl, handler);
-  }
+
   return listItem;
 };

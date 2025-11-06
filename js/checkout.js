@@ -2,45 +2,45 @@ import cartViewModel from "./Cart/CartViewModel.js";
 import { CartItem } from "./components/CartItem.js";
 import { Modal } from "./modal.js";
 import { isFormEmpty } from "./helpers/isFormEmpty.js";
-
+import { Counter } from "./counter.js";
 class CheckOutView {
   #cart = null;
-  constructor(cartViewModel) {
+
+  constructor(rootElement, cartViewModel) {
+    if (!rootElement) throw new Error("root Element is required");
+    if (!cartViewModel) throw new Error(" cartViewModel is required");
     this.#cart = cartViewModel;
     this.#cart.subscribe(this.#onChange);
-
-    // ELEMENTS
     this.modal = new Modal();
 
-    this.itemsContainer = document.querySelector(".products-list");
-    if (!this.itemsContainer) throw new Error("itemsContainer not found");
+    // ELEMENTS
+    this.rootElement = rootElement;
 
-    this.userInfoForm = document.querySelector(".checkout__form");
-    if (!this.userInfoForm) throw new Error("userInfoForm not found");
-
-    this.totalPriceElement = document.querySelector(
-      ".checkout__product-wrap .price__value"
-    );
-    if (!this.totalPriceElement) throw new Error("totalPriceElement not found");
-
-    this.formInputs = this.userInfoForm.querySelectorAll("input[required]");
-
-    this.submitButtonEl = document.querySelector(".checkout__submit");
+    this.elements = {
+      checkoutForm: this.rootElement.querySelector(".checkout__form"),
+      itemsList: this.rootElement.querySelector(".products-list"),
+      totalPriceElement: this.rootElement.querySelector(
+        ".checkout__product-wrap .price__value"
+      ),
+      formInputs: this.rootElement.querySelectorAll("input[required]"),
+      submitButtonEl: this.rootElement.querySelector(".checkout__submit"),
+    };
 
     this.#attachEvent();
+    this.render();
   }
 
   #onChange = () => {
     this.render();
   };
   #attachEvent() {
-    this.itemsContainer.addEventListener("click", this.#clickHandler);
-    this.userInfoForm.addEventListener("submit", this.#submitHandler);
-    this.userInfoForm.addEventListener("input", (e) => {
+    this.rootElement.addEventListener("click", this.#clickHandler);
+    this.rootElement.addEventListener("submit", this.#submitHandler);
+    this.elements.checkoutForm.addEventListener("input", (e) => {
       const items = this.#cart.items;
 
-      this.submitButtonEl.disabled =
-        !items.length || !isFormEmpty(this.userInfoForm);
+      this.elements.submitButtonEl.disabled =
+        !items.length || !isFormEmpty(this.elements.checkoutForm);
     });
   }
 
@@ -62,6 +62,7 @@ class CheckOutView {
     this.modal.show(infoElement);
     this.#formReset(e);
     this.#cart.clearCart();
+    setTimeout(() => window.location.replace("/index.html"), 2000);
   };
 
   #formReset(e) {
@@ -75,30 +76,48 @@ class CheckOutView {
   }
 
   render() {
-    console.log("This is checkout");
-
     const items = this.#cart.items;
-    this.totalPriceElement.textContent = this.#cart.totalPrice;
 
-    if (!items.length) this.submitButtonEl.disabled = true;
+    this.elements.totalPriceElement.textContent =
+      this.#cart.totalPrice.toFixed(1);
+    if (!items.length) this.elements.submitButtonEl.disabled = true;
 
-    if (!items.length) {
-      this.itemsContainer.innerHTML = `<li class="cart__list-title">Your Cart is empty</li>`;
-      return;
-    }
+    // Удаление.
+    const itemsInCart = Array.from(this.elements.itemsList.children);
+    itemsInCart.forEach((item) => {
+      const itemID = item.querySelector(".cart__list-item")?.id;
+      const findedEl = items.find((el) => el.id === itemID);
+      if (!findedEl) {
+        item.remove();
+        return;
+      }
+    });
 
-    const itemsList = items.map((item) =>
-      CartItem(item, (counterValue) => {
-        this.#cart.updateItem({
-          id: item.id,
-          quantity: counterValue,
-        });
-      })
-    );
-    this.itemsContainer.innerHTML = "";
-    this.itemsContainer.append(...itemsList);
-    // ------------------------
+    // Добавление / обновление
+    items.forEach((item) => {
+      const existingEl = this.elements.itemsList.querySelector(
+        `.cart__list-item[id="${item.id}"]`
+      );
+      if (existingEl) {
+        // обновляем елемент.
+        existingEl.querySelector(".price__value").textContent = (
+          item.optionPrices[item.pizzaSize] * item.quantity
+        ).toFixed(1);
+        return;
+      }
+
+      const newItem = CartItem(item);
+      if (newItem) {
+        const counterEl = newItem.querySelector(".counter");
+        new Counter(counterEl).subscribe((value) =>
+          this.#cart.updateItem({ id: item.id, quantity: value })
+        );
+        this.elements.itemsList.appendChild(newItem);
+      }
+    });
   }
 }
 
-new CheckOutView(cartViewModel);
+const checkotEl = document.querySelector(".checkout__inner");
+
+if (checkotEl) new CheckOutView(checkotEl, cartViewModel);
