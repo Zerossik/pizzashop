@@ -1225,8 +1225,12 @@ p {
   align-items: center;
   flex: 1;
 }
+.about-us .decor-image-wrap .image-with-decors {
+  height: 100%;
+}
 .about-us .decor-image-wrap .image-with-decors img {
   object-fit: cover;
+  object-position: center;
   width: 100%;
 }
 @media (min-width: 1024px) {
