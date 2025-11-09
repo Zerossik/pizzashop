@@ -66,6 +66,7 @@ class CheckOutView {
       window.location.hostname === "https://zerossik.github.io"
         ? "https://zerossik.github.io/pizzashop"
         : "";
+    console.log(url);
     setTimeout(() => window.location.replace(`${url}/index.html`), 2000);
   };
 
