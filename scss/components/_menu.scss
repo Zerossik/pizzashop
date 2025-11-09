@@ -4,10 +4,7 @@
   margin-bottom: $spacing-section;
 
   &__title {
-    margin-bottom: $spacing-block;
-
-    font-size: 3rem;
-    text-align: center;
+    @include title;
   }
 
   &__most-popular-wrap {
