@@ -62,11 +62,9 @@ class CheckOutView {
     this.modal.show(infoElement);
     this.#formReset(e);
     this.#cart.clearCart();
-    const url =
-      window.location.hostname === "https://zerossik.github.io"
-        ? "https://zerossik.github.io/pizzashop"
-        : "";
-    console.log(window.location.hostname);
+    const url = window.location.hostname.includes("zerossik.github.io")
+      ? "https://zerossik.github.io/pizzashop"
+      : "";
     setTimeout(() => window.location.replace(`${url}/index.html`), 2000);
   };
 
