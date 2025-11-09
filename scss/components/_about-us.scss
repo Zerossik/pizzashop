@@ -1,6 +1,7 @@
 @use "../utils/utils" as *;
 
 .about-us {
+  margin-bottom: $spacing-section;
   & .container {
     display: flex;
     flex-direction: column-reverse;

@@ -93,6 +93,12 @@ p {
   display: none;
 }
 
+.instagram__icon,
+.facebook__icon {
+  display: inline-block;
+  fill: #ff862d;
+}
+
 .container {
   max-width: 1512px;
   padding: 0 20px;
@@ -113,13 +119,6 @@ p {
   justify-content: space-between;
   align-items: center;
   padding: 12px 0;
-}
-.header__logo {
-  font-size: 1.5rem;
-  font-weight: 800;
-  background-image: linear-gradient(to bottom left, #ff612e, #ffa32b);
-  background-clip: text;
-  color: transparent;
 }
 .header__nav {
   position: fixed;
@@ -235,6 +234,14 @@ p {
   .header__menu-btn {
     display: none;
   }
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  background-image: linear-gradient(to bottom left, #ff612e, #ffa32b);
+  background-clip: text;
+  color: transparent;
 }
 
 .image-with-decors {
@@ -1200,6 +1207,9 @@ p {
   display: none;
 }
 
+.about-us {
+  margin-bottom: 64px;
+}
 .about-us .container {
   display: flex;
   flex-direction: column-reverse;
@@ -1267,6 +1277,42 @@ p {
   right: 0;
   transform: translateX(calc(-50% - 8px));
   z-index: 100;
+}
+
+.footer {
+  background: #170700;
+  padding: 50px 0;
+}
+.footer__tel-link {
+  font-size: 1.2rem;
+  background: linear-gradient(to bottom left, #ff612e, #ffa32b);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.footer .container {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+@media (min-width: 768px) {
+  .footer .container {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+.footer .logo {
+  display: inline-block;
+  align-self: center;
+}
+.footer .contacts-wrap {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+}
+.footer .icons-wrap {
+  display: flex;
+  gap: 16px;
 }
 
 /*# sourceMappingURL=style.css.map */
