@@ -1,0 +1,44 @@
+@use "../utils/utils" as *;
+
+.footer {
+  background: $footer-bg;
+  padding: 50px 0;
+
+  &__tel-link {
+    font-size: 1.2rem;
+
+    background: $main-gradient;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-block;
+
+    @include media-768 {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  .logo {
+    display: inline-block;
+    align-self: center;
+  }
+
+  .contacts-wrap {
+    display: flex;
+    justify-content: space-between;
+    gap: $spacing-element;
+
+    @include media-768 {
+    }
+  }
+  .icons-wrap {
+    display: flex;
+    gap: $spacing-element;
+  }
+}

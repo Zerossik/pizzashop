@@ -1,0 +1,8 @@
+@use "../utils/utils" as *;
+.logo {
+  font-size: 1.5rem;
+  font-weight: 800;
+  background-image: $main-gradient;
+  background-clip: text;
+  color: transparent;
+}
