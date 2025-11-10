@@ -1,6 +1,8 @@
 import Swiper from "https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.mjs";
+import { Notify } from "./notify.js";
 
 const swiperEventsEl = document.getElementById("events-swiper-1");
+const notify = new Notify();
 
 const swiperEventsConfig = {
   slidesPerView: 1,
@@ -27,5 +29,6 @@ links.forEach((link) => linkHandler(link));
 function linkHandler(link) {
   link.onclick = (e) => {
     e.preventDefault();
+    notify.show("It will be ready soon.");
   };
 }
