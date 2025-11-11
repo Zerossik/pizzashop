@@ -385,15 +385,17 @@ p {
 }
 
 .video {
-  width: fit-content;
+  flex: 1;
 }
 .video__text {
   margin-bottom: 8px;
-  color: #a3a3a3;
+  color: #ffffff;
 }
 .video__wrap {
   position: relative;
   display: inline-block;
+  border-radius: 10px;
+  overflow: hidden;
 }
 .video__play-btn {
   position: absolute;
@@ -408,6 +410,7 @@ p {
 }
 .video__play-btn > img {
   margin: 0 auto;
+  pointer-events: none;
 }
 
 .pizza-card {
@@ -1324,6 +1327,7 @@ p {
   display: flex;
   min-width: 300px;
   min-height: 100px;
+  max-width: 320px;
   border-radius: 4px;
   z-index: 1000;
 }

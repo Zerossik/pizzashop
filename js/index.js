@@ -7,3 +7,4 @@ import "./Cart/CartViewModel.js";
 import "./Pizza-card/CardView.js";
 import "./checkout.js";
 import "./notify.js";
+import "./video.js";

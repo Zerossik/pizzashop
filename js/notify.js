@@ -60,7 +60,6 @@ export class Notify {
   }
 
   render() {
-    console.log("render");
     const { isOpen, content } = this.#state;
 
     if (isOpen) {
