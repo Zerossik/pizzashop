@@ -1,15 +1,19 @@
 @use "../utils/variables" as *;
 
 .video {
-  width: fit-content;
+  flex: 1;
+
   &__text {
     margin-bottom: $spacing-small;
-    color: $text-color;
+    color: $main-text-color;
   }
 
   &__wrap {
     position: relative;
     display: inline-block;
+
+    border-radius: 10px;
+    overflow: hidden;
   }
 
   &__play-btn {
@@ -28,6 +32,7 @@
 
     & > img {
       margin: 0 auto;
+      pointer-events: none;
     }
   }
 }
