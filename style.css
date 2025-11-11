@@ -51,7 +51,6 @@ html {
 }
 
 body {
-  height: 100vh;
   background: linear-gradient(to bottom left, #1c0c00 0%, #1c0700 31%, #140900 69%, #1c0c00 100%) no-repeat;
   background-attachment: fixed;
   background-size: cover;
@@ -111,7 +110,16 @@ p {
 }
 
 .header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  width: 100%;
   margin-bottom: 64px;
+  border-bottom: 2px solid transparent;
+  animation-name: header_scroll;
+  animation-fill-mode: both;
+  animation-timeline: scroll();
+  animation-range: 0 100px;
 }
 .header__inner {
   overflow: hidden;
@@ -158,7 +166,7 @@ p {
     position: static;
     width: auto;
     height: 100%;
-    padding: 10px;
+    padding: 0;
     background-color: transparent;
     pointer-events: auto;
     transform: translateX(0);
@@ -236,6 +244,12 @@ p {
   }
 }
 
+@keyframes header_scroll {
+  to {
+    background-color: #170700;
+    border-bottom: 2px solid #ff612e;
+  }
+}
 .logo {
   font-size: 1.5rem;
   font-weight: 800;
