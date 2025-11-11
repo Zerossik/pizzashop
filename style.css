@@ -547,29 +547,6 @@ p {
     flex-direction: row;
   }
 }
-.pizza-card__counter {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-.pizza-card__counter-btn {
-  width: 20px;
-  height: 20px;
-  border: 1px solid #a3a3a3;
-  border-radius: 50%;
-  background-color: transparent;
-  font-size: 12px;
-  color: #a3a3a3;
-}
-.pizza-card__counter-btn:active {
-  border: 1px solid transparent;
-  background: linear-gradient(to bottom left, #ff612e, #ffa32b) border-box;
-  color: #ffffff;
-}
-.pizza-card__counter-value {
-  min-width: 30px;
-  text-align: center;
-}
 .pizza-card__order-btn {
   width: 100%;
   padding: 12px 0;
