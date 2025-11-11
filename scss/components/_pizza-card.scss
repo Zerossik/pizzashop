@@ -108,6 +108,7 @@ $card-transition: transform 250ms linear;
       border: inherit;
       border-radius: inherit;
       z-index: 50;
+      pointer-events: none;
     }
 
     & button {
