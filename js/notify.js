@@ -1,10 +1,10 @@
 import { useState } from "./hooks/useState.js";
 
-export class Notify {
+class Notify {
   #state = null;
   #content = null;
   constructor() {
-    this.#state = useState({ isOpen: false, content: "" }, this.#onChange);
+    this.#state = useState({ isOpen: false }, this.#onChange);
     this.timeoutID = null;
 
     //   elements
@@ -38,12 +38,21 @@ export class Notify {
   show(content) {
     if (!content || typeof content !== "string")
       throw new TypeError("content must be a string");
+
+    const { isOpen } = this.#state;
+
     if (this.timeoutID) {
       clearTimeout(this.timeoutID);
       this.timeoutID = null;
       this.#closeWithDelay();
     }
-    this.#state.content = content;
+
+    if (isOpen && this.#content !== content) {
+      this.#content = content;
+      this.render();
+    }
+
+    this.#content = content;
     this.#state.isOpen = true;
   }
 
@@ -60,15 +69,18 @@ export class Notify {
   }
 
   render() {
-    const { isOpen, content } = this.#state;
+    const { isOpen } = this.#state;
 
     if (isOpen) {
-      this.elements.notifyContentEl.textContent = content;
+      this.elements.notifyContentEl.textContent = this.#content;
       this.notifyEl.classList.add("notify--show");
       this.#closeWithDelay();
       return;
     }
 
     this.notifyEl.classList.remove("notify--show");
+    this.elements.notifyContentEl.textContent = "";
   }
 }
+
+export default new Notify();

@@ -1,8 +1,7 @@
 import Swiper from "https://cdn.jsdelivr.net/npm/swiper@12/swiper-bundle.min.mjs";
-import { Notify } from "./notify.js";
+import notify from "./notify.js";
 
 const swiperEventsEl = document.getElementById("events-swiper-1");
-const notify = new Notify();
 
 const swiperEventsConfig = {
   slidesPerView: 1,

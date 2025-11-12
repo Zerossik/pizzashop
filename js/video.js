@@ -1,10 +1,9 @@
-import { Notify } from "./notify.js";
+import notify from "./notify.js";
 
 const video = document.querySelector(".video");
 
 if (video) {
   video.addEventListener("click", handlerClick);
-  const notify = new Notify();
 
   function handlerClick(e) {
     const clickedEl = e.target;
