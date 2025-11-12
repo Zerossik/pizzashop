@@ -47,9 +47,11 @@ class CardView {
       this.card.classList.add("pizza-card--fliped");
     }
     if (clickedEl.classList.contains("pizza-card__order-btn")) {
+      const cardData = this.viewModel.getCardData();
+
       const item = {
-        ...this.viewModel.getCardData(),
-        price: this.viewModel.totalPrice,
+        ...cardData,
+        price: this.viewModel.totalPrice / cardData.quantity,
       };
 
       this.#cart.addItem(item).openCart();
