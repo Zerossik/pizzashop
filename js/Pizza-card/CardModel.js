@@ -57,7 +57,7 @@ class CardModel extends Observable {
       (acc, el) => (acc += ingredientPrices[el]),
       0
     );
-    return (optionPrices[pizzaSize] + ingredientsPrice) * quantity;
+    return optionPrices[pizzaSize] + ingredientsPrice;
   }
   get basePrice() {
     const { pizzaSize, optionPrices } = this.#state;
