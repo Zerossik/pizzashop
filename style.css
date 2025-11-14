@@ -52,7 +52,6 @@ html {
 
 body {
   background: linear-gradient(to bottom left, #1c0c00 0%, #1c0700 31%, #140900 69%, #1c0c00 100%) no-repeat;
-  background-attachment: fixed;
   background-size: cover;
   font-family: "Montserrat", sans-serif;
   font-size: 1rem;
