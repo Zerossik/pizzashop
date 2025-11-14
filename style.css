@@ -943,6 +943,7 @@ p {
   flex-direction: column;
   flex: 1;
   gap: 8px;
+  overflow: hidden;
 }
 .cart__list-title {
   margin: auto auto;
@@ -961,6 +962,7 @@ p {
 }
 .cart__list {
   display: none;
+  overflow-y: auto;
 }
 .cart__list:has(li) {
   display: flex;

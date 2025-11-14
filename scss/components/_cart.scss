@@ -5,6 +5,7 @@
   flex-direction: column;
   flex: 1;
   gap: $spacing-small;
+  overflow: hidden;
   &__list-title {
     margin: auto auto;
     padding: $spacing-element;
@@ -24,6 +25,7 @@
 
   &__list {
     display: none;
+    overflow-y: auto;
     &:has(li) {
       display: flex;
       flex: 1;
