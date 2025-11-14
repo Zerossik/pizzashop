@@ -82,12 +82,12 @@ export class Counter extends Observable {
 
   increment() {
     if (this.#currentValue.value >= this.#maxValue) return;
-    this.#currentValue.value++;
+    requestAnimationFrame(() => this.#currentValue.value++);
   }
 
   decrement() {
     if (this.#currentValue.value <= this.#minValue) return;
-    this.#currentValue.value--;
+    requestAnimationFrame(() => this.#currentValue.value--);
   }
   get value() {
     return this.#currentValue.value;
