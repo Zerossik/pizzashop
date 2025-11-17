@@ -238,7 +238,7 @@ new Modal(title);
 - `#state` (reactive) — tracks `isOpen` and `title` state using `useState`
 - `#modalInner` — container for the modal content
 - `#createModal()` — creates the modal HTML structure with header, close button, and content area
-- `#render(prop, value)` — manages modal display/hide with animations and DOM manipulation
+- `#render()` — manages modal display/hide with animations and DOM manipulation
 - `#attachEvents()` — attaches all event listeners
 - `#destroyEvent()` — removes all event listeners
 
