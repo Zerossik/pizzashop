@@ -34,7 +34,7 @@ export const CartItem = (data) => {
         <button class="counter__increment">+</button>
         </div>
         <div class="price">
-        <span class="price__value">${(price * quantity).toFixed(1)}</span
+        <span class="price__value">${price.toFixed(1)}</span
         ><sup>$</sup>
         </div>
     </div>
