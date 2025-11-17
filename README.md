@@ -277,3 +277,47 @@ modal.close();
 ```
 
 ---
+
+## Notify (`js/notify.js`)
+
+**Purpose:** displays short, temporary notification messages to the user with auto-close and manual dismissal support.
+
+**Requirements:**
+
+- A root element `.notify` must exist in the DOM and contain an element `.notify__content` for text output.
+- Optionally include a close control with class `.notify__close` to allow manual dismissal.
+
+**Main Methods:**
+
+- `show(content)` — shows a notification with the provided plain string `content`.
+  - Throws `TypeError` if `content` is not a string.
+  - Clears any pending auto-close timer before showing a new message.
+  - Sets internal content and opens the notification UI.
+- `close()` — hides the notification immediately.
+
+**Behavior & implementation notes:**
+
+- Uses the project's `useState` hook to track `isOpen` and triggers a reactive `render()` on changes.
+- When open, `render()` sets `.notify__content` text, toggles the `.notify--show` CSS class and schedules an automatic close via `#closeWithDelay()` (3000ms).
+- If a new message arrives while a previous timeout is pending, the previous timeout is cleared and the content updates immediately.
+- Clicks on `.notify__close` call `close()`.
+
+**Usage example:**
+
+```html
+<div class="notify">
+  <div class="notify__content"></div>
+  <button class="notify__close">×</button>
+</div>
+```
+
+```javascript
+import Notify from "./js/notify.js";
+
+Notify.show("Item added to cart");
+
+// Manually close
+Notify.close();
+```
+
+---
