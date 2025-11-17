@@ -4,13 +4,13 @@ import { Modal } from "./modal.js";
 import { isFormEmpty } from "./helpers/isFormEmpty.js";
 import { Counter } from "./counter.js";
 class CheckOutView {
-  #cart = null;
-
+  #cartViewModel = null;
+  #itemsList = new Map();
   constructor(rootElement, cartViewModel) {
     if (!rootElement) throw new Error("root Element is required");
     if (!cartViewModel) throw new Error(" cartViewModel is required");
-    this.#cart = cartViewModel;
-    this.#cart.subscribe(this.#onChange);
+    this.#cartViewModel = cartViewModel;
+    this.#cartViewModel.subscribe(this.#onChange);
     this.modal = new Modal();
 
     // ELEMENTS
@@ -37,7 +37,7 @@ class CheckOutView {
     this.rootElement.addEventListener("click", this.#clickHandler);
     this.rootElement.addEventListener("submit", this.#submitHandler);
     this.elements.checkoutForm.addEventListener("input", (e) => {
-      const items = this.#cart.items;
+      const items = this.#cartViewModel.items;
 
       this.elements.submitButtonEl.disabled =
         !items.length || !isFormEmpty(this.elements.checkoutForm);
@@ -49,7 +49,7 @@ class CheckOutView {
 
     if (clickedElement.matches("button.cart__item-remove")) {
       const itemID = clickedElement.closest(".cart__list-item").id;
-      this.#cart.removeItem(itemID);
+      this.#cartViewModel.removeItem(itemID);
     }
   };
 
@@ -61,7 +61,7 @@ class CheckOutView {
       "Thank you for your order! Our manager will contact you shortly.";
     this.modal.show(infoElement);
     this.#formReset(e);
-    this.#cart.clearCart();
+    this.#cartViewModel.clearCart();
     const url = window.location.hostname.includes("zerossik.github.io")
       ? "https://zerossik.github.io/pizzashop"
       : "";
@@ -79,45 +79,59 @@ class CheckOutView {
   }
 
   render() {
-    const items = this.#cart.items;
-
+    const items = this.#cartViewModel.items;
     this.elements.totalPriceElement.textContent =
-      this.#cart.totalPrice.toFixed(1);
+      this.#cartViewModel.totalPrice.toFixed(1);
     if (!items.length) this.elements.submitButtonEl.disabled = true;
 
     // Удаление.
-    const itemsInCart = Array.from(this.elements.itemsList.children);
-    itemsInCart.forEach((item) => {
-      const itemID = item.querySelector(".cart__list-item")?.id;
-      const findedEl = items.find((el) => el.id === itemID);
-      if (!findedEl) {
-        item.remove();
-        return;
+    [...this.#itemsList.keys()].forEach((itemId) => {
+      const result = items.find(({ id }) => id === itemId);
+      if (!result) {
+        const { element, counter } = this.#itemsList.get(itemId);
+        counter.destroy();
+        element.closest("li").remove();
+        this.#itemsList.delete(itemId);
+        return undefined;
       }
     });
-
     // Добавление / обновление
     items.forEach((item) => {
-      const existingEl = this.elements.itemsList.querySelector(
-        `.cart__list-item[id="${item.id}"]`
-      );
-      if (existingEl) {
-        // обновляем елемент.
+      const { id } = item;
+      const existingItem = this.#itemsList.get(id);
+      if (existingItem) {
+        const { counter, element, item: oldItem } = existingItem;
+        if (JSON.stringify(oldItem) === JSON.stringify(item)) return;
 
-        existingEl.querySelector(".price__value").textContent = (
-          item.price * item.quantity
-        ).toFixed(1);
-        return;
+        element.querySelector(".price__value").textContent = this.#cartViewModel
+          .getItemPriceById(id)
+          .toFixed(1);
+
+        this.#itemsList.set(id, {
+          item,
+          element,
+          counter,
+        });
+
+        return undefined;
       }
 
-      const newItem = CartItem(item);
-      if (newItem) {
-        const counterEl = newItem.querySelector(".counter");
-        new Counter(counterEl).subscribe((value) =>
-          this.#cart.updateItem({ id: item.id, quantity: value })
-        );
-        this.elements.itemsList.appendChild(newItem);
-      }
+      const listItem = document.createElement("li");
+      const itemPrice = this.#cartViewModel.getItemPriceById(item.id);
+      const card = CartItem({ ...item, price: itemPrice });
+      const counterEl = card.querySelector(".counter");
+      const counterInstance = new Counter(counterEl);
+      counterInstance.subscribe((counterValue) => {
+        this.#cartViewModel.updateItem({ id: item.id, quantity: counterValue });
+      });
+      listItem.appendChild(card);
+      this.elements.itemsList.appendChild(listItem);
+
+      this.#itemsList.set(id, {
+        item,
+        element: card,
+        counter: counterInstance,
+      });
     });
   }
 }

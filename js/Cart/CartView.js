@@ -7,7 +7,7 @@ export class CartView {
   #modal = null;
   #cartLayout = null;
   #cartList = null;
-  #counters = new Map();
+  #itemsInCart = new Map();
 
   constructor(cartVievModel) {
     this.#vievModel = cartVievModel;
@@ -92,54 +92,59 @@ export class CartView {
     const items = this.#vievModel.items;
     const totalPrice = Number(this.#vievModel.totalPrice.toFixed(1));
     this.elements.totalPrice.textContent = totalPrice;
-
     this.elements.toCheckoutBtn.dataset.disabled = !items.length;
 
-    const listItems = Array.from(this.#cartList.children);
-
-    listItems.forEach((item) => {
-      const itemID = item.querySelector(".cart__list-item")?.id;
-      const findedEl = items.find((el) => el.id === itemID);
-      if (!findedEl) {
-        const counter = this.#counters.get(itemID);
-        if (counter) {
-          counter.destroy();
-          this.#counters.delete(itemID);
-        }
-        item.remove();
-        return;
+    // Удаление.
+    [...this.#itemsInCart.keys()].forEach((itemId) => {
+      const result = items.find(({ id }) => id === itemId);
+      if (!result) {
+        const { element, counter } = this.#itemsInCart.get(itemId);
+        counter.destroy();
+        element.closest("li").remove();
+        this.#itemsInCart.delete(itemId);
+        return undefined;
       }
     });
 
     items.forEach((item) => {
-      const counterUpdate = (value) => {
-        this.#vievModel.updateItem({ id: item.id, quantity: value });
-      };
-      const { price, quantity } = item;
-      const existingEl = this.#cartList.querySelector(
-        `.cart__list-item[id="${item.id}"]`
-      );
+      const { id } = item;
+      // Обновление.
+      const existingItem = this.#itemsInCart.get(id);
+      if (existingItem) {
+        const { counter, element, item: oldItem } = existingItem;
 
-      if (existingEl) {
-        existingEl.querySelector(".price__value").textContent = (
-          price * quantity
-        ).toFixed(1);
+        if (JSON.stringify(oldItem) === JSON.stringify(item)) return;
+        element.querySelector(".price__value").textContent = this.#vievModel
+          .getItemPriceById(id)
+          .toFixed(1);
 
-        const counter = this.#counters.get(item.id);
+        this.#itemsInCart.set(id, {
+          item,
+          element,
+          counter,
+        });
+
         counter.updateValue(item.quantity);
-        return;
+        return undefined;
       }
 
-      const cartItemEl = CartItem(item);
-      const counterEl = cartItemEl.querySelector(".counter");
-      if (counterEl) {
-        const counter = new Counter(counterEl);
-        const unsubscribe = counter.subscribe(counterUpdate);
-        counter.unsubscribe = unsubscribe;
-        this.#counters.set(item.id, counter);
-      }
+      // Добавление.
+      const listItem = document.createElement("li");
+      const itemPrice = this.#vievModel.getItemPriceById(item.id);
+      const card = CartItem({ ...item, price: itemPrice });
+      const counterEl = card.querySelector(".counter");
+      const counterInstance = new Counter(counterEl);
+      counterInstance.subscribe((counterValue) => {
+        this.#vievModel.updateItem({ id: item.id, quantity: counterValue });
+      });
 
-      this.#cartList.appendChild(cartItemEl);
+      listItem.appendChild(card);
+      this.#cartList.appendChild(listItem);
+      this.#itemsInCart.set(id, {
+        item,
+        element: card,
+        counter: counterInstance,
+      });
     });
   };
 }

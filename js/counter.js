@@ -55,6 +55,7 @@ export class Counter extends Observable {
     this.counter.removeEventListener("click", this.handlerClick);
     this.counter.removeEventListener("change", this.handlerChange);
     this.counter = null;
+    this.subscribers.clear();
   }
 
   handlerClick = (e) => {
