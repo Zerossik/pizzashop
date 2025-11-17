@@ -48,12 +48,12 @@ class CardView {
     }
     if (clickedEl.classList.contains("pizza-card__order-btn")) {
       const cardData = this.viewModel.getCardData();
+      const offerID = `${cardData.id}-${cardData.pizzaSize}`;
 
       const item = {
         ...cardData,
-        price: this.viewModel.totalPrice / cardData.quantity,
+        id: offerID,
       };
-
       this.#cart.addItem(item).openCart();
     }
   };

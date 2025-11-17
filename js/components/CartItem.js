@@ -1,10 +1,9 @@
 export const CartItem = (data) => {
   const { title, pizzaSize, price, quantity, id, image } = data;
-  const listItem = document.createElement("li");
-
-  listItem.innerHTML = `
-  <div class="cart__list-item" id="${id}">
-    <div class="cart__title-wrap">
+  const card = document.createElement("div");
+  card.classList.add("cart__list-item");
+  card.id = id;
+  card.innerHTML = ` <div class="cart__title-wrap">
         <img
         src="${image}"
         loading="lazy"
@@ -43,9 +42,7 @@ export const CartItem = (data) => {
         <svg width="24" height="24">
         <use href="./images/icons.svg#icon-trash"></use>
         </svg>
-    </button>
-</div>
-`;
+    </button>`;
 
-  return listItem;
+  return card;
 };
