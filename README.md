@@ -189,3 +189,91 @@ counter.updateValue(5);
 ```
 
 ---
+
+## Modal (`js/modal.js`)
+
+**Purpose:** displays modal windows with customizable content, titles, and closing mechanisms.
+
+**Constructor:**
+
+```javascript
+new Modal(title);
+```
+
+- `title` (string) — the title displayed in the modal header (required)
+- Throws `TypeError` if title is not a string
+- Requires `#modal-root` element in the DOM to render the modal
+
+**Main Methods:**
+
+- `show(htmlContent)` — opens the modal with specified HTML content
+  - `htmlContent` (HTMLElement, optional) — the content to display inside the modal
+  - Attaches event handlers when the modal is shown
+  - Returns `this` for method chaining
+- `close()` — closes the modal
+  - Removes content and detaches event handlers
+  - Triggered by closing animation timeout
+- `setContent(newContent, isClearModal)` — updates the modal content after it's opened
+  - `newContent` (HTMLElement) — the new content to display
+  - Throws `TypeError` if content is not an HTMLElement
+
+**Properties & Setters:**
+
+- `title` (setter) — updates the modal title dynamically
+  - Updates the DOM element and internal state
+  - Throws `TypeError` if title is not a string
+- `modal` — the root modal DOM element
+- `modalRoot` — the DOM node where modals are rendered (must have id `modal-root`)
+- `modalTitle` — the title element inside the modal
+
+**Event Handling:**
+
+- Clicks on `.modal__close` button — close the modal
+- Clicks on `.modal__backdrop` (the overlay) — close the modal
+- `Escape` key press — close the modal
+- All events are properly cleaned up on modal close
+
+**Internal Structure:**
+
+- `#state` (reactive) — tracks `isOpen` and `title` state using `useState`
+- `#modalInner` — container for the modal content
+- `#createModal()` — creates the modal HTML structure with header, close button, and content area
+- `#render(prop, value)` — manages modal display/hide with animations and DOM manipulation
+- `#attachEvents()` — attaches all event listeners
+- `#destroyEvent()` — removes all event listeners
+
+**Reactivity & Animation:**
+
+- Uses `useState` to track state changes
+- Modal insertion/removal is handled reactively based on `isOpen` state
+- Opening animation: modal is added to DOM and `.modal__show` class is applied via `requestAnimationFrame`
+- Closing animation: `.modal__show` class is removed, then modal is removed from DOM after 200ms delay
+- Body overflow is hidden when modal is open, restored when closed
+
+**Usage Example:**
+
+```html
+<div id="modal-root"></div>
+```
+
+```javascript
+const modal = new Modal("Cart");
+
+// Show modal with content
+const content = document.createElement("div");
+content.innerHTML = "<p>Your cart items here</p>";
+modal.show(content);
+
+// Update title
+modal.title = "Shopping Cart";
+
+// Update content after showing
+const newContent = document.createElement("div");
+newContent.innerHTML = "<p>Updated cart</p>";
+modal.setContent(newContent);
+
+// Close modal
+modal.close();
+```
+
+---
