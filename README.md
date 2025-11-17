@@ -125,3 +125,67 @@ arr.push(4); // -> onChange(target, 'push', [4])
 **Integration:** CartView subscribes to changes in CartViewModel and automatically updates the display whenever data changes.
 
 ---
+
+## Counter (`js/counter.js`)
+
+**Purpose:** manages a numeric counter for quantity selection with increment and decrement functionality.
+
+**Constructor:**
+
+```javascript
+new Counter(counterElement);
+```
+
+- `counterElement` (HTMLElement) — HTML element of the counter, which should contain:
+  - `data-min_value` — minimum value (default 1)
+  - `data-max_value` — maximum value (default 99)
+  - `data-init_value` — initial value (default equals minimum)
+  - Child element `<input name="counter-value">` to display the current value
+
+**Main Methods:**
+
+- `increment()` — increases value by 1 (cannot exceed maximum)
+- `decrement()` — decreases value by 1 (cannot be less than minimum)
+- `updateValue(value)` — sets a new value with validation
+  - Throws error if value is less than minimum or greater than maximum
+  - Throws error if value is not a number
+- `render()` — updates the display of the value in the input element
+- `destroy()` — removes all event handlers and cleans up resources
+- `value` (getter) — returns the current value
+
+**Event Handling:**
+
+- Clicks on `.counter__increment` — call `increment()`
+- Clicks on `.counter__decrement` — call `decrement()`
+- Changes to input field — call `handlerChange()`, which validates and sets the new value
+
+**Reactivity:**
+
+- Extends `Observable`, so it automatically notifies all subscribers when the value changes
+- Uses `useState` to track value changes
+- Value updates are performed using `requestAnimationFrame` for optimal performance
+
+**Usage Example:**
+
+```html
+<div class="counter" data-min_value="1" data-max_value="10" data-init_value="1">
+  <button class="counter__decrement">-</button>
+  <input type="number" name="counter-value" />
+  <button class="counter__increment">+</button>
+</div>
+```
+
+```javascript
+const counterElement = document.querySelector(".counter");
+const counter = new Counter(counterElement);
+
+// Subscribe to changes
+counter.subscribe((value) => {
+  console.log("New quantity:", value);
+});
+
+// Set a new value
+counter.updateValue(5);
+```
+
+---

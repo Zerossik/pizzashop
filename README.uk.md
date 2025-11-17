@@ -125,3 +125,67 @@ arr.push(4); // -> onChange(target, 'push', [4])
 **Інтеграція:** CartView підписується на зміни в CartViewModel та автоматично оновлює вигляд при будь-яких змінах у даних.
 
 ---
+
+## Counter (`js/counter.js`)
+
+**Призначення:** управління числовим лічильником кількості товарів зі можливістю збільшення та зменшення значення.
+
+**Конструктор:**
+
+```javascript
+new Counter(counterElement);
+```
+
+- `counterElement` (HTMLElement) — HTML елемент лічильника, який повинен містити:
+  - `data-min_value` — мінімальне значення (за замовчуванням 1)
+  - `data-max_value` — максимальне значення (за замовчуванням 99)
+  - `data-init_value` — початкове значення (за замовчуванням дорівнює мінімальному)
+  - Дочірній елемент `<input name="counter-value">` для відображення поточного значення
+
+**Основні методи:**
+
+- `increment()` — збільшує значення на 1 (не може перевищити максимум)
+- `decrement()` — зменшує значення на 1 (не може бути менше мінімуму)
+- `updateValue(value)` — встановлює нове значення з валідацією
+  - Генерує помилку, якщо значення менше мінімуму або більше максимуму
+  - Генерує помилку, якщо значення не число
+- `render()` — оновлює відображення значення у input елементі
+- `destroy()` — видаляє всі обробники подій та очищає ресурси
+- `value` (getter) — повертає поточне значення
+
+**Обробка подій:**
+
+- Клікі на `.counter__increment` — викликають `increment()`
+- Клікі на `.counter__decrement` — викликають `decrement()`
+- Зміни вмісту input — викликають `handlerChange()`, який валідує та встановлює нове значення
+
+**Реактивність:**
+
+- Розширює `Observable`, тому при зміні значення автоматично сповіщує всіх підписників
+- Використовує `useState` для відстеження змін значення
+- Змінених значення оновлюються за допомогою `requestAnimationFrame` для оптимальної продуктивності
+
+**Приклад використання:**
+
+```html
+<div class="counter" data-min_value="1" data-max_value="10" data-init_value="1">
+  <button class="counter__decrement">-</button>
+  <input type="number" name="counter-value" />
+  <button class="counter__increment">+</button>
+</div>
+```
+
+```javascript
+const counterElement = document.querySelector(".counter");
+const counter = new Counter(counterElement);
+
+// Підписка на зміни
+counter.subscribe((value) => {
+  console.log("Нова кількість:", value);
+});
+
+// Встановити нове значення
+counter.updateValue(5);
+```
+
+---
