@@ -64,3 +64,64 @@ arr.push(4); // -> onChange(target, 'push', [4])
 - When working with large data structures, keep in mind the cost of proxying nested objects.
 
 ---
+
+## Cart Functionality: `CartModel`, `CartViewModel`, `CartView`
+
+### CartModel (`js/Cart/CartModel.js`)
+
+**Purpose:** manages cart data and persists it to LocalStorage.
+
+**Main Methods:**
+
+- `addItem(item)` — adds an item to the cart. If the item already exists, updates its quantity
+- `updateItem(itemData)` — updates item data (quantity, size, etc.)
+- `removeItem(id)` — removes an item from the cart
+- `clearCart()` — empties the entire cart
+- `getItemPriceById(id)` — calculates item price including size and added ingredients
+- `totalPrice` (getter) — calculates the total price of all items in the cart
+- `items` (getter) — returns an array of all items in the cart
+
+**Validation:** the class ensures each item contains required properties (`id`, `title`, `image`, `ingredientPrices`, `optionPrices`, `pizzaSize`, `quantity`, `addedIngredients`).
+
+**Persistence:** all changes are automatically synchronized with LocalStorage through the Observable pattern.
+
+### CartViewModel (`js/Cart/CartViewModel.js`)
+
+**Purpose:** acts as a bridge between the UI and the model, managing state and notifying about changes.
+
+**Main Methods:**
+
+- `addItem(item)` — delegates item addition to CartModel
+- `removeItem(id)` — removes an item from the cart
+- `updateItem(itemData)` — updates an item in the cart
+- `clearCart()` — clears the cart
+- `openCart()` — notifies subscribers about opening the cart modal
+- `getItemPriceById(id)` — retrieves item price from the model
+- `items` (getter) — returns the list of items from the model
+- `totalPrice` (getter) — returns the total cart price
+
+**Reactivity:** extends `Observable`, so any change in CartModel automatically notifies the UI.
+
+### CartView (`js/Cart/CartView.js`)
+
+**Purpose:** displays the cart UI and handles user interactions.
+
+**Main Features:**
+
+- `openCart()` — opens a modal window displaying the cart contents
+- Dynamic rendering of cart items list
+- Price updates when item quantity changes
+- Item removal on delete button click
+- Counter (quantity selector) management for each item
+- Disables checkout button when cart is empty
+
+**Internal Structure:**
+
+- `#itemsInCart` (Map) — stores references to DOM elements and counter for each item
+- `#createCartLayout()` — creates the cart HTML structure
+- `#render()` — re-renders the cart on changes (add, remove, update items)
+- `#attachEvents()` — attaches event handlers (open cart, remove item)
+
+**Integration:** CartView subscribes to changes in CartViewModel and automatically updates the display whenever data changes.
+
+---
